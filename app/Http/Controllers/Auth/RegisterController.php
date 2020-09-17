@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone'    => ['required','unique:users', 'regex:/^(0|\+?254)(\d){9}$/'],
+            'county'   => ['required', 'string'],
+            'age'      => ['required', 'string'],
         ]);
     }
 
@@ -64,10 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $phone = preg_replace('/^(0|254)/', '+254', $data['phone']);
+        $user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone'     => $phone,
+            'age'       => $data['age'],
+            'county'    => $data['county']
         ]);
+
+        $user->roles()->sync([2]);
+        return $user;
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register1');
     }
 }
