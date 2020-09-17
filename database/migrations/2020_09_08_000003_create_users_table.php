@@ -13,13 +13,16 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('age')->nullable();
-            $table->string('county')->nullable();
+            $table->unsignedInteger('age');
+            $table->unsignedInteger('county');
             $table->datetime('email_verified_at')->nullable();
             $table->string('password');
             $table->string('remember_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('age')->references('id')->on('ages')->onDelete('cascade');
+            $table->foreign('county')->references('id')->on('counties')->onDelete('cascade');
         });
     }
 }

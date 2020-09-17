@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Age;
+use App\County;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -83,6 +85,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register1');
+        $ages = Age::all()->pluck('age', 'id');
+        $counties = County::all()->pluck('name', 'id');
+        return view('auth.register1', compact('ages', 'counties'));
     }
 }
