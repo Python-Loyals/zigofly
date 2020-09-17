@@ -87,6 +87,6 @@ class RegisterController extends Controller
     {
         $ages = Age::all()->pluck('age', 'id');
         $counties = County::all()->pluck('name', 'id');
-        return view('auth.register1', compact('ages', 'counties'));
+        return view('auth.register', compact('ages', 'counties'));
     }
 }

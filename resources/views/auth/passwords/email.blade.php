@@ -1,42 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.myapp')
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card mx-4">
-            <div class="card-body p-4">
-                <h1>{{ trans('panel.site_title') }}</h1>
-
-                <p class="text-muted">{{ trans('global.reset_password') }}</p>
-
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
                 @if(session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('password.email') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ route('password.email') }}">
                     @csrf
+                    <span class="login100-form-title p-b-26">
+						{{trans('panel.site_title')}}
+					</span>
+                    <span class="login100-form-title p-b-48">
+						<img src="{{asset('/images/zigoflysmall.png')}}" alt="Logo" width="120">
+					</span>
 
-                    <div class="form-group">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email') }}">
-
-                        @if($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
+                    <div class="wrap-input100 validate-input{{ $errors->has('email') ? ' alert-validate' : '' }}" data-validate="{{$errors->has('email')? $errors->first('email') : 'Valid email is: a@b.c'}}">
+                        <input class="input100" type="text" name="email"  autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+                        <span class="focus-input100" data-placeholder="Email"></span>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-flat btn-block">
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
                                 {{ trans('global.send_password') }}
                             </button>
                         </div>
+                    </div>
+
+                    <div class="text-center p-t-35">
+                        <a class="txt2" href="{{route('login')}}"> Back to Login! </a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 @endsection

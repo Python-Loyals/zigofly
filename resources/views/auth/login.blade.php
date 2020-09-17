@@ -1,12 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.myapp')
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card mx-4">
-            <div class="card-body p-4">
-                <h1>{{ trans('panel.site_title') }}</h1>
-
-                <p class="text-muted">{{ trans('global.login') }}</p>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
 
                 @if(session('message'))
                     <div class="alert alert-info" role="alert">
@@ -14,66 +10,59 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('login') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
+                    <span class="login100-form-title p-b-26">
+						{{ucfirst(trans('panel.site_title'))}}
+					</span>
+                    <span class="login100-form-title p-b-48">
+						<img src="{{asset('images/zigoflysmall.png')}}" alt="Logo" width="120">
+					</span>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
-
-                        <input id="email" name="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
-
-                        @if($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
+                    <div class="wrap-input100 validate-input{{ $errors->has('email') ? ' alert-validate' : '' }}" data-validate="{{$errors->has('email')? $errors->first('email') : 'Valid email is: a@b.c'}}">
+                        <input class="input100" type="text" name="email"  autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+                        <span class="focus-input100" data-placeholder="Email"></span>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                        </div>
-
-                        <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_password') }}">
-
-                        @if($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
+                    <div class="wrap-input100 validate-input{{ $errors->has('password') ? ' alert-validate' : '' }}" data-validate="{{$errors->has('password')? $errors->first('password') : 'Enter password'}}">
+                        <span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <div class="form-check checkbox">
-                            <input class="form-check-input" name="remember" type="checkbox" id="remember" style="vertical-align: middle;" />
-                            <label class="form-check-label" for="remember" style="vertical-align: middle;">
-                                {{ trans('global.remember_me') }}
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-primary px-4">
-                                {{ trans('global.login') }}
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Login
                             </button>
                         </div>
-                        <div class="col-6 text-right">
-                            @if(Route::has('password.request'))
-                                <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                    {{ trans('global.forgot_password') }}
-                                </a><br>
-                            @endif
 
+                        <div class="text-center p-t-9">
+                            <span class="txt1">
+									Forgot your Password?
+								</span>
+
+                            <a class="txt2" href="{{route('password.request')}}">
+                                Reset now.
+                            </a>
                         </div>
+
+                    </div>
+
+                    <div class="text-center p-t-35">
+                        <span class="txt1">
+							Don’t have an account?
+						</span>
+
+                        <a class="txt2" href="{{route('register')}}">
+                            Sign Up
+                        </a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
