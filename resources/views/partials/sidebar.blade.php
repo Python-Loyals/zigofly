@@ -13,11 +13,11 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="{{ request()->is('admin') || request()->is('admin#') ? 'active' : '' }}">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" href="/">
                         <i class="fas fa-tachometer-alt"></i>Dashboard
                     </a>
-                <li>
-                    <a href="address.html">
+                <li class="{{ request()->is('admin/address') || request()->is('admin/address*') ? 'active' : '' }}">
+                    <a href="{{route('admin.users.address')}}">
                         <i class="fas fa-map-marker-alt"></i>My Adress</a>
                 </li>
                 <li>

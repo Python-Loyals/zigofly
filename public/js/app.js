@@ -37133,6 +37133,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
       showPass = 0;
     }
   });
+  $('.avatar-form').on('change', function () {
+    this.submit();
+  });
 })(jQuery);
 
 /***/ }),

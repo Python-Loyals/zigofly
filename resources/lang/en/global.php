@@ -272,5 +272,6 @@ return [
     'calendar'                             => 'Calendar',
     'messenger'                            => 'Messenger',
     'all_notifications'                    => 'All Notififications',
-    'view_cart'                            => 'View Cart'
+    'view_cart'                            => 'View Cart',
+    'update_info_success'                  => 'Your Info was updated successfully',
 ];

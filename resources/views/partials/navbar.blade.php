@@ -98,7 +98,7 @@
                             @endphp
 
                             <div class="image d-sm-flex d-none">
-                                <img src="{{asset('account/images/people/Basil Malaki.png')}}" alt="{{$fname}}" />
+                                <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{$fname}}" />
                             </div>
                             <div class="content m-sm-l-0">
                                 <a class="js-acc-btn" href="#">{{$fname}}</a>
@@ -107,7 +107,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="{{asset('account/images/people/Basil Malaki.png')}}" alt="{{auth()->user()->name}}" />
+                                            <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{auth()->user()->name}}" />
                                         </a>
                                     </div>
                                     <div class="content">
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('admin.profile.index')}}">
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">

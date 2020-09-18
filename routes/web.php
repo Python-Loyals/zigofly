@@ -25,11 +25,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+
+    // Customer adrress
+    Route::get('address', 'AddressController@index')->name('users.address');
+
+    //user profile
+    Route::get('profile','ProfileController@index')->name('profile.index');
+    Route::put('profile','ProfileController@update')->name('profile.update_info');
+    Route::put('profile/avatar','ProfileController@updateAvatar')->name('profile.update_avatar');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
-        Route::post('password', 'ChangePasswordController@update')->name('password.update');
+        Route::put('password', 'ChangePasswordController@update')->name('password.update');
     }
 });

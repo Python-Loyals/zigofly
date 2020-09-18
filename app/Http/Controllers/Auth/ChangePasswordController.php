@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePasswordRequest;
 use Gate;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
 class ChangePasswordController extends Controller
@@ -19,8 +20,15 @@ class ChangePasswordController extends Controller
 
     public function update(UpdatePasswordRequest $request)
     {
-        auth()->user()->update($request->validated());
+        $user = Auth::user();
 
-        return redirect()->route('profile.password.edit')->with('message', __('global.change_password_success'));
+        if (!Hash::check($request->all()['old_password'], $user->password)){
+            return back()->withErrors(['old_password' => 'You have entered wrong password']);
+        }
+
+        $user->password = Hash::make($request->all()['password']);
+        $user->save();
+        return $user;
+        return back()->with('success', __('global.change_password_success'));
     }
 }

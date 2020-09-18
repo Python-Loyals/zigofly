@@ -18,7 +18,8 @@
                     <div class="col-md-12">
                         <div class="overview-wrap">
                             <p>Welcome, {{ucfirst(explode(' ', request()->user()->name)[0])}} &nbsp;
-                                <i class="fas fa-map-marker-alt"></i> {{\App\County::find(request()->user()->county)->name}}, Kenya</p>
+                                <i class="fas fa-map-marker-alt"></i> {{\App\County::find(request()->user()->county)->name}}, Kenya
+                            </p>
                         </div>
                     </div>
                 </div>
