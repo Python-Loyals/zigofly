@@ -271,4 +271,6 @@ return [
     'team-members'                         => 'Team members',
     'calendar'                             => 'Calendar',
     'messenger'                            => 'Messenger',
+    'all_notifications'                    => 'All Notififications',
+    'view_cart'                            => 'View Cart'
 ];
