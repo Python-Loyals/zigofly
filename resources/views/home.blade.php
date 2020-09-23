@@ -213,7 +213,7 @@
                                     <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
                                         <div class="ml-auto col-lg-6 col-md-6 text-center">
                                             <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561814261/adv_3.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Fitness</a></p>
+                                            <p class="product-group-title col-12 text-center"><a href="{{route('products.category.search', 'fitness')}}">Fitness</a></p>
                                         </div>
                                         <div class="product-group-content col-lg-6 col-md-6">
                                             <div class="product-group-text">2020 trendy fitness product here from US & UK</div>

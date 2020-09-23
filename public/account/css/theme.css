@@ -316,7 +316,7 @@ section {
 }
 
 .section__content--p30 {
-    padding: 0 30px;
+    padding: 0 15px;
 }
 
 @media (max-width: 991px) {
@@ -752,6 +752,7 @@ section {
 .form-header2 .au-btn--submit {
     border: none;
     line-height: 45px;
+    margin-bottom: -10px;
 }
 
 .form-header2 .au-input {
@@ -841,7 +842,7 @@ section {
 
 @media (max-width: 767px) {
     .au-input--w435 {
-        min-width: 230px;
+        min-width: 250px;
     }
 }
 
@@ -1410,7 +1411,7 @@ section {
 
 @media (max-width: 991px) {
     .header-button {
-        margin-top: 30px;
+        margin-top: 15px;
         width: 100%;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
@@ -3394,6 +3395,27 @@ noti__item .notifi__item .img-cir i {
     border-radius: 10px;
     background: #fff;
     overflow: hidden;
+}
+
+@media screen and (max-width: 476px) {
+    .au-card{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .au-card{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/*product image*/
+.products.product-image{
+    margin-top: 20px;
+    width: 90%;
+    height: 205px;
 }
 
 .au-card--border {

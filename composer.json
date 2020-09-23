@@ -16,12 +16,14 @@
         "guzzlehttp/guzzle": "^6.3",
         "htmlmin/htmlmin": "^7.0",
         "intervention/image": "^2.5",
+        "ixudra/curl": "^6.21",
         "laravel/dusk": "^5.9",
         "laravel/framework": "^7.0",
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "yajra/laravel-datatables-oracle": "^9.9"
+        "yajra/laravel-datatables-oracle": "^9.9",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

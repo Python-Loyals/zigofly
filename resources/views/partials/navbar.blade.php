@@ -2,18 +2,18 @@
     <div class="section__content section__content--p30 pt-5">
         <div class="container-fluid">
             <div class="header-wrap">
-                <form class="form-header d-md-block d-none" action="" method="POST">
-                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                    <button class="p-l-10" type="submit" aria-label="search">
-                        <i class="zmdi zmdi-search fs-23 text-light pt-2"></i>
-                    </button>
-                </form>
-                <div class="header-button">
-                    <button class="hamburger hamburger--slider d-md-none" type="button">
+                <div class="header-button w-100">
+                    <button class="hamburger hamburger--slider d-lg-none" type="button">
                         <span class="hamburger-box">
                             <span class="hamburger-inner bg-light"></span>
                         </span>
                     </button>
+                    <form class="form-header d-sm-flex text-center ml-5 d-none" action="" method="POST">
+                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                        <button class="p-l-10 au-btn-search" type="submit" aria-label="search">
+                            <i class="zmdi zmdi-search fs-23 text-light"></i>
+                        </button>
+                    </form>
                     <div class="noti-wrap ml-auto mr-4">
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-notifications"></i>
@@ -97,7 +97,7 @@
                                 }
                             @endphp
 
-                            <div class="image d-sm-flex d-none">
+                            <div class="image d-md-block d-none">
                                 <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{$fname}}" />
                             </div>
                             <div class="content m-sm-l-0">

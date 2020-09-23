@@ -3,7 +3,7 @@
         <a href="#">
             <img src="{{asset('images/white-logo-300x90.png')}}" alt="Zigofly" />
         </a>
-        <button class="hamburger hamburger--slider d-md-none ml-2" type="button">
+        <button class="hamburger hamburger--slider d-lg-none ml-2" type="button">
                     <span class="hamburger-box">
                         <span class="hamburger-inner bg-light"></span>
                     </span>

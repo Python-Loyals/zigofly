@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
 
     ],
 
@@ -227,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
 
     ],
 

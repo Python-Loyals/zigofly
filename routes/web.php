@@ -34,6 +34,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('profile','ProfileController@update')->name('profile.update_info');
     Route::put('profile/avatar','ProfileController@updateAvatar')->name('profile.update_avatar');
 });
+
+Route::group(['prefix' => 'products', 'as' => 'products.', 'namespace' => 'Product', 'middleware' => ['auth'] ], function (){
+    Route::get('category/{search_term}', 'ProductsController@index')->name('category.search');
+});
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

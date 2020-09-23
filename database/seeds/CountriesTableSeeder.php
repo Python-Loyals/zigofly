@@ -16,6 +16,7 @@ class CountriesTableSeeder extends Seeder
             [
                 'name_suffix' => null,
                 'street_one' => '3636 Ashbury Rd, Ste B',
+                'street_two' => null,
                 'city' => 'Eagan',
                 'state' => 'Minnesota, MN',
                 'county' => null,
@@ -26,6 +27,7 @@ class CountriesTableSeeder extends Seeder
             [
                 'name_suffix' => 'c/o Zigofly',
                 'street_one' => '25 Brunswick Street, Lok N Store Ltd',
+                'street_two' => '(Provided space): 0798272066 (Your Kenyan Number)',
                 'city' => 'Luton',
                 'state' => null,
                 'county' => 'Bedfordshire',
