@@ -97,9 +97,19 @@ require('./bootstrap');
     $('.active-variant-color').text($('.btn.variant.active').data('color'));
 
     $(document).on('click','.btn.variant:not(.active)', function () {
+        //change price
+        if ($(this).find('.variant-price').text().trim()){
+            $('h3 .variation-price').text($(this).find('.variant-price').text().trim())
+        }
+        //add active class
         $('.btn.variant.active').removeClass('active');
         $('.active-variant-color').text($(this).data('color'));
         $(this).addClass('active');
+        //change variant
+        let id = $(this).data('id')
+        $('.my-variant.active').removeClass('active:').addClass('d-none')
+        $(`.my-variant#v-${id}`).addClass('active').removeClass('d-none')
+
     })
 
 })(jQuery);

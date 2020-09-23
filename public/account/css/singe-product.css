@@ -108,16 +108,18 @@ img {
 }
 
 .product-title,
-.price,
 .sizes,
 .colors {
     text-transform: UPPERCASE;
     font-weight: bold;
 }
 
-.checked,
-.price span {
+.checked{
     color: #ff9f1a;
+}
+
+.price span {
+    color: rgb(177, 39, 4);
 }
 
 .product-title,
@@ -127,6 +129,11 @@ img {
 .vote,
 .sizes {
     margin-bottom: 15px;
+}
+
+.price{
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .product-title {

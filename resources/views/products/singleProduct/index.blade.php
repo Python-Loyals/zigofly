@@ -3,10 +3,10 @@
     <link rel="stylesheet" href="{{asset('account/css/singe-product.css')}}">
 @endsection
 @section('content')
-    <div class="main-content pt-10">
+    <div class="main-content">
         <div class="section__content section__content--p30">
-            <div class="container-fluid">
-                <div class="row">
+            <div class="container-fluid  p-sm-l-10 p-sm-r-10">
+                <div class="row d-md-flex d-none pl-1>
                     <div class="col-12">
                         <nav class="breadcrumb bg-transparent">
                             <a class="breadcrumb-item" href="/" aria-label="Home">
@@ -20,28 +20,52 @@
                     @if(isset($product) && count($product) > 0)
                         @php($product = (object) $product)
                         <div class="col-12 mx-auto">
-                            <div class="card mt-0 bg-white">
+                            <div class="card pt-5 my-1 bg-white">
                                 <div class="container-fluid">
                                     <div class="wrapper row">
                                         <div class="preview col-md-6">
-
-                                            <div class="preview-pic tab-content mb-5">
-                                                @foreach($product->images as $i => $image)
-                                                    <div class="tab-pane {{$i === 0 ? 'active':''}}" id="pic-{{$i+1}}">
-                                                        <img src="{{$image}}" class="center" />
+                                            @foreach($product->variants as $index => $variant)
+                                                @php($variant = (object) $variant)
+                                                @if((bool)$variant->is_current_product)
+                                                    <div class="my-variant active" id="v-{{$index}}">
+                                                        <div class="preview-pic tab-content mb-5">
+                                                            @foreach($product->images as $i => $image)
+                                                                <div class="tab-pane {{$i === 0 ? 'active':''}}" id="pic-{{$i+1}}">
+                                                                    <img src="{{$image}}" class="center" />
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                        <ul class="preview-thumbnail nav nav-tabs justify-content-center">
+                                                            @foreach($product->images as $i => $image)
+                                                                <li class="{{$i === 0 ? 'active':''}}">
+                                                                    <a data-target="#pic-{{$i+1}}" data-toggle="tab" class="h-100">
+                                                                        <img src="{{$image}}" />
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
                                                     </div>
-                                                @endforeach
-                                            </div>
-                                            <ul class="preview-thumbnail nav nav-tabs justify-content-center">
-                                                @foreach($product->images as $i => $image)
-                                                    <li class="{{$i === 0 ? 'active':''}}">
-                                                        <a data-target="#pic-{{$i+1}}" data-toggle="tab" class="h-100">
-                                                            <img src="{{$image}}" />
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-
+                                                    @continue
+                                                @endif
+                                                <div class="my-variant d-none" id="v-{{$index}}">
+                                                    <div class="preview-pic tab-content mb-5">
+                                                        @foreach($variant->images as $i => $image)
+                                                            <div class="tab-pane {{$i === 0 ? 'active':''}}" id="pic-{{$index.($i+1)}}">
+                                                                <img src="{{$image['large']}}" class="center" />
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <ul class="preview-thumbnail nav nav-tabs justify-content-center">
+                                                        @foreach($variant->images as $i => $image)
+                                                            <li class="{{$i === 0 ? 'active':''}}">
+                                                                <a data-target="#pic-{{$index.($i+1)}}" data-toggle="tab" class="h-100">
+                                                                    <img src="{{$image['thumb']}}" />
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endforeach
                                         </div>
                                         <div class="details col-md-6">
                                             <h3 class="product-title">
@@ -59,10 +83,8 @@
                                             <div class="dropdown-divider"></div>
 {{--                                            <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>--}}
                                             <h3 class="price">
-                                                <span>
-                                                    $ <span class="variation-price">
-                                                        {{$product->price['current_price']}}
-                                                    </span>
+                                                <span class="variation-price">
+                                                    ${{$product->price['current_price']}}
                                                 </span>
                                             </h3>
                                             <h5 class="sizes fs-13">
@@ -71,21 +93,25 @@
                                             <div class="row">
                                                 @foreach($product->variants as $i => $variant)
                                                     @php($variant = (object) $variant)
-                                                    <div class="col-6 col-md-6 col-lg-4 px-1" data-toggle="tooltip" title="{{$variant->title}}">
+                                                    @php($parentClasses = empty($variant->price) ? 'col-3 col-lg-2' : 'col-6 col-md-6 col-lg-4')
+                                                    @php($childClasses = empty($variant->price) ? 'col-12' : 'col-6')
+                                                    <div class="{{$parentClasses}} px-1" data-toggle="tooltip" title="{{stripslashes($variant->title)}}">
                                                         <button class="btn border variant border-ddark my-1 w-100{{(bool)$variant->is_current_product ? ' active': ''}}"
                                                                 aria-label="variant-button" id="vaiant-{{$i}}"
                                                                 data-id="{{$i}}"
                                                                 data-defaultasin="{{$variant->asin}}"
-                                                                data-color="{{$variant->title}}">
+                                                                data-color="{{stripslashes($variant->title)}}">
                                                             <div class="row">
-                                                                <div class="col-6">
-                                                                    <img src="{{$variant->images[0]['thumb']}}" alt="{{$variant->title}}" class="img-thumbnail border-0">
+                                                                <div class="{{$childClasses}}">
+                                                                    <img src="{{$variant->images[0]['thumb']}}" alt="{{stripslashes($variant->title)}}" class="img-thumbnail border-0">
                                                                 </div>
-                                                                <div class="col-6 center">
-                                                                    <span class="d-flex h-100 flex-row justify-content-center align-items-center">
-                                                                        {{$variant->price}}
-                                                                    </span>
-                                                                </div>
+                                                                @if(!empty($variant->price))
+                                                                    <div class="col-6 center">
+                                                                        <span class="d-flex h-100 flex-row justify-content-center align-items-center variant-price">
+                                                                            {{$variant->price}}
+                                                                        </span>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </button>
                                                     </div>
@@ -93,10 +119,10 @@
                                             </div>
 
                                             <div class="row mt-3">
-                                                <div class="action col-12 col-lg-6">
+                                                <div class="action col-12 col-lg-6 text-center">
                                                     <button class="add-to-cart btn btn-sm btn-default mb-3 px-5 mr-1" type="button">add to cart</button>
                                                 </div>
-                                                <div class="m-sm-t-10 col-12 col-lg-6">
+                                                <div class="m-sm-t-10 col-12 col-lg-6 text-center">
                                                     <a href="products.html" class="btn-sm back btn btn-secondary" type="button">
                                                         Continue Shopping
                                                     </a>
@@ -117,5 +143,7 @@
 @section('scripts')
     @parent
     <script>
+        let product = {!! json_encode($product) !!}
+        console.log(product)
     </script>
 @endsection

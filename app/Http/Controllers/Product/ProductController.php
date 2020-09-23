@@ -10,6 +10,7 @@ class ProductController extends Controller
 {
     public function show($asin)
     {
+//        $product = json_decode(ProductsService::getSingleProduct($asin), true)['product'];
         $product = $this->getProduct($asin)['product']; //check if empty
 //        return $product;
 //        return json_decode(ProductsService::getSingleProduct('B07F1R3LZZ'), true);
