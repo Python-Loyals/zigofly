@@ -91,6 +91,15 @@ require('./bootstrap');
 
     $('.avatar-form').on('change', function () {
         this.submit();
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('.active-variant-color').text($('.btn.variant.active').data('color'));
+
+    $(document).on('click','.btn.variant:not(.active)', function () {
+        $('.btn.variant.active').removeClass('active');
+        $('.active-variant-color').text($(this).data('color'));
+        $(this).addClass('active');
     })
 
 })(jQuery);

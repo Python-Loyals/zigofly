@@ -16,9 +16,14 @@
             color: #ff9f1a;
         }
         .product-title{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            overflow: hidden!important;
+            text-overflow: ellipsis!important;
+            white-space: nowrap!important;
+            color: #0066c0;
+        }
+
+        .product-title:hover{
+            color: #ff3333;
         }
 
         .reviews{
@@ -59,15 +64,13 @@
                                     @if(isset($products))
                                         @foreach($products as $product)
                                             @php($product =(object) $product)
-                                            @if((int) $product->price['current_price'] <= 0 )
-                                                @continue
-                                            @endif
+
                                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                                 <div class="card">
                                                     <img class="card-img-top products product-image mx-auto" src="{{$product->thumbnail}}" alt="iPhone X">
 
                                                     <div class="card-body">
-                                                        <h6 class="card-title product-title">{{$product->title}}</h6>
+                                                        <a href="{{route('product.show', $product->asin)}}" class="w-100 card-title product-title">{{$product->title}}</a>
                                                         <div class="rating">
                                                             <div class="stars">
                                                                 @php($rating = (int) $product->reviews['rating'])
@@ -85,7 +88,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-lg-12">
-                                                                <a href="#" class="btn btn-block orange mt-3 text-light">View Details</a>
+                                                                <a href="{{route('product.show', $product->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,6 +97,9 @@
                                             <!-- */product -->
                                         @endforeach
                                     @endif
+                                </div>
+                                <div class="row float-right mr-3">
+                                    {{$products->links()}}
                                 </div>
                             </div>
                         </div>
