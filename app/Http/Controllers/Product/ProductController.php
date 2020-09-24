@@ -3,18 +3,50 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Product;
+use App\ProductImage;
 use App\Services\ProductsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
     public function show($asin)
     {
-//        $product = json_decode(ProductsService::getSingleProduct($asin), true)['product'];
-        $product = $this->getProduct($asin)['product']; //check if empty
+        $product = Cache::remember('product', 10,function () use ($asin){
+//            return json_decode(ProductsService::getSingleProduct($asin), true)['product'];
+            return $this->getProduct($asin)['product'];
+        });
 //        return $product;
-//        return json_decode(ProductsService::getSingleProduct('B07F1R3LZZ'), true);
         return view('products.singleProduct.index', compact('product'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreProductRequest $request)
+    {
+
+        $product = Product::where('asin', '=',$request->get('asin'))->with('images')->first();
+
+        if (empty($product)){
+            $product = Product::create($request->all());
+        }
+        $images = $request->input('images', []);
+
+        foreach ($images as $image) {
+            $product->images()->updateOrCreate($image);
+        }
+
+        if ($request->expectsJson()){
+            return response()->json(['message'=>'Product was successfully created','product' => $product]);
+        }
+
+        return $request->all();
     }
 
     public function getProduct($asin)

@@ -36,10 +36,10 @@
                                                             @endforeach
                                                         </div>
                                                         <ul class="preview-thumbnail nav nav-tabs justify-content-center">
-                                                            @foreach($product->images as $i => $image)
+                                                            @foreach($variant->images as $i => $image)
                                                                 <li class="{{$i === 0 ? 'active':''}}">
                                                                     <a data-target="#pic-{{$i+1}}" data-toggle="tab" class="h-100">
-                                                                        <img src="{{$image}}" />
+                                                                        <img src="{{$image['thumb']}}" />
                                                                     </a>
                                                                 </li>
                                                             @endforeach
@@ -129,6 +129,18 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row mt-5 description px-3">
+                                            <div class="col-12">
+                                                <h4 class="fs-15 mb-2">About this item</h4>
+                                                <ul>
+                                                    @foreach($product->feature_bullets as $feature)
+                                                        <li class="fs-14">
+                                                            {{$feature}}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,13 +149,10 @@
                 </div>
 
             </div>
-        </div>
-    </div>
 @endsection
 @section('scripts')
     @parent
     <script>
-        let product = {!! json_encode($product) !!}
-        console.log(product)
+        window.product = JSON.stringify({!! json_encode($product) !!});
     </script>
 @endsection

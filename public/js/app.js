@@ -37052,6 +37052,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 (function ($) {
@@ -37138,6 +37144,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
   });
   $('[data-toggle="tooltip"]').tooltip();
   $('.active-variant-color').text($('.btn.variant.active').data('color'));
+  var variant_id = $('.btn.variant.active').data('id');
   $(document).on('click', '.btn.variant:not(.active)', function () {
     //change price
     if ($(this).find('.variant-price').text().trim()) {
@@ -37149,9 +37156,46 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
     $('.active-variant-color').text($(this).data('color'));
     $(this).addClass('active'); //change variant
 
-    var id = $(this).data('id');
+    variant_id = $(this).data('id');
     $('.my-variant.active').removeClass('active:').addClass('d-none');
-    $(".my-variant#v-".concat(id)).addClass('active').removeClass('d-none');
+    $(".my-variant#v-".concat(variant_id)).addClass('active').removeClass('d-none');
+  });
+  $('.add-to-cart').on('click', function (e) {
+    var activeProduct = {};
+
+    if (window.product) {
+      var product = JSON.parse(window.product);
+      var variant = product.variants[variant_id];
+      activeProduct.title = product.title;
+      activeProduct.asin = variant.asin;
+      activeProduct.url = variant.link;
+      activeProduct.price = parseFloat(variant.price ? variant.price.trim().replace('$', '') : product.price.current_price);
+      activeProduct.images = [{
+        link: variant.images[0].large
+      }];
+      activeProduct.total_reviews = product.reviews.total_reviews;
+      activeProduct.rating = parseFloat(product.reviews.rating);
+      activeProduct.item_available = product.item_available ? 1 : 0;
+      activeProduct.options = {
+        color: variant.title,
+        quantity: 1
+      };
+      console.log(activeProduct);
+      $.ajax({
+        type: 'POST',
+        headers: {
+          'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/product/store',
+        data: _objectSpread({}, activeProduct),
+        success: function success(data) {
+          console.log(data);
+        },
+        error: function error(data) {
+          console.log(data);
+        }
+      });
+    }
   });
 })(jQuery);
 

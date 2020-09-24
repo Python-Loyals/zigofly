@@ -96,6 +96,8 @@ require('./bootstrap');
 
     $('.active-variant-color').text($('.btn.variant.active').data('color'));
 
+    let variant_id = $('.btn.variant.active').data('id');
+
     $(document).on('click','.btn.variant:not(.active)', function () {
         //change price
         if ($(this).find('.variant-price').text().trim()){
@@ -106,10 +108,47 @@ require('./bootstrap');
         $('.active-variant-color').text($(this).data('color'));
         $(this).addClass('active');
         //change variant
-        let id = $(this).data('id')
+        variant_id = $(this).data('id')
         $('.my-variant.active').removeClass('active:').addClass('d-none')
-        $(`.my-variant#v-${id}`).addClass('active').removeClass('d-none')
+        $(`.my-variant#v-${variant_id}`).addClass('active').removeClass('d-none')
+    });
 
+    $('.add-to-cart').on('click', function (e) {
+        let activeProduct = {};
+        if (window.product){
+            let product = JSON.parse(window.product)
+            const variant = product.variants[variant_id];
+            activeProduct.title = product.title
+            activeProduct.asin = variant.asin
+            activeProduct.url = variant.link
+            activeProduct.price = parseFloat(variant.price ? variant.price.trim().replace('$', '') : product.price.current_price)
+            activeProduct.images = [
+                {link: variant.images[0].large}
+            ];
+            activeProduct.total_reviews = product.reviews.total_reviews
+            activeProduct.rating = parseFloat(product.reviews.rating)
+            activeProduct.item_available = product.item_available ? 1 : 0
+            activeProduct.options = {
+                color: variant.title,
+                quantity: 1
+            }
+
+            console.log(activeProduct)
+
+            $.ajax({
+                type: 'POST',
+                headers: {'x-csrf-token': $('meta[name="csrf-token"]').attr('content')},
+                url: '/product/store',
+                data: {...activeProduct},
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+            })
+
+        }
     })
 
 })(jQuery);

@@ -40,6 +40,7 @@ Route::group(['prefix' => 'products', 'as' => 'products.', 'namespace' => 'Produ
 });
 
 Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth'] ], function (){
+    Route::post('store', 'ProductController@store')->name('store');
     Route::get('asin/{asin}', 'ProductController@show')->name('show');
 });
 

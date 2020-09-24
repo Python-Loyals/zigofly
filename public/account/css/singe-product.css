@@ -150,6 +150,13 @@ img {
     font-weight: 400!important;
 }
 
+.fs-14{
+    font-size: 14px;
+}
+.fs-15{
+    font-size: 15px;
+}
+
 .btn.border-ddark{
     box-shadow: none;
 }
