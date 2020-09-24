@@ -390,9 +390,26 @@ section {
     min-height: 100vh;
 }
 
+.cart-body{
+    overflow-y: auto;
+    max-height: 450px;
+}
+
 @media (max-width: 991px) {
     .main-content {
         padding-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .cart-body{
+        max-height: 370px;
+    }
+}
+
+@media (max-width: 390px) {
+    .cart-body{
+        max-height: 300px;
     }
 }
 

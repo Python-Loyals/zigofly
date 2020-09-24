@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Product;
-use App\ProductImage;
-use App\Services\ProductsService;
-use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -42,8 +41,12 @@ class ProductController extends Controller
             $product->images()->updateOrCreate($image);
         }
 
+        $cart = Cart::add($product->id, 'Product '.$product->id, 1, 0,$request->input('options',[]))->associate('App\Product');
+
+        Cart::store(Auth::user()->id);
+
         if ($request->expectsJson()){
-            return response()->json(['message'=>'Product was successfully created','product' => $product]);
+            return response()->json(['message'=>'Product was successfully created','product' => $product, 'cart' => Cart::content()]);
         }
 
         return $request->all();

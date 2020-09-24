@@ -57,30 +57,26 @@
 
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-shopping-cart"></i>
-                            <span class="quantity">2</span>
+                            <span class="quantity">{{Cart::count()}}</span>
                             <div class="mess-dropdown js-dropdown">
                                 <!------------------------------------>
                                 <div class="mess__title">
-                                    <p>You have 2 products in the cart</p>
+                                    <p>You have {{Cart::count()}} products in the cart</p>
                                 </div>
-                                <div class="mess__item">
-                                    <div class="image img-cir img-40">
-                                        <img src="{{asset('account/images/icon/phone.png')}}" alt="SAMSUNG GALAXY" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>SAMSUNG GALAXY A10S </h6>
-                                        <p>6.2", 4G, 32GB + 2GB (DUAL SIM) - BLUE.</p>
-                                        <span class="time">$180</span>
-                                    </div>
-                                </div>
-                                <div class="mess__item">
-                                    <div class="image img-cir img-40">
-                                        <img src="{{asset('account/images/icon/shoes.jpeg')}}" alt="Shoes" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>Legend Lace-Up Sports Shoes</h6>
-                                        <span class="time">$14.09</span>
-                                    </div>
+                                <div class="cart-body">
+                                    @foreach(Cart::content() as $item)
+
+                                        <div class="mess__item">
+                                            <div class="image img-cir img-40">
+                                                <img src="{{$item->model->images[0]->link}}" class="img-40 img-thumbnail" alt="SAMSUNG GALAXY" />
+                                            </div>
+                                            <div class="content">
+                                                <h6>{{$item->model->title}}</h6>
+                                                <p>Quantity: {{$item->qty}}</p>
+                                                <span class="time">${{$item->model->price}}</span>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="mess__footer">
                                     <a href="cart.html">{{trans('global.view_cart')}}</a>
