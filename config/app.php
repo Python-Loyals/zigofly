@@ -174,9 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Yoeunes\Toastr\ToastrServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
 
     ],
 
@@ -232,6 +232,7 @@ return [
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'Curl'          => Ixudra\Curl\Facades\Curl::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Toastr1'  => Brian2694\Toastr\Facades\Toastr::class,
 
     ],
 

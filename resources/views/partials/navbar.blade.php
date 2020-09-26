@@ -57,11 +57,11 @@
 
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-shopping-cart"></i>
-                            <span class="quantity">{{Cart::count()}}</span>
+                            <span class="quantity cart-count">{{Cart::count()}}</span>
                             <div class="mess-dropdown js-dropdown">
                                 <!------------------------------------>
                                 <div class="mess__title">
-                                    <p>You have {{Cart::count()}} products in the cart</p>
+                                    <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
                                 </div>
                                 <div class="cart-body">
                                     @foreach(Cart::content() as $item)
@@ -71,15 +71,15 @@
                                                 <img src="{{$item->model->images[0]->link}}" class="img-40 img-thumbnail" alt="SAMSUNG GALAXY" />
                                             </div>
                                             <div class="content">
-                                                <h6>{{$item->model->title}}</h6>
-                                                <p>Quantity: {{$item->qty}}</p>
+                                                <h6  class="cart-item-title">{{$item->model->title}}</h6>
+                                                <p class="mt-1">Quantity: {{$item->qty}}</p>
                                                 <span class="time">${{$item->model->price}}</span>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
                                 <div class="mess__footer">
-                                    <a href="cart.html">{{trans('global.view_cart')}}</a>
+                                    <a href="{{route('cart.index')}}">{{trans('global.view_cart')}}</a>
                                 </div>
                             </div>
                         </div>

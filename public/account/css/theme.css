@@ -395,6 +395,16 @@ section {
     max-height: 450px;
 }
 
+.cart-item-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-height: 1.5em;        /* fallback */
+    max-height: 3.2em;       /* fallback */
+}
+
 @media (max-width: 991px) {
     .main-content {
         padding-top: 20px;

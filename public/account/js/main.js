@@ -225,8 +225,10 @@
         console.log(error);
     }
 
-    $('.product-group').click(function(e) {
-        window.location.href = 'products.html';
+    $('.product-group').on('click', function(e) {
+        if ($(this).data('href')){
+            window.location.href = $(this).data('href');
+        }
     })
 
 })(jQuery);

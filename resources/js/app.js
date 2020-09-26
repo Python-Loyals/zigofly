@@ -141,7 +141,36 @@ require('./bootstrap');
                 url: '/product/store',
                 data: {...activeProduct},
                 success: function (data) {
-                    console.log(data)
+                    if (data.count) {
+                        $('.cart-count').text(data.count)
+                    }
+                    toastr.options = {
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        "positionClass": "toast-bottom-left",
+                    }
+                    toastr.success(data.message);
+                    if (data.cart){
+                        const cart = data.cart
+                        $('.cart-body').html('');
+                        for (const [key, value] of Object.entries(cart)){
+                            const item = `\
+                            <div class="mess__item">
+                                <div class="image img-cir img-40">
+                                    <img src="${data.images[key]}" class="img-40 img-thumbnail" alt="SAMSUNG GALAXY" />
+                                </div>
+                                <div class="content">
+                                    <h6  class="cart-item-title">${value.model.title}</h6>
+                                    <p class="mt-1">Quantity: ${value.qty}</p>
+                                    <span class="time">${value.model.price}</span>
+                                </div>
+                            </div>`;
+                            $('.cart-body').append(item);
+                        }
+                    }
                 },
                 error: function (data) {
                     console.log(data)
@@ -149,7 +178,41 @@ require('./bootstrap');
             })
 
         }
-    })
+    });
+
+    let inputNumber = function(el) {
+
+        var min = el.attr('min') || false;
+        var max = el.attr('max') || false;
+
+        var els = {};
+
+        els.dec = el.prev();
+        els.inc = el.next();
+
+
+        els.dec.on('click', decrement)
+        els.inc.on('click', increment)
+
+        function decrement() {
+            var value = $(this).next().val();
+            value--;
+            if (!min || value >= min) {
+                $(this).next().val(value);
+            }
+        }
+
+        function increment() {
+            var value = $(this).prev().val();
+            value++;
+            console.log(value)
+            if (!max || value <= max) {
+                $(this).prev().val(value);
+            }
+        }
+    }
+
+    inputNumber($('.input-number'));
 
 })(jQuery);
 

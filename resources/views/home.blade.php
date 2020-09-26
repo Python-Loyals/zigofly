@@ -210,7 +210,7 @@
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
                                     <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
+                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100" data-href="{{route('products.category.search', 'fitness')}}">
                                         <div class="ml-auto col-lg-6 col-md-6 text-center">
                                             <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561814261/adv_3.png" alt=""></div>
                                             <p class="product-group-title col-12 text-center"><a href="{{route('products.category.search', 'fitness')}}">Fitness</a></p>

@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Product;
+use Brian2694\Toastr\Facades\Toastr;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            Cart::restore(Auth::user()->id);
+            return $next($request);
+        });
+    }
+
     public function show($asin)
     {
         $product = Cache::remember('product', 10,function () use ($asin){
@@ -41,12 +51,24 @@ class ProductController extends Controller
             $product->images()->updateOrCreate($image);
         }
 
-        $cart = Cart::add($product->id, 'Product '.$product->id, 1, 0,$request->input('options',[]))->associate('App\Product');
+        Cart::add($product->id, 'Product '.$product->id, 1, 0,$request->input('options',[]))->associate('App\Product');
 
         Cart::store(Auth::user()->id);
 
+        $images = [];
+
+        foreach (Cart::content() as $item){
+            $images[$item->rowId] = $item->model->images[0]->link;
+        }
+
+
         if ($request->expectsJson()){
-            return response()->json(['message'=>'Product was successfully created','product' => $product, 'cart' => Cart::content()]);
+            return response()->json([
+                'message'=>'Product was added to cart',
+                'product' => $product,
+                'cart' => Cart::content(),
+                'images' => $images,
+                'count' => Cart::count()]);
         }
 
         return $request->all();

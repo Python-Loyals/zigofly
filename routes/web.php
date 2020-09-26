@@ -12,7 +12,7 @@ Route::get('/home', function () {
 Auth::routes(['register' => true]);
 // Admin
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -39,16 +39,17 @@ Route::group(['prefix' => 'products', 'as' => 'products.', 'namespace' => 'Produ
     Route::get('category/{search_term}', 'ProductsController@index')->name('category.search');
 });
 
-Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth'] ], function (){
+Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth', 'cart.init'] ], function (){
     Route::post('store', 'ProductController@store')->name('store');
     Route::get('asin/{asin}', 'ProductController@show')->name('show');
 });
 
 Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Cart', 'middleware' => ['auth'] ], function (){
+    Route::get('/', 'CartController@index')->name('index');
     Route::post('/add', 'CartController@store')->name('add');
 });
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', 'cart.init']], function () {
 // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
