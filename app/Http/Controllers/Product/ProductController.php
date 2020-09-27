@@ -71,7 +71,7 @@ class ProductController extends Controller
                 'count' => Cart::count()]);
         }
 
-        return $request->all();
+        return redirect()->back()->with('Product was added to cart');
     }
 
     public function getProduct($asin)

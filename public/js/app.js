@@ -37743,6 +37743,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
       if (!min || value >= min) {
         $(this).next().val(value);
+        updateQuantity(value, $(this));
       }
     }
 
@@ -37753,7 +37754,46 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
       if (!max || value <= max) {
         $(this).prev().val(value);
+        updateQuantity(value, $(this));
       }
+    }
+
+    function updateQuantity(value, el) {
+      var data = {
+        quantity: value,
+        rowId: el.parents('.effects').data('rowid'),
+        _method: 'PUT'
+      };
+      $.ajax({
+        type: 'POST',
+        headers: {
+          'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: el.parent().data('href'),
+        data: _objectSpread({}, data),
+        success: function success(data) {
+          console.log(data);
+
+          if (data.count) {
+            $('.cart-count').text(data.count);
+          }
+
+          toastr.options = {
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "positionClass": "toast-bottom-left",
+            "preventDuplicates": true,
+            "preventOpenDuplicates": true
+          };
+          toastr.success(data.message);
+        },
+        error: function error(data) {
+          console.log(data);
+        }
+      });
     }
   };
 

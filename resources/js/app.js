@@ -199,6 +199,7 @@ require('./bootstrap');
             value--;
             if (!min || value >= min) {
                 $(this).next().val(value);
+                updateQuantity(value, $(this))
             }
         }
 
@@ -208,7 +209,42 @@ require('./bootstrap');
             console.log(value)
             if (!max || value <= max) {
                 $(this).prev().val(value);
+                updateQuantity(value, $(this))
             }
+        }
+
+        function updateQuantity(value, el) {
+            let data = {
+                quantity: value,
+                rowId: el.parents('.effects').data('rowid'),
+                _method: 'PUT',
+            }
+            $.ajax({
+                type: 'POST',
+                headers: {'x-csrf-token': $('meta[name="csrf-token"]').attr('content')},
+                url: el.parent().data('href'),
+                data: {...data},
+                success: function (data) {
+                    console.log(data)
+                    if (data.count) {
+                        $('.cart-count').text(data.count)
+                    }
+                    toastr.options = {
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        "positionClass": "toast-bottom-left",
+                        "preventDuplicates": true,
+                        "preventOpenDuplicates": true
+                    }
+                    toastr.success(data.message);
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+            })
         }
     }
 

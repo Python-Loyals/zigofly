@@ -40,7 +40,7 @@
                             </div>
                             @if(Cart::count() > 0)
                                 @foreach(Cart::content() as $item)
-                                    <div class="row p-3 effects">
+                                    <div class="row p-3 effects" data-rowid="{{$item->rowId}}">
                                         <div class="col-md-1 px-1">
                                             <img src="{{$item->model->images[0]->link}}" class="img-responsive">
                                         </div>
@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-center mt-3 mt-md-0">
-                                            <div>
+                                            <div data-href="{{route('cart.quantity.update')}}">
                                                 <span class="input-number-decrement">–</span>
                                                 <input class="input-number" type="text" value="{{$item->qty}}" min="1" max="10" readonly>
                                                 <span class="input-number-increment">+</span>
@@ -76,7 +76,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <a href="#" class="mt-2"><i class="fas fa-trash"></i></a>
+                                            <form action="{{route('cart.product.delete', $item->rowId)}}s" method="POST" id="delete-from-cart-form">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                            <button type="submit" form="delete-from-cart-form" class="mt-2 cart-product-delete" aria-label="Delete" ><i class="fas fa-trash"></i></button>
                                         </div>
                                     </div>
                                 @endforeach
