@@ -44,7 +44,7 @@ Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product
     Route::get('asin/{asin}', 'ProductController@show')->name('show');
 });
 
-Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Cart', 'middleware' => ['auth'] ], function (){
+Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Cart', 'middleware' => ['auth', 'cart.init'] ], function (){
     Route::get('/', 'CartController@index')->name('index');
     Route::put('quantity', 'CartController@updateQuantity')->name('quantity.update');
     Route::delete('delete/{rowId}', 'CartController@destroy')->name('product.delete');

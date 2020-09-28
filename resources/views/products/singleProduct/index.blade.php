@@ -1,12 +1,55 @@
 @extends('layouts.myadmin')
 @section('styles')
     <link rel="stylesheet" href="{{asset('account/css/singe-product.css')}}">
+    <style type="text/css">
+        .card:hover {
+            box-shadow: 1px 8px 20px grey;
+            -webkit-transition: box-shadow .1s ease-in;
+            cursor: pointer;
+        }
+
+        .orange {
+            background: #ff9f1a;
+            color: #fff;
+        }
+
+        .checked {
+            color: #ff9f1a;
+        }
+        .product-title{
+            overflow: hidden!important;
+            text-overflow: ellipsis!important;
+            white-space: nowrap!important;
+            color: #0066c0;
+        }
+
+        .product-title:hover{
+            color: #ff3333;
+        }
+
+        .reviews{
+            text-decoration: underline;
+        }
+        .last-viewed .products.product-image{
+            margin-top: 20px;
+            width: 60%;
+            height: 185px;
+        }
+
+        @media screen and (max-width: 576px) {
+            .product-title{
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+        }
+    </style>
 @endsection
 @section('content')
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid  p-sm-l-10 p-sm-r-10">
-                <div class="row d-md-flex d-none pl-1>
+                <div class="row d-md-flex d-none pl-1">
                     <div class="col-12">
                         <nav class="breadcrumb bg-transparent">
                             <a class="breadcrumb-item" href="/" aria-label="Home">
@@ -24,6 +67,7 @@
                                 <div class="container-fluid">
                                     <div class="wrapper row">
                                         <div class="preview col-md-6">
+{{--                                            if there are product variants--}}
                                             @if(count($product->variants) > 0)
                                                 @foreach($product->variants as $index => $variant)
                                                     @php($variant = (object) $variant)
@@ -67,6 +111,7 @@
                                                         </ul>
                                                     </div>
                                                 @endforeach
+{{--                                                if there are no variants--}}
                                                 @else
                                                 <div class="my-variant active" id="v-1">
                                                 <div class="preview-pic tab-content mb-5">
@@ -102,7 +147,6 @@
                                                 <span class="review-no text-underline ml-3">({{$product->reviews['total_reviews']}} reviews)</span>
                                             </div>
                                             <div class="dropdown-divider"></div>
-{{--                                            <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>--}}
                                             <h3 class="price">
                                                 <span class="variation-price">
                                                     ${{$product->price['current_price']}}
@@ -167,6 +211,55 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card bg-white">
+                                {{--last viewed items--}}
+                                @if(Auth::user()->lastViewed)
+                                    <div class="row mt-5 description px-3">
+                                        <div class="col-12">
+                                            <h4 class="fs-15 mb-2">Last viewed products</h4>
+                                            <div class="row last-viewed">
+                                            @foreach(Auth::user()->lastViewed as $viewed)
+                                                @php($product = $viewed->product)
+                                                <!-- product -->
+                                                    <div class="col-sm-4 col-lg-3">
+                                                        <div class="card bg-white p-md-l-5 p-md-r-5 p-1">
+                                                            <a href="{{route('product.show', $product->asin)}}" class="d-flex">
+                                                                <img class="card-img-top products product-image mx-auto img-fluid" src="{{$product->images[0]->link}}" alt="iPhone X">
+                                                            </a>
+                                                            <div class="card-body px-1">
+                                                                <a href="{{route('product.show', $product->asin)}}" class="w-100 card-title product-title" style="font-size: 16px!important;color: #0066c0;">{{$product->title}}</a>
+                                                                <div class="rating mb-1">
+                                                                    <div class="stars">
+                                                                        @php($rating = (int) $product->rating)
+                                                                        @for($i = 0; $i < 5; $i++)
+                                                                            <span class="fa fa-star {{$i < $rating ? 'checked': ''}}"></span>
+                                                                        @endfor
+
+                                                                        <span class="small reviews pl-2"> ({{$product->total_reviews}})</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-lg-12">
+                                                                        <div class="price text-success">
+                                                                            <h5 class="mt-2 ml-1">$ {{$product->price}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-lg-12">
+                                                                        <a href="{{route('product.show', $product->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- */product -->
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+
                         </div>
                     @endif
                 </div>

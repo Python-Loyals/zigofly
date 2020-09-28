@@ -9,7 +9,7 @@
                         </span>
                     </button>
                     <form class="form-header d-sm-flex text-center ml-5 d-none" action="" method="POST">
-                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for any product..." />
                         <button class="p-l-10 au-btn-search" type="submit" aria-label="search">
                             <i class="zmdi zmdi-search fs-23 text-light"></i>
                         </button>

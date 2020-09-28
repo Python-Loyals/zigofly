@@ -85,4 +85,9 @@ class User extends Authenticatable
     {
         $this->belongsTo(Age::class, 'age');
     }
+
+    public function lastViewed()
+    {
+        return $this->hasMany(LastViewedProduct::class, 'user_id')->orderBy('updated_at');
+    }
 }

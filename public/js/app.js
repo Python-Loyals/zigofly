@@ -37698,7 +37698,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
         headers: {
           'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/product/store',
+        url: '/cart/add',
         data: _objectSpread({}, activeProduct),
         success: function success(data) {
           if (data.count) {
@@ -37751,6 +37751,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
       if (!min || value >= min) {
         $(this).next().val(value);
+        var myEl = $(this).parent().parent().parent().find('.product-subtotal')[0];
+        var price = $(this).parent().data('price');
+        $(myEl).text("$".concat(parseFloat(price) * value));
         updateQuantity(value, $(this));
       }
     }
@@ -37758,10 +37761,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
     function increment() {
       var value = $(this).prev().val();
       value++;
-      console.log(value);
 
       if (!max || value <= max) {
         $(this).prev().val(value);
+        var myEl = $(this).parent().parent().parent().find('.product-subtotal')[0];
+        var price = $(this).parent().data('price');
+        $(myEl).text("$".concat(parseFloat(price) * value));
         updateQuantity(value, $(this));
       }
     }

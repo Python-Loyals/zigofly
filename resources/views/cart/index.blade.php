@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-center mt-3 mt-md-0">
-                                            <div data-href="{{route('cart.quantity.update')}}">
+                                            <div data-href="{{route('cart.quantity.update')}}" data-price="{{$item->model->price}}">
                                                 <span class="input-number-decrement">–</span>
                                                 <input class="input-number" type="text" value="{{$item->qty}}" min="1" max="10" readonly>
                                                 <span class="input-number-increment">+</span>
@@ -67,12 +67,12 @@
                                         </div>
                                         <div class="col-md-2 mt-3 mt-md-0 d-none justify-content-center d-md-flex">
                                             <div class="mt-2">
-                                                <h6>${{$item->model->price}}</h6>
+                                                <h6 class="product-price">${{$item->model->price}}</h6>
                                             </div>
                                         </div>
                                         <div class="col-md-2 mt-3 mt-md-0 d-flex justify-content-center h-100 align-content-center">
                                             <div class="mt-2">
-                                                <h6>${{$item->model->price * $item->qty}}</h6>
+                                                <h6 class="product-subtotal">${{$item->model->price * $item->qty}}</h6>
                                             </div>
                                         </div>
                                         <div class="col-md-1">

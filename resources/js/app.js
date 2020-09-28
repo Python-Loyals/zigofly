@@ -143,7 +143,7 @@ require('./bootstrap');
             $.ajax({
                 type: 'POST',
                 headers: {'x-csrf-token': $('meta[name="csrf-token"]').attr('content')},
-                url: '/product/store',
+                url: '/cart/add',
                 data: {...activeProduct},
                 success: function (data) {
                     if (data.count) {
@@ -204,6 +204,9 @@ require('./bootstrap');
             value--;
             if (!min || value >= min) {
                 $(this).next().val(value);
+                let myEl = $(this).parent().parent().parent().find('.product-subtotal')[0]
+                let price = $(this).parent().data('price')
+                $(myEl).text(`$${parseFloat(price)*value}`)
                 updateQuantity(value, $(this))
             }
         }
@@ -211,9 +214,11 @@ require('./bootstrap');
         function increment() {
             var value = $(this).prev().val();
             value++;
-            console.log(value)
             if (!max || value <= max) {
                 $(this).prev().val(value);
+                let myEl = $(this).parent().parent().parent().find('.product-subtotal')[0]
+                let price = $(this).parent().data('price')
+                $(myEl).text(`$${parseFloat(price)*value}`)
                 updateQuantity(value, $(this))
             }
         }

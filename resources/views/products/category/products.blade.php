@@ -67,8 +67,9 @@
 
                                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                                 <div class="card">
-                                                    <img class="card-img-top products product-image mx-auto" src="{{$product->thumbnail}}" alt="iPhone X">
-
+                                                    <a href="{{route('product.show', $product->asin)}}">
+                                                        <img class="card-img-top products product-image mx-auto" src="{{$product->thumbnail}}" alt="iPhone X">
+                                                    </a>
                                                     <div class="card-body">
                                                         <a href="{{route('product.show', $product->asin)}}" class="w-100 card-title product-title">{{$product->title}}</a>
                                                         <div class="rating">

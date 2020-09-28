@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateCartQuantityRequest;
+use App\Product;
 use Gloudemans\Shoppingcart\Exceptions\InvalidRowIDException;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -49,6 +51,42 @@ class CartController extends Controller
         }
 
         return redirect()->back()->with('Product quantity was updated');
+    }
+
+    public function store(StoreProductRequest $request)
+    {
+        $product = Product::where('asin', '=',$request->get('asin'))->with('images')->first();
+
+        if (empty($product)){
+            $product = Product::create($request->all());
+        }
+        $images = $request->input('images', []);
+
+        foreach ($images as $image) {
+            $product->images()->updateOrCreate($image);
+        }
+
+        Cart::add($product->id, 'Product '.$product->id, 1, $product->price,$request->input('options',[]))->associate('App\Product');
+
+        Cart::store(Auth::user()->id);
+
+        $images = [];
+
+        foreach (Cart::content() as $item){
+            $images[$item->rowId] = $item->model->images[0]->link;
+        }
+
+
+        if ($request->expectsJson()){
+            return response()->json([
+                'message'=>'Product was added to cart',
+                'product' => $product,
+                'cart' => Cart::content(),
+                'images' => $images,
+                'count' => Cart::count()]);
+        }
+
+        return redirect()->back()->with('Product was added to cart');
     }
 
     /**
