@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <form action="{{route('cart.product.delete', $item->rowId)}}s" method="POST" id="delete-from-cart-form">
+                                            <form action="{{route('cart.product.delete', $item->rowId)}}" method="POST" id="delete-from-cart-form">
                                                 @csrf
                                                 @method('delete')
                                             </form>

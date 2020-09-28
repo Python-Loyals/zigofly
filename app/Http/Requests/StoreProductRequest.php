@@ -60,10 +60,7 @@ class StoreProductRequest extends FormRequest
             ],
             'options.quantity' => [
                 'numeric'
-            ],
-            'options.color' => [
-                'required'
-            ],
+            ]
         ];
     }
 }

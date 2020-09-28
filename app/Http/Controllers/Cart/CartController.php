@@ -96,6 +96,7 @@ class CartController extends Controller
         try {
             Cart::remove($rowId);
             Cart::store(Auth::user()->id);
+            Cart::restore(Auth::user()->id);
             return redirect()->back()->with('Product deleted from cart');
         }
         catch (InvalidRowIDException $invalidRowIDException){

@@ -37647,8 +37647,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
     this.submit();
   });
   $('[data-toggle="tooltip"]').tooltip();
-  $('.active-variant-color').text($('.btn.variant.active').data('color'));
   var variant_id = $('.btn.variant.active').data('id');
+
+  if (variant_id) {
+    $('.active-variant-color').text($('.btn.variant.active').data('color')).parent().removeClass('d-none');
+  }
+
   $(document).on('click', '.btn.variant:not(.active)', function () {
     //change price
     if ($(this).find('.variant-price').text().trim()) {
@@ -37671,19 +37675,23 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
       var product = JSON.parse(window.product);
       var variant = product.variants[variant_id];
       activeProduct.title = product.title;
-      activeProduct.asin = variant.asin;
-      activeProduct.url = variant.link;
-      activeProduct.price = parseFloat(variant.price ? variant.price.trim().replace('$', '') : product.price.current_price);
+      activeProduct.asin = variant ? variant.asin : product.asin;
+      activeProduct.url = variant ? variant.link : product.url;
+      activeProduct.price = parseFloat(variant ? variant.price.trim().replace('$', '') : product.price.current_price);
       activeProduct.images = [{
-        link: variant.images[0].large
+        link: variant ? variant.images[0].large : product.images[0]
       }];
       activeProduct.total_reviews = product.reviews.total_reviews;
       activeProduct.rating = parseFloat(product.reviews.rating);
       activeProduct.item_available = product.item_available ? 1 : 0;
       activeProduct.options = {
-        color: variant.title,
         quantity: 1
       };
+
+      if (variant) {
+        activeProduct.options.color = variant.title;
+      }
+
       console.log(activeProduct);
       $.ajax({
         type: 'POST',
