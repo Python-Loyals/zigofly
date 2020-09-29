@@ -76,11 +76,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <form action="{{route('cart.product.delete', $item->rowId)}}" method="POST" id="delete-from-cart-form">
+                                            <form action="{{route('cart.product.delete', $item->rowId)}}" method="POST" id="{{$item->rowId}}">
                                                 @csrf
                                                 @method('delete')
                                             </form>
-                                            <button type="submit" form="delete-from-cart-form" class="mt-2 cart-product-delete" aria-label="Delete" ><i class="fas fa-trash"></i></button>
+                                            <button type="submit" form="{{$item->rowId}}" class="mt-2 cart-product-delete" aria-label="Delete" ><i class="fas fa-trash"></i></button>
                                         </div>
                                     </div>
                                 @endforeach

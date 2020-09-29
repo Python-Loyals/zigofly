@@ -16,18 +16,18 @@
         .checked {
             color: #ff9f1a;
         }
-        .product-title{
+        .last-viewed .product-title{
             overflow: hidden!important;
             text-overflow: ellipsis!important;
             white-space: nowrap!important;
             color: #0066c0;
         }
 
-        .product-title:hover{
+        .last-viewed .product-title:hover{
             color: #ff3333;
         }
 
-        .reviews{
+        .last-viewed .reviews{
             text-decoration: underline;
         }
         .last-viewed .products.product-image{
@@ -37,7 +37,7 @@
         }
 
         @media screen and (max-width: 576px) {
-            .product-title{
+            .last-viewed .product-title{
                 font-size: 14px;
                 font-weight: 600;
             }
