@@ -30,7 +30,6 @@ class ProductController extends Controller
             return $this->getProduct($asin)['product'];
         });
         //to be moved to service
-        $userId = Auth::user()->id;
         $savedProduct = $this->storeProduct((object)$product);
 
         Auth::user()->lastViewed()->updateOrCreate(['product_id'=> $savedProduct->id])->touch();

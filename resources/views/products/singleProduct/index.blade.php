@@ -220,33 +220,33 @@
                                             <h4 class="fs-15 mb-2">Last viewed products</h4>
                                             <div class="row last-viewed">
                                             @foreach(Auth::user()->lastViewed as $viewed)
-                                                @php($product = $viewed->product)
+                                                @php($prod = $viewed->product)
                                                 <!-- product -->
                                                     <div class="col-sm-4 col-lg-3">
                                                         <div class="card bg-white p-md-l-5 p-md-r-5 p-1">
-                                                            <a href="{{route('product.show', $product->asin)}}" class="d-flex">
-                                                                <img class="card-img-top products product-image mx-auto img-fluid" src="{{$product->images[0]->link}}" alt="iPhone X">
+                                                            <a href="{{route('product.show', $prod->asin)}}" class="d-flex">
+                                                                <img class="card-img-top products product-image mx-auto mt-2 img-fluid" src="{{$prod->images[0]->link}}" alt="iPhone X">
                                                             </a>
-                                                            <div class="card-body px-1">
-                                                                <a href="{{route('product.show', $product->asin)}}" class="w-100 card-title product-title" style="font-size: 16px!important;color: #0066c0;">{{$product->title}}</a>
+                                                            <div class="card-body px-1 pb-2">
+                                                                <a href="{{route('product.show', $prod->asin)}}" class="w-100 card-title product-title" style="font-size: 16px!important;color: #0066c0;">{{$prod->title}}</a>
                                                                 <div class="rating mb-1">
                                                                     <div class="stars">
-                                                                        @php($rating = (int) $product->rating)
+                                                                        @php($rating = (int) $prod->rating)
                                                                         @for($i = 0; $i < 5; $i++)
                                                                             <span class="fa fa-star {{$i < $rating ? 'checked': ''}}"></span>
                                                                         @endfor
 
-                                                                        <span class="small reviews pl-2"> ({{$product->total_reviews}})</span>
+                                                                        <span class="small reviews pl-2"> ({{$prod->total_reviews}})</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6 col-lg-12">
                                                                         <div class="price text-success">
-                                                                            <h5 class="mt-2 ml-1">$ {{$product->price}}</h5>
+                                                                            <h5 class="mt-2 ml-1">$ {{$prod->price}}</h5>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6 col-lg-12">
-                                                                        <a href="{{route('product.show', $product->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
+                                                                        <a href="{{route('product.show', $prod->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
