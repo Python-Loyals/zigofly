@@ -217,7 +217,7 @@
                                 @if(Auth::user()->lastViewed)
                                     <div class="row mt-5 description px-3">
                                         <div class="col-12">
-                                            <h4 class="fs-15 mb-2">Last viewed products</h4>
+                                            <h4 class="fs-15 mb-2">Recently viewed products</h4>
                                             <div class="row last-viewed">
                                             @foreach(Auth::user()->lastViewed as $viewed)
                                                 @php($prod = $viewed->product)

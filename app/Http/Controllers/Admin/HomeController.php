@@ -8,4 +8,8 @@ class HomeController
     {
         return view('home');
     }
+    public function shop()
+    {
+        return view('shop');
+    }
 }

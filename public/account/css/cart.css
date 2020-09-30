@@ -74,7 +74,7 @@
     padding-top: 5px;
 }
 
-.cart img {
+.cart img:not(.empty) {
     width: 100%;
 }
 

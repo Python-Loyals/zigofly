@@ -1,95 +1,51 @@
-/** POPULAR PRODUCT CATEGORY/GROUP ON THE USER DASHBOARD **/
-
-.product-groups {
-    width: 100%;
-    padding-top: 80px;
-    padding-bottom: 80px
-}
-
-.product-group {
-    width: 100%;
-    height: 180px;
-    border: solid 1px #e8e8e8;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-    padding-top: 10px;
-    padding-bottom: 2010;
-}
-
-.product-group-content {
-    padding-left: 30px
-}
-
-.product-group-subtitle {
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);
-    margin-bottom: 26px
-}
-
-.product-group-title a {
-    font-size: 18px;
-    font-weight: 500;
-    color: #000000
-}
-
-.product-group-title a:hover {
-    color: #0e8ce4
-}
-
-.product-group-title_2 a {
-    font-size: 18px;
-    font-weight: 500;
-    color: #0e8ce4
-}
-
-.product-group-title_2 a:hover {
-    opacity: 0.8
-}
-
-.product-group-text {
-    color: #828282;
-    margin-top: 10px;
-    font-size: 14px
-}
-
-.product-group-image {
-    width: 178px;
-    height: 100%
-}
-
-.product-group-image img {
-    display: block;
-    max-width: 100%
-}
-
-.product-group:hover {
+.product-group:hover
+{
     box-shadow: 1px 8px 20px grey;
-    -webkit-transition: box-shadow .1s ease-in;
+    -webkit-transition:  box-shadow .1s ease-in;
     cursor: pointer;
 }
 
-@media (max-width: 991px) {
-    .product-group-col {
-        padding-bottom: 10px;
-    }
+.product-group img{
+    max-height: 100px !important;
 }
 
-@media (min-width: 992px) and (max-width: 1133px) {
-    .product-group-text {
-        display: none;
-        margin-top: 5px;
-        font-size: 10px;
-    }
+.cartegory-text{
+    text-align: center;
+    font-size: 12px;
+
+}
+.orange {
+    background: #ff9f1a;
+    color: #fff;
 }
 
-@media (max-width: 441px) {
-    .au-card {
-        padding-left: 20px!important;
-        padding-right: 20px!important;
-    }
+.checked {
+    color: #ff9f1a;
+}
+.last-viewed .product-title{
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    white-space: nowrap!important;
+    color: #0066c0;
 }
 
-@media (max-width: 380px) {
-    .product-group-content {
-        display: none;
+.last-viewed .product-title:hover{
+    color: #ff3333;
+}
+
+.last-viewed .reviews{
+    text-decoration: underline;
+}
+.last-viewed .products.product-image{
+    margin-top: 20px;
+    width: 60%;
+    height: 185px;
+}
+
+@media screen and (max-width: 576px) {
+    .last-viewed .product-title{
+        font-size: 14px;
+        font-weight: 600;
     }
+
 }

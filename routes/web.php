@@ -14,6 +14,8 @@ Auth::routes(['register' => true]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/shop', 'HomeController@shop')->name('shop');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');

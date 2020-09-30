@@ -35,6 +35,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.shop')}}" class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
+                        <i class="fas  fa-industry"></i>Shop Now
+                    </a>
+                </li>
+                <li>
                     <a href="#" class="live-chat">
                         <i class="fa  fa-comments"></i>Live Chat
                     </a>

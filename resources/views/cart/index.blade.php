@@ -26,19 +26,19 @@
                                     <h2 class="text-success">Cart Details</h2>
                                 </div>
                                 <div class="col-sm-6 ">
-                                    <a href="{{route('products.category.search', 'fitness')}}" type="button" class="btn btn-custom pull-right">Continue Shopping</a>
+                                    <a href="{{route('admin.shop')}}" type="button" class="btn btn-custom pull-right">Continue Shopping</a>
                                 </div>
-                            </div>
-                            <div class="mt-2 d-none d-md-block">
-                                <div class="row">
-                                    <div class="col-md-5 d-flex justify-content-center">Item</div>
-                                    <div class="col-md-2 d-flex justify-content-center">Qty</div>
-                                    <div class="col-md-2 d-flex justify-content-center">Unit Price</div>
-                                    <div class="col-md-2 d-flex justify-content-center">Subtotal</div>
-                                </div>
-                                <div class="dropdown-divider"></div>
                             </div>
                             @if(Cart::count() > 0)
+                                <div class="mt-2 d-none d-md-block">
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-center">Item</div>
+                                        <div class="col-md-2 d-flex justify-content-center">Qty</div>
+                                        <div class="col-md-2 d-flex justify-content-center">Unit Price</div>
+                                        <div class="col-md-2 d-flex justify-content-center">Subtotal</div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                </div>
                                 @foreach(Cart::content() as $item)
                                     <div class="row p-3 effects" data-rowid="{{$item->rowId}}">
                                         <div class="col-md-1 px-1">
@@ -84,6 +84,20 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @else
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card" style="margin-bottom: 30px;border: 0;">
+                                            <div class="card-body" style="background: transparent;">
+                                                <div class="col-sm-12 empty-cart-cls text-center">
+                                                    <img src="https://cdn.dribbble.com/users/204955/screenshots/4930541/emptycart.png" class="img-fluid mb-1 mr-3 empty">
+                                                    <h3><strong>Your Cart is Empty</strong></h3>
+                                                    <a href="{{route('products.category.search', 'fitness')}}" type="button" class="btn btn-custom mt-3">Continue Shopping</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>

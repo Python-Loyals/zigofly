@@ -151,91 +151,229 @@
                     </div>
                 </div>
                 <!-- ------------------------------------------------------------------------------------------>
-
                 <div class="row  m-b-30">
                     <div class="col-lg-12">
                         <div class="au-card recent-report">
                             <h3 class="title-2 p-b-30">Popular Categories</h3>
-                            <div class="row p-b-30">
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561815855/rp-image.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Electronics</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">2020 is the session for trending electronic accessories</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561816391/rp1.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Women Clothing</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">All new ladies wear with upto 45% sale.</div>
+
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/men1.jpg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Men Clothing</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop men Clothing from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'men')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561814261/adv_3.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Fitness</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">2020 trendy fitness product here from US & UK</div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/women1.jpeg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Women Clothing</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop women Clothing from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'women')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Baby  Kids & Moms.jpeg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Kids & Moms</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop Kids & Moms from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'kids')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/beauty1.jpg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Beauty</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop beauty from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'beauty')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Sports & Fitness1.jpg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Sports & Fitness</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop Sports & Fitness from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'fitness')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/electronics1.jpeg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Electronics</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop electronics from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'electronics')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Home & Garden.jpg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Home & Garden</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop Home & Garden from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'home garden')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                        <div class="card product-group">
+                                            <div class="card-body">
+                                                <div class="mx-auto d-block">
+                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Office Supplies3.jpg')}}" alt="Card image cap">
+                                                    <h5 class="text-sm-center mt-2 mb-1">Office Supplies</h5>
+                                                    <div class="cartegory-text">
+                                                        Shop Office Supplies from US and UK Stores</div>
+                                                </div>
+                                                <hr>
+                                                <div class="text-sm-center">
+                                                    <a href="{{route('products.category.search', 'office')}}">
+                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 text-center">
+                                        <a href="{{route('admin.shop')}}" class="btn btn-sm btn-info">View All</a>
+                                    </div>
+
+
                                 </div>
                             </div>
 
-                            <div class="row p-b-30">
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561815855/rp-image.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Trends 2020</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">2020 is the session for trending laptops and accessories</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100" data-href="{{route('products.category.search', 'fitness')}}">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561814261/adv_3.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="{{route('products.category.search', 'fitness')}}">Fitness</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">2020 trendy fitness product here from US & UK</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-lg-4 product-group-col">
-                                    <!-- product-group-Item -->
-                                    <div class="product-group d-flex flex-row align-items-center justify-content-start h-100">
-                                        <div class="ml-auto col-lg-6 col-md-6 text-center">
-                                            <div class=""><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1561815855/rp-image.png" alt=""></div>
-                                            <p class="product-group-title col-12 text-center"><a href="#">Electronics</a></p>
-                                        </div>
-                                        <div class="product-group-content col-lg-6 col-md-6">
-                                            <div class="product-group-text">2020 is the session for trending electronic accessories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!------ -->
+                @if(Auth::user()->lastViewed)
+                    <div class="row  m-b-30">
+                        <div class="col-lg-12">
+                            <div class="au-card recent-report">
+                                <div class="row description px-3">
+                                    <div class="col-12">
+                                        <h4 class="fs-15 mb-2">Recently viewed products</h4>
+                                        <div class="row last-viewed">
+                                        @foreach(Auth::user()->lastViewed as $viewed)
+                                            @php($prod = $viewed->product)
+                                            <!-- product -->
+                                                <div class="col-sm-4 col-lg-3">
+                                                    <div class="card bg-white p-md-l-5 p-md-r-5 p-1">
+                                                        <a href="{{route('product.show', $prod->asin)}}" class="d-flex">
+                                                            <img class="card-img-top products product-image mx-auto mt-2 img-fluid" src="{{$prod->images[0]->link}}" alt="iPhone X">
+                                                        </a>
+                                                        <div class="card-body px-1 pb-2">
+                                                            <a href="{{route('product.show', $prod->asin)}}" class="w-100 card-title product-title" style="font-size: 16px!important;color: #0066c0;">{{$prod->title}}</a>
+                                                            <div class="rating mb-1">
+                                                                <div class="stars">
+                                                                    @php($rating = (int) $prod->rating)
+                                                                    @for($i = 0; $i < 5; $i++)
+                                                                        <span class="fa fa-star {{$i < $rating ? 'checked': ''}}"></span>
+                                                                    @endfor
+
+                                                                    <span class="small reviews pl-2"> ({{$prod->total_reviews}})</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6 col-lg-12">
+                                                                    <div class="price text-success">
+                                                                        <h5 class="mt-2 ml-1">$ {{$prod->price}}</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-lg-12">
+                                                                    <a href="{{route('product.show', $prod->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- */product -->
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+
             </div>
         </div>
     </div>

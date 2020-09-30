@@ -72,14 +72,20 @@
                                             </div>
                                             <div class="content">
                                                 <h6  class="cart-item-title">{{$item->model->title}}</h6>
-                                                <p class="mt-1">Quantity: {{$item->qty}}</p>
-                                                <span class="time">${{$item->model->price}}</span>
+                                                <span class="time">{{$item->qty}} X ${{$item->model->price}}</span>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="mess__footer">
-                                    <a href="{{route('cart.index')}}">{{trans('global.view_cart')}}</a>
+                                <div class="mess__footer px-1">
+                                    <div class="row mb-1">
+                                        <div class="col-6">
+                                            <a href="{{route('cart.index')}}" class="btn btn-xs py-3 btn-outline">{{trans('global.view_cart')}}</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <a href="{{route('cart.index')}}" class="btn py-3 btn-outline">Checkout</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
