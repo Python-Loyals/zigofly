@@ -311,7 +311,7 @@
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <a href="{{route('admin.shop')}}" class="btn btn-sm btn-info">View All</a>
+                                        <a href="{{route('admin.shop')}}" class="btn btn-outline-secondary">View All</a>
                                     </div>
 
 

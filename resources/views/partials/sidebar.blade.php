@@ -16,6 +16,12 @@
                     <a class="js-arrow" href="/">
                         <i class="fas fa-tachometer-alt"></i>Dashboard
                     </a>
+                </li>
+                <li>
+                    <a href="{{route('admin.shop')}}" class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
+                        <i class="fas  fa-shopping-bag"></i>Shop Now
+                    </a>
+                </li>
                 <li class="{{ request()->is('admin/address') || request()->is('admin/address*') ? 'active' : '' }}">
                     <a href="{{route('admin.users.address')}}">
                         <i class="fas fa-map-marker-alt"></i>My Adress</a>
@@ -32,11 +38,6 @@
                 <li>
                     <a href="quote.html">
                         <i class="fas fa-edit"></i>Get Quote
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.shop')}}" class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
-                        <i class="fas  fa-industry"></i>Shop Now
                     </a>
                 </li>
                 <li>

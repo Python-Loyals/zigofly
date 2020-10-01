@@ -60,33 +60,50 @@
                             <span class="quantity cart-count">{{Cart::count()}}</span>
                             <div class="mess-dropdown js-dropdown">
                                 <!------------------------------------>
-                                <div class="mess__title">
-                                    <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
-                                </div>
+                                @if(Cart::count() > 0)
+                                    <div class="mess__title">
+                                        <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
+                                    </div>
+                                @endif
                                 <div class="cart-body">
-                                    @foreach(Cart::content() as $item)
+                                    @if(Cart::count() > 0)
+                                        @foreach(Cart::content() as $item)
 
-                                        <div class="mess__item">
-                                            <div class="image img-cir img-40">
-                                                <img src="{{$item->model->images[0]->link}}" class="img-40 img-thumbnail" alt="SAMSUNG GALAXY" />
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{{$item->model->images[0]->link}}" class="img-40 img-thumbnail" alt="SAMSUNG GALAXY" />
+                                                </div>
+                                                <div class="content">
+                                                    <h6  class="cart-item-title">{{$item->model->title}}</h6>
+                                                    <span class="time">{{$item->qty}} X ${{$item->model->price}}</span>
+                                                </div>
                                             </div>
-                                            <div class="content">
-                                                <h6  class="cart-item-title">{{$item->model->title}}</h6>
-                                                <span class="time">{{$item->qty}} X ${{$item->model->price}}</span>
+                                        @endforeach
+                                        @else
+                                        <div class="card" style="margin-bottom: 30px;border: 0;">
+                                            <div class="card-body" style="background: transparent; overflow-x: hidden;">
+                                                <div class="col-sm-12 empty-cart-cls text-center">
+                                                    <img src="https://cdn.dribbble.com/users/204955/screenshots/4930541/emptycart.png" width="180" class="img-fluid mb-1 mr-3 empty">
+                                                    <h3><strong>Your Cart is Empty</strong></h3>
+                                                </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @endif
                                 </div>
-                                <div class="mess__footer px-1">
-                                    <div class="row mb-1">
-                                        <div class="col-6">
-                                            <a href="{{route('cart.index')}}" class="btn btn-xs py-3 btn-outline">{{trans('global.view_cart')}}</a>
-                                        </div>
-                                        <div class="col-6">
-                                            <a href="{{route('cart.index')}}" class="btn py-3 btn-outline">Checkout</a>
+
+                                @if(Cart::count() > 0)
+                                    <div class="mess__footer px-1 bg-dark">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{route('cart.index')}}" class="btn py-3">
+                                                    {{trans('global.view_cart')}}</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="{{route('cart.index')}}" class="btn py-3">Checkout</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

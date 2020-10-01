@@ -5,7 +5,7 @@
         </a>
         <div class="w-100 row">
             <a class="media-left photo-table col-4 pr-0" href="#!">
-                <img class="media-object img-radius img-radius m-t-5" src="images/usflag.png" alt="Generic placeholder image">
+                <img class="media-object img-cir m-t-5 bg-light" src="{{asset('account/images/support.png')}}" alt="Generic placeholder image">
             </a>
             <span class="col-8 user-name row align-items-center text-bold text-white" style="text-transform: capitalize">
                                         Zigofly Support

@@ -32,10 +32,16 @@
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
 
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> Remember me
+                        </label>
+                    </div>
+
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
+                            <button class="login100-form-btn text-dark">
                                 Login
                             </button>
                         </div>
