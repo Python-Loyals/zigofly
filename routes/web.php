@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 Route::group(['prefix' => 'products', 'as' => 'products.', 'namespace' => 'Product', 'middleware' => ['auth'] ], function (){
     Route::get('category/{search_term}', 'ProductsController@index')->name('category.search');
+    Route::get('search', 'ProductsController@search')->name('search');
 });
 
 Route::group(['prefix' => 'product', 'as' => 'product.', 'namespace' => 'Product', 'middleware' => ['auth', 'cart.init'] ], function (){

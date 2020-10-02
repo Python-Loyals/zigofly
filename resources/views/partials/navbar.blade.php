@@ -8,8 +8,8 @@
                             <span class="hamburger-inner bg-light"></span>
                         </span>
                     </button>
-                    <form class="form-header d-sm-flex text-center ml-5 d-none" action="" method="POST">
-                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for any product..." />
+                    <form class="form-header d-sm-flex text-center ml-5 d-none search-form" action="{{route('products.search')}}" method="GET">
+                        <input class="au-input au-input--xl" type="text" name="q" placeholder="Search for any product..." />
                         <button class="p-l-10 au-btn-search" type="submit" aria-label="search">
                             <i class="zmdi zmdi-search fs-23 text-light"></i>
                         </button>
@@ -60,11 +60,9 @@
                             <span class="quantity cart-count">{{Cart::count()}}</span>
                             <div class="mess-dropdown js-dropdown">
                                 <!------------------------------------>
-                                @if(Cart::count() > 0)
-                                    <div class="mess__title">
-                                        <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
-                                    </div>
-                                @endif
+                                <div class="mess__title {{Cart::count() > 0 ? '': 'd-none'}}">
+                                    <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
+                                </div>
                                 <div class="cart-body">
                                     @if(Cart::count() > 0)
                                         @foreach(Cart::content() as $item)
@@ -91,19 +89,17 @@
                                     @endif
                                 </div>
 
-                                @if(Cart::count() > 0)
-                                    <div class="mess__footer px-1 bg-dark">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a href="{{route('cart.index')}}" class="btn py-3">
-                                                    {{trans('global.view_cart')}}</a>
-                                            </div>
-                                            <div class="col-6">
-                                                <a href="{{route('cart.index')}}" class="btn py-3">Checkout</a>
-                                            </div>
+                                <div class="mess__footer px-1 bg-dark {{Cart::count() > 0 ? '': 'd-none'}}">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a href="{{route('cart.index')}}" class="btn py-3 text-light">
+                                                {{trans('global.view_cart')}}</a>
+                                        </div>
+                                        <div class="col-6 border-white border-left">
+                                            <a href="{{route('cart.index')}}" class="btn py-3 text-light">Checkout</a>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
                             </div>
                         </div>
                     </div>

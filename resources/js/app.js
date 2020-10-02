@@ -89,6 +89,14 @@ require('./bootstrap');
 
     });
 
+    $('.au-btn-search').on('click', function (e) {
+        e.preventDefault();
+        const q = $(this).prev().val()
+        if (q){
+            $('.search-form').submit()
+        }
+    })
+
     $('.avatar-form').on('change', function () {
         this.submit();
     });
@@ -206,7 +214,7 @@ require('./bootstrap');
                 $(this).next().val(value);
                 let myEl = $(this).parent().parent().parent().find('.product-subtotal')[0]
                 let price = $(this).parent().data('price')
-                $(myEl).text(`$${parseFloat(price)*value}`)
+                $(myEl).text(`$${(parseFloat(price)*value).toFixed(2)}`)
                 updateQuantity(value, $(this))
             }
         }
@@ -218,7 +226,7 @@ require('./bootstrap');
                 $(this).prev().val(value);
                 let myEl = $(this).parent().parent().parent().find('.product-subtotal')[0]
                 let price = $(this).parent().data('price')
-                $(myEl).text(`$${parseFloat(price)*value}`)
+                $(myEl).text(`$${(parseFloat(price)*value).toFixed(2)}`)
                 updateQuantity(value, $(this))
             }
         }

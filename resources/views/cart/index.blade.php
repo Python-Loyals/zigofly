@@ -103,6 +103,59 @@
                     </div>
                 </div>
             </div>
+            <div class="container my-5">
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col-xl-4 col-md-6 pt-3 pt-md-0 ml-auto">
+
+                            <div class="pt-1">
+                                <div class="accordion" id="cart-accordion">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="accordion-heading font-weight-semibold"><a href="#promocode" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="promocode">Apply promo code<span class="accordion-indicator"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span></a></h3>
+                                        </div>
+                                        <div class="collapse" id="promocode" data-parent="#cart-accordion">
+                                            <div class="card-body">
+                                                <form class="needs-validation" novalidate="">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="text" id="cart-promocode" placeholder="Promo code" required="">
+                                                        <div class="invalid-feedback">Please provide a valid promo code!</div>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-block" type="submit">Apply promo code</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="h5 font-weight-semibold text-center py-2">
+                                <div class="row">
+                                    <div class="h6 font-weight-semibold row col-12">
+                                        <div class="col-6 text-center">Subtotal:</div>
+                                        <div class="col-6 text-center sub-total">${{Cart::total()}}</div>
+                                        <div class="col-12 my-1"></div>
+                                        <div class="col-6 text-center">Tax:</div>
+                                        <div class="col-6 text-center sub-total">${{Cart::tax()}}</div>
+                                        <div class="col-12"><hr></div>
+                                    </div>
+
+                                    <div class="col-6 text-center">Total:</div>
+                                    <div class="col-6 text-center total">${{Cart::total()}}</div>
+                                </div>
+                            </div>
+
+                            <h3 class="h6 pt-4 font-weight-semibold"><span class="badge badge-success mr-2">Note</span>Additional comments</h3>
+                            <textarea class="form-control mb-3" id="order-comments" rows="5"></textarea>
+                            <a class="btn btn-primary btn-block" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card mr-2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

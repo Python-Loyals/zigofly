@@ -20,7 +20,7 @@
                     <input name="token" value="{{ $token }}" type="hidden">
 
                     <div class="wrap-input100 validate-input{{ $errors->has('email') ? ' alert-validate' : '' }}" data-validate="{{$errors->has('email')? $errors->first('email') : 'Valid email is: a@b.c'}}">
-                        <input class="input100" type="text" name="email"  autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+                        <input class="input100" type="text" name="email"  autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ $email ?? old('email') }}">
                         <span class="focus-input100" data-placeholder="Email"></span>
                     </div>
 

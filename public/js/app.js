@@ -37643,6 +37643,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
       showPass = 0;
     }
   });
+  $('.au-btn-search').on('click', function (e) {
+    e.preventDefault();
+    var q = $(this).prev().val();
+
+    if (q) {
+      $('.search-form').submit();
+    }
+  });
   $('.avatar-form').on('change', function () {
     this.submit();
   });
@@ -37753,7 +37761,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
         $(this).next().val(value);
         var myEl = $(this).parent().parent().parent().find('.product-subtotal')[0];
         var price = $(this).parent().data('price');
-        $(myEl).text("$".concat(parseFloat(price) * value));
+        $(myEl).text("$".concat((parseFloat(price) * value).toFixed(2)));
         updateQuantity(value, $(this));
       }
     }
@@ -37766,7 +37774,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
         $(this).prev().val(value);
         var myEl = $(this).parent().parent().parent().find('.product-subtotal')[0];
         var price = $(this).parent().data('price');
-        $(myEl).text("$".concat(parseFloat(price) * value));
+        $(myEl).text("$".concat((parseFloat(price) * value).toFixed(2)));
         updateQuantity(value, $(this));
       }
     }
