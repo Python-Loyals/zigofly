@@ -278,5 +278,8 @@ require('./bootstrap');
         }
     })
 
+    const observer = window.lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+
 })(jQuery);
 

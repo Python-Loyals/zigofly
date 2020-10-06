@@ -20,7 +20,7 @@ const mix = require('laravel-mix');
 
 mix.sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
-    .extract(['jquery', 'popper.js', 'bootstrap', 'axios', 'toastr', 'smooth-scrollbar'])
+    .extract(['jquery', 'popper.js', 'bootstrap', 'axios', 'toastr', 'smooth-scrollbar', 'lozad'])
     .sourceMaps();
 
 
