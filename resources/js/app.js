@@ -3,7 +3,6 @@ require('./bootstrap');
 (function ($) {
     "use strict";
 
-
     /*==================================================================
     [ Focus input ]*/
     $('input.input100').each(function(){
@@ -267,6 +266,10 @@ require('./bootstrap');
     }
 
     inputNumber($('.input-number'));
+
+    //INIT SMOOTH SCROLLBAR
+    console.log(Scrollbar)
+    window.Scrollbar.default.initAll();
 
 })(jQuery);
 

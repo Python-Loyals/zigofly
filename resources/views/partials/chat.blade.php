@@ -9,10 +9,10 @@
             </a>
             <span class="col-8 user-name row align-items-center text-bold text-white" style="text-transform: capitalize">
                                         Zigofly Support
-                                    </span>
+            </span>
         </div>
     </div>
-    <div class="main-friend-chat mt-2 pb-3">
+    <div class="main-friend-chat mt-2 pb-3" style="height: 72%!important;">
 
     </div>
     <div class="chat-reply-box pr-1">

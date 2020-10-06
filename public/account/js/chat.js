@@ -49,6 +49,13 @@ $('.btn-chat').on('click', function() {
     // }, 5000)
 });
 
+$('#chat-message').on('keydown', function (e) {
+    if (e.which == 13 && !e.ctrlKey && !e.altKey && !e.shiftKey){
+        e.preventDefault();
+        $('#chat-form').submit()
+    }
+})
+
 $('.back_chatBox').on('click', function() {
     $('.showChat_inner').toggleClass('slideInRight');
     $('.showChat_inner').toggleClass('slideOutRight');
@@ -77,7 +84,7 @@ let appendMessage = (message) => {
                     <div class="media chat-messages">
                         <div class="media-body chat-menu-reply">
                             <div class="">
-                                <p class="chat-cont">${message}</p>
+                                <pre class="chat-cont">${message}</pre>
                             </div>
                             <p class="chat-time">${time}</p>
                         </div>

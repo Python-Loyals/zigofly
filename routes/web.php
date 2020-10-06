@@ -52,6 +52,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Cart', 'middl
     Route::put('quantity', 'CartController@updateQuantity')->name('quantity.update');
     Route::delete('delete/{rowId}', 'CartController@destroy')->name('product.delete');
     Route::post('/add', 'CartController@store')->name('add');
+    Route::get('/checkout', 'CartController@checkout')->name('checkout');
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', 'cart.init']], function () {

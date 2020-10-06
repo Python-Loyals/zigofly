@@ -1,0 +1,318 @@
+.cont,
+#shipping-methods {
+    padding: 16px 46px;
+    font-size: 14px;
+    border-top: 1px solid #dad6d6;
+    line-height: 1.5;
+}
+
+.color-default {
+    color: #000;
+}
+
+.-fwm {
+    font-weight: 550;
+}
+
+.color-default-800 {
+    color: gray;
+}
+
+.-fs-13 {
+    font-size: 13px;
+}
+
+.-link {
+    color: #f68b1e;
+    float: right;
+    margin-right: 9px;
+    padding-top: 1px;
+    cursor: pointer;
+}
+
+.brdb {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.-pbxl {
+    padding-bottom: 16px!important;
+}
+
+.-ptxl {
+    padding-top: 16px!important;
+}
+
+.-mbl {
+    margin-bottom: 10px!important;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    background-color: darkorange!important;
+    border: 1px solid #f68b1e;
+}
+
+.-plxxxl {
+    padding-left: 30px!important;
+}
+
+.-prxxxl {
+    padding-right: 30px!important;
+}
+
+.-pointer {
+    cursor: pointer;
+}
+
+.color-primary {
+    color: #f68b1e;
+}
+
+.-mlxxxl {
+    margin-left: 30px!important;
+}
+
+.-mrxxxl {
+    margin-right: 30px!important;
+}
+
+.-mtm {
+    margin-top: 8px!important;
+}
+
+.-upp {
+    text-transform: uppercase;
+}
+
+.-inline-block {
+    display: inline-block!important;
+}
+
+.-b {
+    font-weight: 700;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.-mtxl {
+    margin-top: 16px!important;
+}
+
+.-plm {
+    padding-left: 8px!important;
+}
+
+.-prm {
+    padding-right: 8px!important;
+}
+
+.price_row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+.color-default {
+    color: #000;
+}
+
+.-pbm {
+    padding-bottom: 8px!important;
+}
+
+.price_col-desc {
+    -ms-flex: 1;
+    flex: 1;
+    word-wrap: break-word;
+}
+
+.price_col-value {
+    width: 45%;
+    text-align: right;
+}
+
+.total {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.brdt {
+    border-top: 1px solid #f0f0f0;
+}
+
+.-ptl {
+    padding-top: 10px!important;
+}
+
+.-p-l {
+    padding: 10px!important;
+}
+
+.osh-btn:hover {
+    background: #f17e0a;
+    border-color: #f17e0a;
+    color: #fff;
+}
+
+.osh-btn {
+    font-weight: 500;
+    padding: 10px;
+}
+
+.cont,
+.osh-btn,
+.osh-radio+label {
+    font-size: 14px;
+}
+
+.osh-btn {
+    text-transform: uppercase;
+    background: #f68b1e;
+    border: 1px solid #f68b1e;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1.42857;
+    padding: 5px;
+    position: relative;
+    vertical-align: middle;
+    text-decoration: none;
+    text-align: center;
+}
+
+.-mtl {
+    margin-top: 10px!important;
+}
+
+.-full-width {
+    width: 100%!important;
+    height: auto!important;
+}
+
+.-hidden {
+    display: none;
+}
+
+.st {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ababab;
+}
+
+.-mbl {
+    margin-bottom: 10px!important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.-shad {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .05);
+}
+
+.-rad {
+    border-radius: 4px;
+}
+
+.-pbxl {
+    padding-bottom: 16px!important;
+}
+
+.-plm {
+    padding-left: 8px!important;
+}
+
+.-pbl {
+    padding-bottom: 10px!important;
+}
+
+.-prm {
+    padding-right: 8px!important;
+}
+
+.-ptl {
+    padding-top: 10px!important;
+}
+
+.-vh-center {
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.-flex {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.hdr>span {
+    vertical-align: middle;
+}
+
+.-completed .hdr>.-link,
+.hdr>a,
+.hdr>span,
+.st {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.-mrxxs {
+    margin-right: 2px!important;
+}
+
+.-pan {
+    padding: 0!important;
+}
+
+.-ofy-a .sum {
+    max-height: 35vh;
+    overflow-y: auto;
+}
+
+.brdt {
+    border-top: 1px solid #f0f0f0;
+}
+
+.-fs-13 {
+    font-size: 13px;
+}
+
+.prod_sum {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.brdb {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.-ellipsis-2 {
+    overflow: hidden;
+    text-overflow: -o-ellipsis-lastline;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.824em;
+}
+
+.-fs-14 {
+    font-size: 14px;
+}
+
+.-align-center {
+    text-align: center!important;
+}

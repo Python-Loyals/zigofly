@@ -63,7 +63,7 @@
                                 <div class="mess__title {{Cart::count() > 0 ? '': 'd-none'}}">
                                     <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
                                 </div>
-                                <div class="cart-body">
+                                <div class="cart-body" data-scrollbar>
                                     @if(Cart::count() > 0)
                                         @foreach(Cart::content() as $item)
 
@@ -92,11 +92,11 @@
                                 <div class="mess__footer px-1 bg-dark {{Cart::count() > 0 ? '': 'd-none'}}">
                                     <div class="row">
                                         <div class="col-6">
-                                            <a href="{{route('cart.index')}}" class="btn py-3 text-light">
+                                            <a href="{{route('cart.index')}}" class="btn py-3 text-light no-hover">
                                                 {{trans('global.view_cart')}}</a>
                                         </div>
                                         <div class="col-6 border-white border-left">
-                                            <a href="{{route('cart.index')}}" class="btn py-3 text-light">Checkout</a>
+                                            <a href="{{route('cart.checkout')}}" class="btn py-3 text-light no-hover">Checkout</a>
                                         </div>
                                     </div>
                                 </div>

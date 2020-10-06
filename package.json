@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "smooth-scrollbar": "^8.5.3",
         "toastr": "^2.1.4"
     }
 }
