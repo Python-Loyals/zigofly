@@ -25,7 +25,7 @@
                             <div class="row">
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'men')}}" >
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/men1.jpg')}}" alt="Card image cap">
@@ -44,7 +44,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'women')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/women1.jpeg')}}" alt="Card image cap">
@@ -63,7 +63,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'kids')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Baby  Kids & Moms.jpeg')}}" alt="Card image cap">
@@ -82,7 +82,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'beauty')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/beauty1.jpg')}}" alt="Card image cap">
@@ -101,7 +101,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'fitness')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Sports & Fitness1.jpg')}}" alt="Card image cap">
@@ -120,7 +120,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'electronics')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/electronics1.jpeg')}}" alt="Card image cap">
@@ -139,7 +139,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'home garden')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Home & Garden.jpg')}}" alt="Card image cap">
@@ -158,7 +158,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'office')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Office Supplies3.jpg')}}" alt="Card image cap">
@@ -177,7 +177,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'gifts')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/gifts2.jpg')}}" alt="Card image cap">
@@ -187,7 +187,7 @@
                                             </div>
                                             <hr>
                                             <div class="text-sm-center">
-                                                <a href="#">
+                                                <a href="{{route('products.category.search', 'gifts')}}">
                                                     <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
                                             </div>
                                         </div>
@@ -196,7 +196,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'car parts')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Car Parts1.jpg')}}" alt="Card image cap">
@@ -206,7 +206,7 @@
                                             </div>
                                             <hr>
                                             <div class="text-sm-center">
-                                                <a href="#">
+                                                <a href="{{route('products.category.search', 'car parts')}}">
                                                     <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
                                             </div>
                                         </div>
@@ -215,7 +215,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'books')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/books.jpg')}}" alt="Card image cap">
@@ -225,7 +225,7 @@
                                             </div>
                                             <hr>
                                             <div class="text-sm-center">
-                                                <a href="#">
+                                                <a href="{{route('products.category.search', 'books')}}">
                                                     <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
                                             </div>
                                         </div>
@@ -236,7 +236,7 @@
 
 
                                 <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="card product-group">
+                                    <div class="card product-group" data-href="{{route('products.category.search', 'mega stores')}}">
                                         <div class="card-body">
                                             <div class="mx-auto d-block">
                                                 <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/mega store1.jpg')}}" alt="Card image cap">
@@ -246,7 +246,7 @@
                                             </div>
                                             <hr>
                                             <div class="text-sm-center">
-                                                <a href="#">
+                                                <a href="{{route('products.category.search', 'mega stores')}}">
                                                     <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
                                             </div>
                                         </div>

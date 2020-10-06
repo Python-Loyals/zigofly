@@ -66,7 +66,7 @@
                                             @php($product =(object) $product)
 
                                             <div class="col-sm-6 col-lg-4 col-xl-3">
-                                                <div class="card">
+                                                <div class="card" data-href="{{route('product.show', $product->asin)}}">
                                                     <a href="{{route('product.show', $product->asin)}}">
                                                         <img class="card-img-top products product-image mx-auto" src="{{$product->thumbnail}}" alt="iPhone X">
                                                     </a>

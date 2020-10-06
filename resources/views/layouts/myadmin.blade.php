@@ -9,6 +9,8 @@
     <meta name="author" content="Brance Technologirs">
     <meta name="keywords" content="zigofly">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="preconnect" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//images-na.ssl-images-amazon.com/">
 
     <!-- Title Page-->
     <title>{{trans('panel.site_title')}}</title>
@@ -25,9 +27,7 @@
     <!-- Vendor CSS-->
     <link href="{{asset('css/animate/animate.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('account/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('account/vendor/wow/animate.css" rel="stylesheet')}}" media="all">
     <link href="{{asset('account/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('account/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="{{asset('account/css/theme.css')}}" rel="stylesheet" media="all">
@@ -60,6 +60,8 @@
         </div>
     </div>
 <!-- App JS-->
+<script src="{{asset('js/manifest.js')}}"></script>
+<script src="{{asset('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 
 <!-- Vendor JS       -->

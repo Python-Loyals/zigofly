@@ -166,6 +166,7 @@ require('./bootstrap');
                     }
                     toastr.success(data.message);
                     if (data.cart){
+                        $('.show-on-add').removeClass('d-none')
                         const cart = data.cart
                         $('.cart-body').html('');
                         for (const [key, value] of Object.entries(cart)){
@@ -270,6 +271,12 @@ require('./bootstrap');
     //INIT SMOOTH SCROLLBAR
     console.log(Scrollbar)
     window.Scrollbar.default.initAll();
+
+    $('.card').on('click', function () {
+        if ($(this).data('href')){
+            window.location.href = $(this).data('href')
+        }
+    })
 
 })(jQuery);
 

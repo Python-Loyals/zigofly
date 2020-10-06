@@ -11,5 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+// mix.webpackConfig({
+//     output: {
+//         filename:'js/[name].js',
+//         chunkFilename: 'js/chunks/[name].js',
+//     },
+// });
+
+mix.sass('resources/sass/app.scss', 'public/css')
+    .js('resources/js/app.js', 'public/js')
+    .extract(['jquery', 'popper.js', 'bootstrap', 'axios', 'toastr', 'smooth-scrollbar'])
+    .sourceMaps();
+
+

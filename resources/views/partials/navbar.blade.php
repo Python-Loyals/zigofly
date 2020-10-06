@@ -60,7 +60,7 @@
                             <span class="quantity cart-count">{{Cart::count()}}</span>
                             <div class="mess-dropdown js-dropdown">
                                 <!------------------------------------>
-                                <div class="mess__title {{Cart::count() > 0 ? '': 'd-none'}}">
+                                <div class="mess__title show-on-add {{Cart::count() > 0 ? '': 'd-none'}}">
                                     <p>You have <span class="cart-count">{{Cart::count()}}</span> products in the cart</p>
                                 </div>
                                 <div class="cart-body" data-scrollbar>
@@ -89,7 +89,7 @@
                                     @endif
                                 </div>
 
-                                <div class="mess__footer px-1 bg-dark {{Cart::count() > 0 ? '': 'd-none'}}">
+                                <div class="mess__footer show-on-add px-1 bg-dark {{Cart::count() > 0 ? '': 'd-none'}}">
                                     <div class="row">
                                         <div class="col-6">
                                             <a href="{{route('cart.index')}}" class="btn py-3 text-light no-hover">

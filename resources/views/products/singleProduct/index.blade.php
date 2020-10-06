@@ -223,7 +223,7 @@
                                                 @php($prod = $viewed->product)
                                                 <!-- product -->
                                                     <div class="col-sm-4 col-lg-3">
-                                                        <div class="card bg-white p-md-l-5 p-md-r-5 p-1">
+                                                        <div class="card bg-white p-md-l-5 p-md-r-5 p-1" data-href="{{route('product.show', $prod->asin)}}">
                                                             <a href="{{route('product.show', $prod->asin)}}" class="d-flex">
                                                                 <img class="card-img-top products product-image mx-auto mt-2 img-fluid" src="{{$prod->images[0]->link}}" alt="iPhone X">
                                                             </a>
