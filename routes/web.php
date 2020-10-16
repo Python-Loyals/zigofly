@@ -12,7 +12,7 @@ Route::get('/home', function () {
 Auth::routes(['register' => true]);
 // Admin
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
+Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/shop', 'HomeController@shop')->name('shop');
