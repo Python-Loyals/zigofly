@@ -150,7 +150,7 @@
                                     <form action="{{route('logout')}}" method="post" id="logoutform">
                                         @csrf
                                         <a href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                                            <i class="zmdi zmdi-power"></i>{{ trans('global.logout') }}
+                                            <i class="fa fa-sign-out-alt"></i>{{ trans('global.logout') }}
                                         </a>
                                     </form>
                                 </div>

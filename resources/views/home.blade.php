@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <nav class="breadcrumb bg-transparent">
+                        <nav class="breadcrumb bg-transparent" style="font-size: 14px">
                             <a class="breadcrumb-item" href="/" aria-label="Home">
                                 <i class="fa fa-home"></i>
                             </a>
@@ -107,6 +107,11 @@
                 </div>
                 <div class="row slides">
                     <div class="col-lg-11 col-md-12 col-sm-12 center w-100">
+                        <div class="row">
+                            <div class="col-12 text-center my-2">
+                                <p class="h4 font-weight-light text-dark">What's New?</p>
+                            </div>
+                        </div>
                         <!--Carousel Wrapper-->
                         <div id="carousel-example-1z" class="carousel slide carousel-fade  box w-100 rounded-10" data-ride="carousel">
                             <!--Indicators-->
@@ -120,17 +125,17 @@
                             <div class="carousel-inner" role="listbox">
                                 <!--First slide-->
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="https://ke.jumia.is/cms/2020/W38/KE_Grocery_Carrefour_0920_SB-(1).jpg" alt="First slide">
+                                    <img class="d-block w-100 rounded-10" src="https://ke.jumia.is/cms/2020/W38/KE_Grocery_Carrefour_0920_SB-(1).jpg" alt="First slide">
                                 </div>
                                 <!--/First slide-->
                                 <!--Second slide-->
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+                                    <img class="d-block w-100 rounded-10" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
                                 </div>
                                 <!--/Second slide-->
                                 <!--Third slide-->
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+                                    <img class="d-block w-100 rounded-10" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
                                 </div>
                                 <!--/Third slide-->
                             </div>

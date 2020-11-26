@@ -1779,7 +1779,7 @@ section {
     display: block;
     color: #e6e6e6;
     font-size: 16px;
-    padding: 15px 0;
+    padding: 11px 0;
 }
 
 .navbar-sidebar .navbar__list li a i {
@@ -1792,6 +1792,11 @@ section {
 
 .navbar-sidebar .navbar__list li.active>a {
     color: #fff;
+}
+
+.navbar-sidebar .logout-sidebar{
+    position: absolute;
+    bottom: 10px;
 }
 
 .has-sub {
@@ -3315,27 +3320,19 @@ noti__item .notifi__item .img-cir i {
 }
 
 .overview-item--c1 {
-    background-image: -moz-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-    background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-    background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+    background: #072448;
 }
 
 .overview-item--c2 {
-    background-image: -moz-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-    background-image: -webkit-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-    background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+    background: #f8aa4b;
 }
 
 .overview-item--c3 {
-    background-image: -moz-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-    background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-    background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+    background: #ff6150;
 }
 
 .overview-item--c4 {
-    background-image: -moz-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-    background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-    background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+    background: #54d2d2;
 }
 
 .overview-box .icon {
@@ -13766,7 +13763,7 @@ textarea:-moz-placeholder {
 }
 
 .rounded-10 {
-    border-radius: .50rem;
+    border-radius: .90rem;
 }
 
 .no-hover:hover{
