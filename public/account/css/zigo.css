@@ -42,6 +42,108 @@
     height: 185px;
 }
 
+/** POPULAR PRODUCT CATEGORY/GROUP ON THE USER DASHBOARD **/
+.popular-card {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 25px;
+    background: #fff;
+    overflow: hidden;
+    position:relative;
+    margin-left: 15px;
+
+}
+.popular-card1 {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.popular-img{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popular-title{
+    display:block;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1133px) {
+
+}
+@media (max-width: 768px) {
+    .popular-card{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        max-width: 110px;
+    }
+    .popular-card1{
+        max-width: 100%;
+    }
+}
+@media (max-width: 540px) {
+    .popular-card{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        max-width: 110px;
+    }
+    .popular-card1{
+        margin-left: 55px;
+        margin-right: 55px;
+        margin-bottom: 10px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 441px) {
+    .popular-card{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        max-width: 110px;
+    }
+    .popular-card1{
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        max-width: 310px;
+    }
+}
+
+@media (max-width: 380px) {
+    .popular-card{
+        margin-left: 30px;
+        margin-bottom: 10px;
+        max-width: 110px;
+    }
+    .popular-card1{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        max-width: 280px;
+    }
+}
+
 @media screen and (max-width: 576px) {
     .last-viewed .product-title{
         font-size: 14px;

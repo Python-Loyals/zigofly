@@ -73,8 +73,19 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 }
 
 .carousel-item img {
-    height: auto;
     height: 250px;
+}
+
+@media screen and (max-width: 576px){
+    .carousel-item img {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 489px){
+    .carousel-item img {
+        height: 150px;
+    }
 }
 
 .center {
@@ -346,18 +357,18 @@ section {
 
 .page-wrapper {
     overflow: hidden;
-    background: #e5e5e5;
+    background: #fff;
 }
 
 @media (max-width: 991px) {
     .page-wrapper {
         overflow: auto;
-        background: #e5e5e5;
+        background: #fff;
     }
 }
 
 .page-container {
-    background: #e5e5e5;
+    background: #fff;
     padding-left: 250px;
 }
 

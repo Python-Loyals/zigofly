@@ -109,7 +109,7 @@
                     <div class="col-lg-11 col-md-12 col-sm-12 center w-100">
                         <div class="row">
                             <div class="col-12 text-center my-2">
-                                <p class="h4 font-weight-light text-dark">What's New?</p>
+                                <p class="h4 font-weight-light text-dark">What's New</p>
                             </div>
                         </div>
                         <!--Carousel Wrapper-->
@@ -130,12 +130,12 @@
                                 <!--/First slide-->
                                 <!--Second slide-->
                                 <div class="carousel-item">
-                                    <img class="d-block w-100 rounded-10" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+                                    <img class="d-block w-100 rounded-10" src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/BlackFriday/Fuji_LPHero_BFWeek_en_US.jpg" alt="Second slide">
                                 </div>
                                 <!--/Second slide-->
                                 <!--Third slide-->
                                 <div class="carousel-item">
-                                    <img class="d-block w-100 rounded-10" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+                                    <img class="d-block w-100 rounded-10" src="https://ke.jumia.is/cms/2020/BlackFriday/Live/HP/W4/Tue/KE_BFLive_FreeShipping_SB-(1).png" alt="Third slide">
                                 </div>
                                 <!--/Third slide-->
                             </div>
@@ -152,179 +152,120 @@
                             <!--/.Controls-->
                         </div>
                         <!--/.Carousel Wrapper-->
-                        <hr>
                     </div>
                 </div>
                 <!-- ------------------------------------------------------------------------------------------>
+
+{{--                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">--}}
+{{--                    <div class="card product-group" data-href="{{route('products.category.search', 'men')}}">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="mx-auto d-block">--}}
+{{--                                <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/men1.jpg')}}" alt="Card image cap">--}}
+{{--                                <h5 class="text-sm-center mt-2 mb-1">Men Clothing</h5>--}}
+{{--                                <div class="cartegory-text d-none">--}}
+{{--                                    Shop men Clothing from US and UK Stores</div>--}}
+{{--                            </div>--}}
+{{--                            <hr>--}}
+{{--                            <div class="text-sm-center">--}}
+{{--                                <a href="{{route('products.category.search', 'men')}}">--}}
+{{--                                    <button type="button" class="btn btn-outline-secondary">Shop now</button></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
                 <div class="row  m-b-30">
-                    <div class="col-lg-12">
-                        <div class="au-card recent-report">
-                            <h3 class="title-2 p-b-30">Popular Categories</h3>
-
-                            <div class="container-fluid">
-                                <div class="row">
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'men')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/men1.jpg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Men Clothing</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop men Clothing from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'men')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'women')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/women1.jpeg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Women Clothing</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop women Clothing from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'women')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'kids')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Baby  Kids & Moms.jpeg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Kids & Moms</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop Kids & Moms from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'kids')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'beauty')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/beauty1.jpg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Beauty</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop beauty from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'beauty')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'fitness')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Sports & Fitness1.jpg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Sports & Fitness</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop Sports & Fitness from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'fitness')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'electronics')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/electronics1.jpeg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Electronics</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop electronics from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'electronics')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'home garden')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Home & Garden.jpg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Home & Garden</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop Home & Garden from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'home garden')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                        <div class="card product-group" data-href="{{route('products.category.search', 'office')}}">
-                                            <div class="card-body">
-                                                <div class="mx-auto d-block">
-                                                    <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/Office Supplies3.jpg')}}" alt="Card image cap">
-                                                    <h5 class="text-sm-center mt-2 mb-1">Office Supplies</h5>
-                                                    <div class="cartegory-text d-none">
-                                                        Shop Office Supplies from US and UK Stores</div>
-                                                </div>
-                                                <hr>
-                                                <div class="text-sm-center">
-                                                    <a href="{{route('products.category.search', 'office')}}">
-                                                        <button type="button" class="btn btn-outline-secondary">Shop now</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 text-center">
-                                        <a href="{{route('admin.shop')}}" class="btn btn-outline-secondary">View All</a>
-                                    </div>
-
-
-                                </div>
+                    <div class="col-12 mt-4">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-9">
+                                <h3 class="title-2 pb-3" style="font-size: 18px;font-weight: 520;">Popular Categories</h3>
                             </div>
-
                         </div>
                     </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <div class="">
+                            <div class="row ">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/woman.png')}}">
+                                    <p class="popular-title">Women Clothing</p>
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/man.png')}}">
+                                    <p class="popular-title">Men Clothing</p>
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/toys.png')}}">
+                                    <p class="popular-title">Toys</p>
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/electronics.png')}}">
+                                    <p class="popular-title">Electronics</p>
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/cosmetics.png')}}">
+                                    <p class="popular-title">Beauty</p>
+
+                                </div>
+
+                            </div><br>
+
+                            <div class="row ">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/weightlift.png')}}">
+                                    <p class="popular-title">Fitness</p>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/pot.png')}}">
+                                    <p class="popular-title">Home & Garden</p>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/confetti.png')}}">
+                                    <p class="popular-title">Party Supplies</p>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/mother.png')}}">
+                                    <p class="popular-title">Baby & Mom</p>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/gift.png')}}">
+                                    <p class="popular-title">Gifts</p>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/book.png')}}">
+                                    <p class="popular-title">Books</p>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
+                                    <!-- popular-card-Item -->
+                                    <img class="popular-img" src="{{asset('account/images/banners/car.png')}}">
+                                    <p class="popular-title">Automotives</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="popular-card1 p-0 my-3 my-sm-0">
+                            <img class="popular-card1-img rounded-10" src="{{asset('account/images/banners/prime-banner.jpg')}}">
+                        </div>
+                    </div>
+
                 </div>
 
                 <!------ -->
