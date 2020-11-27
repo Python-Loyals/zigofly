@@ -66,6 +66,21 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 
 
 /* ----- Normalize ----- */
+.paybtn{
+    max-height: 20px;
+    padding: 0;
+    padding-right: 8px;
+    padding-bottom: 23px;
+    padding-left:8px;
+    margin-left: 15px;
+
+}
+
+.table-earning tbody td {
+    color: #3c2a2a;
+    font-size: 12px;
+    white-space: nowrap;
+}
 
 .box {
     border: solid 1.5px #9e9d9d;
@@ -4429,11 +4444,10 @@ noti__item .notifi__item .img-cir i {
 }
 
 .table-earning thead th {
-    background: #333;
+    background: #fff;
     font-size: 16px;
-    color: #fff;
     vertical-align: middle;
-    font-weight: 400;
+    font-weight: bold;
     text-transform: capitalize;
     line-height: 1;
     padding: 22px 40px;
@@ -4443,12 +4457,6 @@ noti__item .notifi__item .img-cir i {
 .table-earning thead th.text-right {
     padding-left: 15px;
     padding-right: 65px;
-}
-
-.table-earning tbody td {
-    color: #808080;
-    padding: 12px 40px;
-    white-space: nowrap;
 }
 
 .table-earning tbody td.text-right {

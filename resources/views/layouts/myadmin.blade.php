@@ -43,7 +43,7 @@
         @include('partials.sidebar')
         @include('partials.chat')
         <div class="page-container">
-            @include('partials.navbar')'
+            @include('partials.navbar')
 
             @yield('content')
 

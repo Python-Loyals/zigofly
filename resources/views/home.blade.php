@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <nav class="breadcrumb bg-transparent" style="font-size: 14px">
+                        <nav class="breadcrumb bg-transparent p-0 py-md-3 mb-2 mb-md-0" style="font-size: 14px;">
                             <a class="breadcrumb-item" href="/" aria-label="Home">
                                 <i class="fa fa-home"></i>
                             </a>
@@ -23,88 +23,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row m-t-25">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c1">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="row">
-                                        <h2 class="tex-2 align-items-center mx-auto pl-5 text-light">
-                                            0
-                                        </h2>
-                                        <div class="icon ml-auto">
-                                            <img src="{{asset('account/images/united-states.svg')}}" alt="US" width="55" height="80">
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <span>Recieved Packages -US</span>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="row">
-                                        <h2 class="tex-2 align-items-center mx-auto pl-5 text-light">
-                                            0
-                                        </h2>
-                                        <div class="icon ml-auto">
-                                            <img src="{{asset('account/images/united-kingdom.svg')}}" alt="US" width="55" height="80">
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <span>Recieved Packages -UK</span>
-                                    </div>
-                                </div>
+                @include('partials.boxes')
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c3">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="row">
-                                        <h2 class="tex-2 align-items-center mx-auto pl-5 text-light">
-                                            0
-                                        </h2>
-                                        <div class="icon ml-auto">
-                                            <img src="{{asset('account/images/plane.svg')}}" alt="US" width="55" height="80">
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <span>My Shipments</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c4">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="row">
-                                        <h2 class="tex-2 align-items-center mx-auto pl-5 text-light">
-                                            0
-                                        </h2>
-                                        <div class="icon ml-auto">
-                                            <img src="{{asset('account/images/box.svg')}}" alt="US" width="55" height="80">
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <span>My Orders</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row slides">
                     <div class="col-lg-11 col-md-12 col-sm-12 center w-100">
                         <div class="row">
@@ -174,99 +95,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 
-                <div class="row  m-b-30">
-                    <div class="col-12 mt-4">
-                        <div class="row">
-                            <div class="col-1"></div>
-                            <div class="col-9">
-                                <h3 class="title-2 pb-3" style="font-size: 18px;font-weight: 520;">Popular Categories</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-12">
-                        <div class="">
-                            <div class="row ">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/woman.png')}}">
-                                    <p class="popular-title">Women Clothing</p>
-
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/man.png')}}">
-                                    <p class="popular-title">Men Clothing</p>
-
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/toys.png')}}">
-                                    <p class="popular-title">Toys</p>
-
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/electronics.png')}}">
-                                    <p class="popular-title">Electronics</p>
-
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/cosmetics.png')}}">
-                                    <p class="popular-title">Beauty</p>
-
-                                </div>
-
-                            </div><br>
-
-                            <div class="row ">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/weightlift.png')}}">
-                                    <p class="popular-title">Fitness</p>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/pot.png')}}">
-                                    <p class="popular-title">Home & Garden</p>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/confetti.png')}}">
-                                    <p class="popular-title">Party Supplies</p>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/mother.png')}}">
-                                    <p class="popular-title">Baby & Mom</p>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/gift.png')}}">
-                                    <p class="popular-title">Gifts</p>
-                                </div>
-                            </div><br>
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/book.png')}}">
-                                    <p class="popular-title">Books</p>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 popular-card">
-                                    <!-- popular-card-Item -->
-                                    <img class="popular-img" src="{{asset('account/images/banners/car.png')}}">
-                                    <p class="popular-title">Automotives</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div class="popular-card1 p-0 my-3 my-sm-0">
-                            <img class="popular-card1-img rounded-10" src="{{asset('account/images/banners/prime-banner.jpg')}}">
-                        </div>
-                    </div>
-
-                </div>
+                @include('partials.popular_categories')
 
                 <!------ -->
                 @if(Auth::user()->lastViewed)

@@ -17,16 +17,16 @@
                         <img alt="Dashboard" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/tachometer.png')}}" />Dashboard
                     </a>
                 </li>
-                <li class="{{ request()->is('admin/address') || request()->is('admin/address*') ? 'active' : '' }}">
+                <li class="{{ request()->is('user/address') || request()->is('user/address*') ? 'active' : '' }}">
                     <a href="{{route('admin.users.address')}}">
                         <img alt="My Address" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/pin.png')}}" />My Adress</a>
                 </li>
-                <li>
-                    <a href="orders.html">
+                <li class="{{ request()->is('user/orders') || request()->is('user/orders*') ? 'active' : '' }}">
+                    <a href="{{route('admin.users.orders')}}">
                         <img alt="My orders" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/box.png')}}" />My Orders</a>
                 </li>
-                <li>
-                    <a href="shipments.html">
+                <li class="{{ request()->is('user/shipments') || request()->is('user/shipments*') ? 'active' : '' }}">
+                    <a href="{{route('admin.users.shipments')}}">
                         <img alt="My Shipments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/aeroplane.png')}}" />My Shipments
                     </a>
                 </li>

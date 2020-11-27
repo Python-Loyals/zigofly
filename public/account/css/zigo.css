@@ -85,6 +85,18 @@
 
 }
 
+.text-address{
+    font-size: 14px!important;
+}
+.text-address .row{
+    margin-top: 3px;
+}
+
+.text-address p:not(strong){
+    font-weight: normal;
+    padding-right: 5px;
+}
+
 @media (max-width: 991px) {
 
 }

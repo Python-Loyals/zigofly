@@ -31,6 +31,16 @@ Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'mid
     // Customer adrress
     Route::get('address', 'AddressController@index')->name('users.address');
 
+    //Customer Shipments
+    Route::get('shipments', function (){
+        return view('admin.shipments.index');
+    })->name('users.shipments');
+
+    //Customer Orders
+    Route::get('orders', function (){
+        return view('admin.orders.index');
+    })->name('users.orders');
+
     //user profile
     Route::get('profile','ProfileController@index')->name('profile.index');
     Route::put('profile','ProfileController@update')->name('profile.update_info');
