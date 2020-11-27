@@ -14,45 +14,45 @@
             <ul class="list-unstyled navbar__list">
                 <li class="{{ request()->is('admin') || request()->is('admin#') ? 'active' : '' }}">
                     <a class="js-arrow" href="/">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                        <img alt="Dashboard" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/tachometer.png')}}" />Dashboard
                     </a>
                 </li>
                 <li class="{{ request()->is('admin/address') || request()->is('admin/address*') ? 'active' : '' }}">
                     <a href="{{route('admin.users.address')}}">
-                        <i class="fas fa-map-marker-alt"></i>My Adress</a>
+                        <img alt="My Address" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/pin.png')}}" />My Adress</a>
                 </li>
                 <li>
                     <a href="orders.html">
-                        <i class="fas fa-gift"></i>My Orders</a>
+                        <img alt="My orders" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/box.png')}}" />My Orders</a>
                 </li>
                 <li>
                     <a href="shipments.html">
-                        <i class="fas fa-plane"></i>My Shipments
+                        <img alt="My Shipments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/aeroplane.png')}}" />My Shipments
                     </a>
                 </li>
                 <li>
                     <a href="shipments.html">
-                        <i class="fas fa-credit-card"></i>My Payments
+                        <img alt="My Payments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/financial.png')}}" />My Payments
                     </a>
                 </li>
                 <li>
                     <a href="quote.html">
-                        <i class="fas fa-phone-square"></i>Get Quote
+                        <img alt="Quote" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/contract.png')}}" />Get Quote
                     </a>
                 </li>
                 <li>
                     <a href="{{route('admin.shop')}}" class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
-                        <i class="fas  fa-shopping-bag"></i>Shopping Guide
+                        <img alt="Shopping Guide" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/online-shopping.png')}}" />Shopping Guide
                     </a>
                 </li>
                 <li>
                     <a href="quote.html">
-                        <i class="fas fa-calculator"></i>Rate Calculator
+                        <img alt="Rate Calculator" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/calculator.png')}}" />Rate Calculator
                     </a>
                 </li>
                 <li>
                     <a href="#" class="live-chat">
-                        <i class="fa  fa-comments"></i>Live Chat
+                        <img alt="Chat" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/chat.png')}}" />Live Chat
                     </a>
                 </li>
 
