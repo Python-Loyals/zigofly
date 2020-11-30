@@ -97,6 +97,62 @@
     padding-right: 5px;
 }
 
+.form-rounded {
+    border-radius: 1rem;
+}
+.fs-12{
+    font-size: 12px;
+}
+.fs-13{
+    font-size: 13px;
+}
+.fs-14{
+    font-size: 14px;
+}
+
+.btn-circle {
+    width: 25px;
+    height: 25px;
+    padding: 6px 6px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.42857;
+}
+
+#btn-add-row:hover,
+#btn-add-row:focus,
+#btn-add-row:active,
+#btn-add-row.active{
+    background-color: transparent;
+    color: #343a40;
+    border-color: #343a40;
+}
+.my-label{
+    color: #212529;
+    font-weight: 460;
+}
+textarea {
+    resize: none;
+}
+
+.quote .input-file input[type="file"] {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+}
+.quote .input-file .btn {
+    background-color: transparent;
+    border-color: transparent;
+    color: #333;
+}
+.quote .input-file .file-selected {
+    font-size: 10px;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+}
+
 @media (max-width: 991px) {
 
 }

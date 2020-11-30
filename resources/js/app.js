@@ -278,6 +278,58 @@ require('./bootstrap');
         }
     })
 
+    $('#btn-add-row').on('click', function (){
+        let tr = $('#quote-form tbody>tr:last').clone(true);
+        $('#quote-form tbody>tr>td:last').after('<div class="dropdown-divider"></div>');
+        tr.insertAfter('#quote-form tbody>tr:last');
+        $(this).removeAttr('id').addClass('btn-minus-row').html('<i class="fa fa-minus"></i>').off('click');
+    })
+
+    $(document).on('click', '.btn-minus-row', function (){
+        $(this).off('click').closest('tr').remove();
+    })
+
+    $('.quote .checkbox').click(function(){
+        $('.checkbox').each(function(){
+            $(this).prop('checked', false);
+        });
+        $(this).prop('checked', true);
+    });
+
+    //custom file upload
+    $('.quote input[type="file"]').each(function () {
+        // get label text
+        var label = $(this).parents(".my-form-group").find("label").html();
+        label = label ? label : "Upload File";
+
+        // wrap the file input
+        $(this).wrap('<div class="input-file"></div>');
+        // display label
+        $(this).before('<span class="btn">' + label + "</span>");
+        // we will display selected file here
+        $(this).before('<span class="file-selected"></span>');
+
+        // file input change listener
+        $(this).change(function (e) {
+            // Get this file input value
+            var val = $(this).val();
+
+            // Let's only show filename.
+            // By default file input value is a fullpath, something like
+            // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+            var filename = val.replace(/^.*[\\\/]/, "");
+
+            // Display the filename
+            $(this).siblings(".file-selected").text(filename);
+        });
+    });
+
+// Open the file browser when our custom button is clicked.
+    $(".input-file .btn").click(function () {
+        $(this).siblings('input[type="file"]').trigger("click");
+    });
+
+
     const observer = window.lozad(); // lazy loads elements with default selector as '.lozad'
     observer.observe();
 
