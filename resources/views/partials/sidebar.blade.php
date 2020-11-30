@@ -35,8 +35,8 @@
                         <img alt="My Payments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/financial.png')}}" />My Payments
                     </a>
                 </li>
-                <li>
-                    <a href="quote.html">
+                <li class="{{ request()->is('user/quotes') || request()->is('user/quotes*') ? 'active' : '' }}">
+                    <a href="{{route('admin.users.quotes')}}">
                         <img alt="Quote" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/contract.png')}}" />Get Quote
                     </a>
                 </li>

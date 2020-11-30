@@ -41,6 +41,10 @@ Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'mid
         return view('admin.orders.index');
     })->name('users.orders');
 
+    Route::get('quotes', function (){
+        return view('admin.quotes.index');
+    })->name('users.quotes');
+
     //user profile
     Route::get('profile','ProfileController@index')->name('profile.index');
     Route::put('profile','ProfileController@update')->name('profile.update_info');

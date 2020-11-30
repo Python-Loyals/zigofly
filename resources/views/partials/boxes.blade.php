@@ -48,7 +48,7 @@
                             0
                         </h2>
                         <div class="icon ml-auto">
-                            <img src="{{asset('account/images/plane.svg')}}" alt="US" width="55" height="80">
+                            <img src="{{asset('account/images/aeroplane.svg')}}" alt="US" width="55" height="80">
                         </div>
                     </div>
                     <div class="text">
