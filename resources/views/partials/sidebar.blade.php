@@ -45,8 +45,8 @@
                         <img alt="Shopping Guide" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/online-shopping.png')}}" />Shopping Guide
                     </a>
                 </li>
-                <li>
-                    <a href="quote.html">
+                <li class="{{ request()->is('admin/calculator') || request()->is('admin/calculator*') ? 'active' : '' }}">
+                    <a href="{{route('admin.users.calculator')}}">
                         <img alt="Rate Calculator" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/calculator.png')}}" />Rate Calculator
                     </a>
                 </li>

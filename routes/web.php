@@ -45,6 +45,10 @@ Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'mid
         return view('admin.quotes.index');
     })->name('users.quotes');
 
+    Route::get('calculator', function (){
+        return view('admin.rate_calculator.index');
+    })->name('users.calculator');
+
     Route::get('packages', function (){
         return view('admin.packages.index');
     })->name('users.packages');
