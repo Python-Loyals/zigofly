@@ -29,7 +29,7 @@
                 @include('partials.boxes')
 
                 <div class="row">
-                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 package-card ml-auto mr-auto">
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 packages-card ml-auto mr-auto">
                         <!--Package List Table-->
                         <div class="table-responsive m-b-30">
                             <table class="table table-borderless table-striped table-earning">
