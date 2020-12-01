@@ -45,6 +45,14 @@ Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'mid
         return view('admin.quotes.index');
     })->name('users.quotes');
 
+    Route::get('packages', function (){
+        return view('admin.packages.index');
+    })->name('users.packages');
+
+    Route::get('package', function (){
+        return view('admin.packages.package');
+    })->name('users.single_package');
+
     //user profile
     Route::get('profile','ProfileController@index')->name('profile.index');
     Route::put('profile','ProfileController@update')->name('profile.update_info');

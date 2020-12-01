@@ -97,17 +97,40 @@
     padding-right: 5px;
 }
 
+.package-card {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.27);
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 25px;
+    background: #fff;
+    overflow: hidden;
+    position:relative;
+    margin-left: 1px;
+    margin:1px;
+
+}
+.select-package{
+    padding: 10px;
+    border:1px solid #d3d3d3;
+    border-radius: 3px;
+    background-color: #fff;
+    width: 100%;
+}
+
 .form-rounded {
     border-radius: 1rem;
 }
 .fs-12{
-    font-size: 12px;
+    font-size: 12px!important;
 }
 .fs-13{
-    font-size: 13px;
+    font-size: 13px!important;
 }
 .fs-14{
-    font-size: 14px;
+    font-size: 14px!important;
 }
 
 .btn-circle {
@@ -151,6 +174,168 @@ textarea {
     width: 100%;
     display: block;
     margin-top: 5px;
+}
+
+.package-content{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    padding-right: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 18px;
+    margin-right: 15px;
+    overflow: hidden;
+    position:relative;
+}
+.package-card{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    padding-right: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 18px;
+    background: #54d2d2;
+    margin-right: 15px;
+    overflow: hidden;
+    position:relative;
+}
+
+.packsummary{
+    margin-left: 15px;
+}
+.packimage{
+    display:inline-block;
+    position:absolute;
+    left:0;
+    top:0;
+}
+.packimage img{
+    margin-top: 5px !important;
+    background-color: #DCDCDC;
+    max-height: 60px;
+    border-radius: 9px;
+
+}
+.packname{
+    display:inline-block;
+    position:absolute;
+    right:0;
+    top: 0;
+}
+.packname h6{
+    margin-top: 18px !important;
+}
+.packsummary .details{
+    font-size: 12px;
+}
+.info{
+    font-size: 13px;
+    font-weight: bold;
+}
+.packaddress{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-right:30px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 0px;
+    margin-left: 15px;
+    overflow: hidden;
+    position:relative;
+    background-color: #f0d738;
+    width: 75%;
+    text-align: center;
+}
+.packaddress p{
+    font-size: 13px;
+    font-style: italic;
+}
+.packaddress img{
+    max-height: 30px;
+    border-radius: 9px;
+
+}
+.btnlink{
+    top: 0;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.packplancard{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-right: 35px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 25px;
+    margin-right: 30px;
+    overflow: hidden;
+    position:relative;
+    font-size: 13px;
+}
+.standard{
+    background: #fff;
+    text-align: center;
+    font-size:13px;
+
+}
+.express{
+    background: #f0d738;
+    text-align: center;
+
+}
+.premium{
+    background: #fff;
+    text-align: center;
+
+}
+.packplan{
+
+}
+.packdetails{
+    background-color: #54d2d2;
+    border-radius: 25px;
+    margin-right: 30px;
+}
+.packdetailscard{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-right: 35px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 25px;
+    margin-top: 35px;
+    overflow: hidden;
+    position:relative;
+    background: #fff;
+    text-align: center;
+    font-size:13px;
+}
+
+input#promocode{
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid;
+    border-radius: 25px;
+    max-width: 65%;
+}
+@media (max-width: 600px) {
+    .packimage img{
+        display: none;
+        margin-top: 5px !important;
+        background-color: #DCDCDC;
+        max-height: 60px;
+        border-radius: 9px;
+
+    }
 }
 
 @media (max-width: 991px) {

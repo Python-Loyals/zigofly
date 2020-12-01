@@ -40,8 +40,8 @@
                         <img alt="Quote" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/contract.png')}}" />Get Quote
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('admin.shop')}}" class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
+                <li class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
+                    <a href="{{route('admin.shop')}}">
                         <img alt="Shopping Guide" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/online-shopping.png')}}" />Shopping Guide
                     </a>
                 </li>
