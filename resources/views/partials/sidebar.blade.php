@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="shipments.html">
+                    <a href="#">
                         <img alt="My Payments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/financial.png')}}" />My Payments
                     </a>
                 </li>
@@ -40,12 +40,12 @@
                         <img alt="Quote" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/contract.png')}}" />Get Quote
                     </a>
                 </li>
-                <li class="{{ request()->is('admin/shop') || request()->is('admin/shop*') ? 'active' : '' }}">
+                <li class="{{ request()->is('user/shop') || request()->is('user/shop*') ? 'active' : '' }}">
                     <a href="{{route('admin.shop')}}">
                         <img alt="Shopping Guide" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/online-shopping.png')}}" />Shopping Guide
                     </a>
                 </li>
-                <li class="{{ request()->is('admin/calculator') || request()->is('admin/calculator*') ? 'active' : '' }}">
+                <li class="{{ request()->is('user/calculator') || request()->is('user/calculator*') ? 'active' : '' }}">
                     <a href="{{route('admin.users.calculator')}}">
                         <img alt="Rate Calculator" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/calculator.png')}}" />Rate Calculator
                     </a>
