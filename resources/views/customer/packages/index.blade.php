@@ -46,7 +46,7 @@
                                 <tbody>
                                 <tr>
                                     <td class="text-center">  <img class="popular-img" src="{{asset('account/images/banners/car.png')}}"> </td>
-                                    <td class="text-center card-title link" data-href="{{route('admin.users.single_package')}}">ZFP001</td>
+                                    <td class="text-center card-title link" data-href="{{route('customer.users.single_package')}}">ZFP001</td>
                                     <td class="text-center">20Kgs</td>
                                     <td class="text-center">15x10x15</td>
                                     <td class="text-center card-title">1ZMSA354554954</td>
@@ -61,7 +61,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center">  <img class="popular-img" src="{{asset('account/images/banners/pot.png')}}"> </td>
-                                    <td class="text-center card-title" data-href="{{route('admin.users.single_package')}}">ZFP001</td>
+                                    <td class="text-center card-title" data-href="{{route('customer.users.single_package')}}">ZFP001</td>
                                     <td class="text-center">20Kgs</td>
                                     <td class="text-center">15x10x15</td>
                                     <td class="text-center card-title">1ZMSA354554954</td>

@@ -1,6 +1,6 @@
 <div class="row m-t-25">
     <div class="col-sm-6 col-lg-3">
-        <div class="overview-item overview-item--c1" data-href="{{route('admin.users.packages')}}">
+        <div class="overview-item overview-item--c1" data-href="{{route('customer.users.packages')}}">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="row">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-lg-3">
-        <div class="overview-item overview-item--c2" data-href="{{route('admin.users.packages')}}">
+        <div class="overview-item overview-item--c2" data-href="{{route('customer.users.packages')}}">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="row">
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-lg-3">
-        <div class="overview-item overview-item--c3" data-href="{{route('admin.users.shipments')}}">
+        <div class="overview-item overview-item--c3" data-href="{{route('customer.users.shipments')}}">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="row">
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-lg-3">
-        <div class="overview-item overview-item--c4" data-href="{{route('admin.users.orders')}}">
+        <div class="overview-item overview-item--c4" data-href="{{route('customer.users.orders')}}">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="row">

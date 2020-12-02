@@ -20,7 +20,7 @@ class UsersController extends Controller
 
         $users = User::all();
 
-        return view('admin.users.index', compact('users'));
+        return view('customer.users.index', compact('users'));
     }
 
     public function create()
@@ -29,7 +29,7 @@ class UsersController extends Controller
 
         $roles = Role::all()->pluck('title', 'id');
 
-        return view('admin.users.create', compact('roles'));
+        return view('customer.users.create', compact('roles'));
     }
 
     public function store(StoreUserRequest $request)
@@ -37,7 +37,7 @@ class UsersController extends Controller
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('customer.users.index');
     }
 
     public function edit(User $user)
@@ -48,7 +48,7 @@ class UsersController extends Controller
 
         $user->load('roles');
 
-        return view('admin.users.edit', compact('roles', 'user'));
+        return view('customer.users.edit', compact('roles', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -56,7 +56,7 @@ class UsersController extends Controller
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('customer.users.index');
     }
 
     public function show(User $user)
@@ -65,7 +65,7 @@ class UsersController extends Controller
 
         $user->load('roles');
 
-        return view('admin.users.show', compact('user'));
+        return view('customer.users.show', compact('user'));
     }
 
     public function destroy(User $user)

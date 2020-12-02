@@ -47,7 +47,7 @@
                                                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ucwords(Auth::user()->name)}}</h4>
 
                                                         <div class="mt-4">
-                                                            <form action="{{route('admin.profile.update_avatar')}}" method="POST" class="avatar-form" enctype="multipart/form-data" >
+                                                            <form action="{{route('customer.profile.update_avatar')}}" method="POST" class="avatar-form" enctype="multipart/form-data" >
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input id="avatar" type="file" class="form-control d-none" accept="image/jpeg, image/png" name="avatar">
@@ -75,7 +75,7 @@
                                             </ul>
                                             <div class="tab-content pt-3">
                                                 <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="info-tab" id="personalInfo">
-                                                    <form class="form" action="{{route('admin.profile.update_info')}}" method="POST">
+                                                    <form class="form" action="{{route('customer.profile.update_info')}}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="row">

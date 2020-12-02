@@ -13,8 +13,8 @@ class PermissionsTest extends DuskTestCase
         $admin = App\User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.permissions.index'));
-            $browser->assertRouteIs('admin.permissions.index');
+            $browser->visit(route('customer.permissions.index'));
+            $browser->assertRouteIs('customer.permissions.index');
         });
     }
 }

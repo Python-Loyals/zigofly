@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $ages = Age::all()->pluck('age', 'id');
         $counties = County::all()->pluck('name', 'id');
-        return view('admin.profile.index', compact('ages', 'counties'));
+        return view('customer.profile.index', compact('ages', 'counties'));
     }
 
     public function update(UpdateUserRequest $request)

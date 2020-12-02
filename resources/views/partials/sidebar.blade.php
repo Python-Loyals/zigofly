@@ -12,21 +12,21 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="{{ request()->is('admin') || request()->is('admin#') ? 'active' : '' }}">
+                <li class="{{ request()->is('customer') || request()->is('customer#') ? 'active' : '' }}">
                     <a class="js-arrow" href="/">
                         <img alt="Dashboard" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/tachometer.png')}}" />Dashboard
                     </a>
                 </li>
                 <li class="{{ request()->is('user/address') || request()->is('user/address*') ? 'active' : '' }}">
-                    <a href="{{route('admin.users.address')}}">
+                    <a href="{{route('customer.users.address')}}">
                         <img alt="My Address" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/pin.png')}}" />My Adress</a>
                 </li>
                 <li class="{{ request()->is('user/orders') || request()->is('user/orders*') ? 'active' : '' }}">
-                    <a href="{{route('admin.users.orders')}}">
+                    <a href="{{route('customer.users.orders')}}">
                         <img alt="My orders" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/box.png')}}" />My Orders</a>
                 </li>
                 <li class="{{ request()->is('user/shipments') || request()->is('user/shipments*') ? 'active' : '' }}">
-                    <a href="{{route('admin.users.shipments')}}">
+                    <a href="{{route('customer.users.shipments')}}">
                         <img alt="My Shipments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/aeroplane.png')}}" />My Shipments
                     </a>
                 </li>
@@ -36,17 +36,17 @@
                     </a>
                 </li>
                 <li class="{{ request()->is('user/quotes') || request()->is('user/quotes*') ? 'active' : '' }}">
-                    <a href="{{route('admin.users.quotes')}}">
+                    <a href="{{route('customer.users.quotes')}}">
                         <img alt="Quote" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/contract.png')}}" />Get Quote
                     </a>
                 </li>
                 <li class="{{ request()->is('user/shop') || request()->is('user/shop*') ? 'active' : '' }}">
-                    <a href="{{route('admin.shop')}}">
+                    <a href="{{route('customer.shop')}}">
                         <img alt="Shopping Guide" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/online-shopping.png')}}" />Shopping Guide
                     </a>
                 </li>
                 <li class="{{ request()->is('user/calculator') || request()->is('user/calculator*') ? 'active' : '' }}">
-                    <a href="{{route('admin.users.calculator')}}">
+                    <a href="{{route('customer.users.calculator')}}">
                         <img alt="Rate Calculator" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/calculator.png')}}" />Rate Calculator
                     </a>
                 </li>

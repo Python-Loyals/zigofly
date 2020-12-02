@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="{{route('admin.profile.index')}}">
+                                        <a href="{{route('customer.profile.index')}}">
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">

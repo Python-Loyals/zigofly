@@ -3,16 +3,16 @@
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
+        return redirect()->route('customer.home')->with('status', session('status'));
     }
 
-    return redirect()->route('admin.home');
+    return redirect()->route('customer.home');
 });
 
 Auth::routes(['register' => true]);
 // Admin
 
-Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
+Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/shop', 'HomeController@shop')->name('shop');
@@ -33,28 +33,28 @@ Route::group(['prefix' => 'user', 'as' => 'admin.', 'namespace' => 'Admin', 'mid
 
     //Customer Shipments
     Route::get('shipments', function (){
-        return view('admin.shipments.index');
+        return view('customer.shipments.index');
     })->name('users.shipments');
 
     //Customer Orders
     Route::get('orders', function (){
-        return view('admin.orders.index');
+        return view('customer.orders.index');
     })->name('users.orders');
 
     Route::get('quotes', function (){
-        return view('admin.quotes.index');
+        return view('customer.quotes.index');
     })->name('users.quotes');
 
     Route::get('calculator', function (){
-        return view('admin.rate_calculator.index');
+        return view('customer.rate_calculator.index');
     })->name('users.calculator');
 
     Route::get('packages', function (){
-        return view('admin.packages.index');
+        return view('customer.packages.index');
     })->name('users.packages');
 
     Route::get('package', function (){
-        return view('admin.packages.package');
+        return view('customer.packages.package');
     })->name('users.single_package');
 
     //user profile

@@ -26,7 +26,7 @@
                                     <h2 class="text-success">Cart Details</h2>
                                 </div>
                                 <div class="col-sm-6 ">
-                                    <a href="{{route('admin.shop')}}" type="button" class="btn btn-custom pull-right">Continue Shopping</a>
+                                    <a href="{{route('customer.shop')}}" type="button" class="btn btn-custom pull-right">Continue Shopping</a>
                                 </div>
                             </div>
                             @if(Cart::count() > 0)
