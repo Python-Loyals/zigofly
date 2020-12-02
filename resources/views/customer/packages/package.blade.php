@@ -1,4 +1,4 @@
-@extends('layouts.myadmin')
+@extends('layouts.customer.customer')
 @section('styles')
     <link rel="stylesheet" href="{{asset('account/css/zigo.css')}}">
 @endsection
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                @include('partials.boxes')
+                @include('partials.customer.boxes')
 
                 <div class="row">
                     <div class="packsummary col-lg-4 col-md-4 col-xs-12 col-sm-12 package-card ">
@@ -106,7 +106,7 @@
                 </div>
 
 
-                @include('partials.popular_categories')
+                @include('partials.customer.popular_categories')
 
             </div>
         </div>

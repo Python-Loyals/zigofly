@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.customer.admin')
 @section('content')
 @can('permission_create')
     <div style="margin-bottom: 10px;" class="row">

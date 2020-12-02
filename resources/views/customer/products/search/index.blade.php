@@ -1,4 +1,4 @@
-@extends('layouts.myadmin')
+@extends('layouts.customer.customer')
 @section('content')
 <style type="text/css">
     .card:hover {

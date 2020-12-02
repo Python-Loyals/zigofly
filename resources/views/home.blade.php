@@ -1,4 +1,4 @@
-@extends('layouts.myadmin')
+@extends('layouts.customer.customer')
 @section('styles')
     <link rel="stylesheet" href="{{asset('account/css/zigo.css')}}">
 @endsection
@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                @include('partials.boxes')
+                @include('partials.customer.boxes')
 
                 <div class="row slides">
                     <div class="col-lg-11 col-md-12 col-sm-12 center w-100">
@@ -95,7 +95,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 
-                @include('partials.popular_categories')
+                @include('partials.customer.popular_categories')
 
                 <!------ -->
                 @if(Auth::user()->lastViewed)

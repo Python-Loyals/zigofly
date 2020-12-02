@@ -1,4 +1,4 @@
-@extends('layouts.myapp')
+@extends('layouts.customer.myapp')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/register.css')}}">
 @endsection

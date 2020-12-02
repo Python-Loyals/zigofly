@@ -1,4 +1,4 @@
-@extends('layouts.myadmin')
+@extends('layouts.customer.customer')
 @section('styles')
     <link rel="stylesheet" href="{{asset('account/css/checkout.css')}}">
 @endsection

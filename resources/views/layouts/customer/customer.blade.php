@@ -40,10 +40,10 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        @include('partials.sidebar')
-        @include('partials.chat')
+        @include('partials.customer.sidebar')
+        @include('partials.customer.chat')
         <div class="page-container">
-            @include('partials.navbar')
+            @include('partials.customer.navbar')
 
             @yield('content')
 
