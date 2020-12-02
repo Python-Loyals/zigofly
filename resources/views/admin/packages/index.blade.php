@@ -32,9 +32,9 @@
                     <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 packages-card ml-auto mr-auto">
                         <!--Package List Table-->
                         <div class="table-responsive m-b-30">
-                            <table class="table table-borderless table-striped table-earning">
+                            <table class="table table-borderless table-striped table-earning table-packages">
                                 <thead>
-                                <tr>
+                                <tr">
                                     <th class="text-center fs-14">Package Photo</th>
                                     <th class="text-center fs-14">Package ID</th>
                                     <th class="text-center fs-14">Package Weight</th>
@@ -46,10 +46,10 @@
                                 <tbody>
                                 <tr>
                                     <td class="text-center">  <img class="popular-img" src="{{asset('account/images/banners/car.png')}}"> </td>
-                                    <th class="text-center card-title">ZFP001</th>
+                                    <td class="text-center card-title link" data-href="{{route('admin.users.single_package')}}">ZFP001</td>
                                     <td class="text-center">20Kgs</td>
                                     <td class="text-center">15x10x15</td>
-                                    <th class="text-center card-title">1ZMSA354554954</th>
+                                    <td class="text-center card-title">1ZMSA354554954</td>
                                     <td class="text-center text-success">
                                         <select class="select-package" >
                                             <option>Prepare To Ship</option>
@@ -61,10 +61,10 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center">  <img class="popular-img" src="{{asset('account/images/banners/pot.png')}}"> </td>
-                                    <th class="text-center card-title">ZFP001</th>
+                                    <td class="text-center card-title" data-href="{{route('admin.users.single_package')}}">ZFP001</td>
                                     <td class="text-center">20Kgs</td>
                                     <td class="text-center">15x10x15</td>
-                                    <th class="text-center card-title">1ZMSA354554954</th>
+                                    <td class="text-center card-title">1ZMSA354554954</td>
                                     <td class="text-center text-success">
                                         <select class="select-package" >
                                             <option>Prepare To Ship</option>
@@ -76,10 +76,10 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center">  <img class="popular-img" src="{{asset('account/images/banners/electronics.png')}}"> </td>
-                                    <th class="text-center card-title">ZFP001</th>
+                                    <td class="text-center card-title">ZFP001</td>
                                     <td class="text-center">20Kgs</td>
                                     <td class="text-center">15x10x15</td>
-                                    <th class="text-center card-title">1ZMSA354554954</th>
+                                    <td class="text-center card-title">1ZMSA354554954</td>
                                     <td class="text-center text-success">
                                         <select class="select-package" >
                                             <option>Prepare To Ship</option>
