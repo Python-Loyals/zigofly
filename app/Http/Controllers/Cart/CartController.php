@@ -29,7 +29,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart.index');
+        return view('customer.cart.index');
     }
 
     /**
@@ -146,6 +146,6 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return view('checkout.index');
+        return view('customer.checkout.index');
     }
 }

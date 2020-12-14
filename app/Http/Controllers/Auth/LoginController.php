@@ -39,6 +39,45 @@ class LoginController extends Controller
         }
     }
 
+    /*
+     * admin login
+     * */
+    public function showAdminLoginForm()
+    {
+        return view('auth.admin.login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+            return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function adminLogout(Request $request)
+    {
+        if (Auth::guard('admin')->check()){
+            // Get the session key for this user
+            $sessionKey = Auth::guard('admin')->getName();
+
+            // Logout current user by guard
+            Auth::guard('admin')->logout();
+
+            // Delete single session key (just for this user)
+            $request->session()->forget($sessionKey);
+        }
+
+        // After logout, redirect to login screen again
+        return redirect()->route('admin.login');
+    }
+
     /**
      * Where to redirect users after login.
      *
@@ -53,6 +92,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('guest:admin')->except('adminLogout');
         $this->middleware('guest')->except('logout');
     }
 }

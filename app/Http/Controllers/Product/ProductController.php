@@ -35,7 +35,7 @@ class ProductController extends Controller
         Auth::user()->lastViewed()->updateOrCreate(['product_id'=> $savedProduct->id])->touch();
 
 
-        return view('products.singleProduct.index', compact('product'));
+        return view('customer.products.singleProduct.index', compact('product'));
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -10,9 +12,9 @@ Route::get('/home', function () {
 });
 
 Auth::routes(['register' => true]);
-// Admin
+// Customer
 
-Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Admin', 'middleware' => ['auth', 'cart.init']], function () {
+Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer', 'middleware' => ['auth', 'cart.init']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/shop', 'HomeController@shop')->name('shop');
@@ -87,4 +89,31 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
         Route::put('password', 'ChangePasswordController@update')->name('password.update');
     }
+});
+
+
+//admin
+
+//admin auth
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'],function(){
+
+    //Login Routes
+    Route::get('/login','LoginController@showAdminLoginForm');
+    Route::post('/login','LoginController@adminLogin')->name('login');
+    Route::get('/logout','LoginController@adminLogout')->name('logout');
+
+    //Forgot Password Routes
+    Route::get('/password/reset','ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('/password/email','ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+    //Reset Password Routes
+    Route::get('/password/reset/{token}','ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('/password/reset','ResetPasswordController@reset')->name('password.update');
+
+});
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:admin']], function () {
+    Route::get('home', function (){
+       return Auth::user();
+    });
 });

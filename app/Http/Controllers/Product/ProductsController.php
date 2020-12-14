@@ -18,7 +18,7 @@ class ProductsController extends Controller
         $response = (object) json_decode($data, true);
         $products = $this->paginate($response->products, 20, null, ['path'=> route('products.category.search', $search_term)]);
 
-        return view('products.category.products', compact('products'));
+        return view('customer.products.category.products', compact('products'));
     }
 
     /**
@@ -41,6 +41,6 @@ class ProductsController extends Controller
         $response = (object) json_decode($data, true);
         $products = $this->paginate($response->products, 20, null, ['path'=> route('products.search', $q)]);
 
-        return view('products.search.index', compact('products'));
+        return view('customer.products.search.index', compact('products'));
     }
 }
