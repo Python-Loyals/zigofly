@@ -51,7 +51,7 @@
 									Forgot your Password?
 								</span>
 
-                            <a class="txt2" href="{{route('password.request')}}">
+                            <a class="txt2" href="{{route('admin.password.request')}}">
                                 Reset now.
                             </a>
                         </div>

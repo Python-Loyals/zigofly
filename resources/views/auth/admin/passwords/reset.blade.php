@@ -8,7 +8,7 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <form class="login100-form validate-form" method="POST" action="{{ route('password.request') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ route('admin.password.update') }}">
                     @csrf
                     <span class="login100-form-title p-b-26">
 						{{ucfirst(trans('panel.site_title'))}}
@@ -55,7 +55,7 @@
 							Ooh I remember...
 						</span>
 
-                        <a class="txt2" href="{{route('login')}}">
+                        <a class="txt2" href="{{route('admin.login')}}">
                             Login instead!
                         </a>
                     </div>

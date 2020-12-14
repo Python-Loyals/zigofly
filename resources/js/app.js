@@ -1,5 +1,4 @@
 require('./bootstrap');
-
 (function ($) {
     "use strict";
 
@@ -9,7 +8,7 @@ require('./bootstrap');
         if($(this).val().trim() != "") {
             $(this).addClass('has-val');
         }
-        $(this).on('blur', function(){
+        $(this).on('blur input', function(){
             if($(this).val().trim() != "") {
                 $(this).addClass('has-val');
             }
@@ -17,8 +16,9 @@ require('./bootstrap');
                 $(this).removeClass('has-val');
             }
         })
-    })
+    });
 
+    $('input.input100').first().focus()
 
     /*==================================================================
     [ Validate ]*/
@@ -40,9 +40,14 @@ require('./bootstrap');
 
     $('.validate-form .input100').each(function(){
         $(this).on('focusin',function(){
+            console.log('kkk')
             hideValidate(this);
         });
     });
+
+    $('.alert-validate').on('click', function (){
+        $(this).removeClass('alert-validate');
+    })
 
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
@@ -72,7 +77,8 @@ require('./bootstrap');
     /*==================================================================
     [ Show pass ]*/
     var showPass = 0;
-    $('.btn-show-pass').on('click', function(){
+    $(document).on('click', '.btn-show-pass', function(){
+        console.log(showPass)
         if(showPass == 0) {
             $(this).next('input').attr('type','text');
             $(this).find('i').removeClass('zmdi-eye');
