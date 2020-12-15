@@ -284,8 +284,16 @@ require('./bootstrap');
         }
     })
 
+    var input_no = 0;
+
     $('#btn-add-row').on('click', function (){
         let tr = $('#quote-form tbody>tr:last').clone(true);
+        input_no += 1;
+        tr.find('input').each(function() {
+            this.name= this.name.replace(/\[[\d]\]/, '['+(input_no)+']');
+            $(this).removeClass('is-invalid')
+        });
+
         $('#quote-form tbody>tr>td:last').after('<div class="dropdown-divider"></div>');
         tr.insertAfter('#quote-form tbody>tr:last');
         $(this).removeAttr('id').addClass('btn-minus-row').html('<i class="fa fa-minus"></i>').off('click');

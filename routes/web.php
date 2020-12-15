@@ -43,9 +43,9 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
         return view('customer.orders.index');
     })->name('users.orders');
 
-    Route::get('quotes', function (){
-        return view('customer.quotes.index');
-    })->name('users.quotes');
+    //customer quotes
+    Route::get('quotes', 'QuotesController@index')->name('users.quotes');
+    Route::post('quote', 'QuotesController@store')->name('users.quotes.store');
 
     Route::get('calculator', function (){
         return view('customer.rate_calculator.index');

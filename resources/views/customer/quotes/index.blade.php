@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-md-7">
-                                <form method="POST" id="quote-form" class="border rounded-10 shadow p-2">
+                                <form method="POST" id="quote-form" action="{{route('customer.users.quotes.store')}}" enctype="multipart/form-data" class="border rounded-10 shadow p-2">
                                     @csrf
                                     <table class="table table-borderless" cellpadding="2">
                                         <tbody>
@@ -42,64 +42,134 @@
                                             <td class="my-label">Quantity</td>
                                             <td class="my-label">Color/Size/Options</td>
                                         </tr>
-                                        <tr>
-                                            <td class="d-table-row d-md-table-cell">
-                                                <div class="form-row mt-2 mt-md-0">
-                                                    <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
-                                                        Product Name:
+                                        @php(print_r($errors))
+                                        @if(count(old()) > 0)
+                                            @php($i = 0)
+                                            @foreach(old('products') as $row)
+                                                <tr>
+                                                    <td class="d-table-row d-md-table-cell">
+                                                        <div class="form-row mt-2 mt-md-0">
+                                                            <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                                Product Name:
+                                                            </div>
+                                                            <div class="col-8 col-md-12 col-lg-12">
+                                                                <input type="text" name="products[{{$i}}][name]" class="form-control form-rounded w-100 {{ $errors->has('products.'.$i.'.name') ? 'is-invalid' : '' }}" value="{{$row['name']}}">
+                                                                @if($errors->has('products.'.$i.'.name'))
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $errors->first('products.'.$i.'.name') }}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="d-table-row d-md-table-cell">
+                                                        <div class="form-row mt-2 mt-md-0">
+                                                            <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                                Product Link:
+                                                            </div>
+                                                            <div class="col-8 col-md-12 col-lg-12">
+                                                                <input type="text" name="products[{{$i}}][link]" class="form-control form-rounded w-100 {{ $errors->has('products.'.$i.'.link') ? 'is-invalid' : '' }}" value="{{$row['link']}}">
+                                                                @if($errors->has('products.'.$i.'.link'))
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $errors->first('products.'.$i.'.link') }}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="d-table-row d-md-table-cell">
+                                                        <div class="form-row mt-2 mt-md-0">
+                                                            <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                                Quantity:
+                                                            </div>
+                                                            <div class="col-8 col-md-12 col-lg-12">
+                                                                <input type="text" name="products[{{$i}}][quantity]" class="form-control form-rounded w-100 {{ $errors->has('products.'.$i.'.quantity') ? 'is-invalid' : '' }}" value="{{$row['quantity']}}">
+                                                                @if($errors->has('products.'.$i.'.quantity'))
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $errors->first('products.'.$i.'.quantity') }}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="d-table-row d-md-table-cell">
+                                                        <div class="form-row mt-2 mt-md-0">
+                                                            <div class="col-5 d-md-none d-flex fs-12 mt-auto mb-auto">
+                                                                Color/Size/Options:
+                                                            </div>
+                                                            <div class="col-7 col-md-10 col-lg-10">
+                                                                <input type="text" name="products[{{$i}}][options]" class="form-control form-rounded w-100">
+                                                            </div>
+                                                            <div class="col-2 d-flex mt-2 mt-md-auto mb-auto ml-auto">
+                                                                <button type="button" id="{{($i == count(old('products')) - 1) ? 'btn-add-row':''}}" class="btn ml-auto btn-outline-dark btn-default btn-circle {{($i == count(old('products')) - 1) ? '':'btn-minus-row'}}" value="{{$row['options']}}">
+                                                                    <i class="fa fa-{{($i == count(old('products')) - 1) ? 'plus' : 'minus'}}"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @php($i++)
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td class="d-table-row d-md-table-cell">
+                                                    <div class="form-row mt-2 mt-md-0">
+                                                        <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                            Product Name:
+                                                        </div>
+                                                        <div class="col-8 col-md-12 col-lg-12">
+                                                            <input type="text" name="products[0][name]" class="form-control form-rounded w-100">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-8 col-md-12 col-lg-12">
-                                                        <input type="text" name="name[]" class="form-control form-rounded w-100">
+                                                </td>
+                                                <td class="d-table-row d-md-table-cell">
+                                                    <div class="form-row mt-2 mt-md-0">
+                                                        <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                            Product Link:
+                                                        </div>
+                                                        <div class="col-8 col-md-12 col-lg-12">
+                                                            <input type="text" name="products[0][link]" class="form-control form-rounded w-100">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="d-table-row d-md-table-cell">
-                                                <div class="form-row mt-2 mt-md-0">
-                                                    <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
-                                                        Product Link:
+                                                </td>
+                                                <td class="d-table-row d-md-table-cell">
+                                                    <div class="form-row mt-2 mt-md-0">
+                                                        <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
+                                                            Quantity:
+                                                        </div>
+                                                        <div class="col-8 col-md-12 col-lg-12">
+                                                            <input type="text" name="products[0][quantity]" class="form-control form-rounded w-100">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-8 col-md-12 col-lg-12">
-                                                        <input type="text" name="link[]" class="form-control form-rounded w-100">
+                                                </td>
+                                                <td class="d-table-row d-md-table-cell">
+                                                    <div class="form-row mt-2 mt-md-0">
+                                                        <div class="col-5 d-md-none d-flex fs-12 mt-auto mb-auto">
+                                                            Color/Size/Options:
+                                                        </div>
+                                                        <div class="col-7 col-md-10 col-lg-10">
+                                                            <input type="text" name="products[0][options]" class="form-control form-rounded w-100">
+                                                        </div>
+                                                        <div class="col-2 d-flex mt-2 mt-md-auto mb-auto ml-auto">
+                                                            <button type="button" id="btn-add-row" class="btn ml-auto btn-outline-dark btn-default btn-circle">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="d-table-row d-md-table-cell">
-                                                <div class="form-row mt-2 mt-md-0">
-                                                    <div class="col-4 d-md-none d-flex fs-13 mt-auto mb-auto">
-                                                        Quantity:
-                                                    </div>
-                                                    <div class="col-8 col-md-12 col-lg-12">
-                                                        <input type="text" name="quantity[]" class="form-control form-rounded w-100">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="d-table-row d-md-table-cell">
-                                                <div class="form-row mt-2 mt-md-0">
-                                                    <div class="col-5 d-md-none d-flex fs-12 mt-auto mb-auto">
-                                                        Color/Size/Options:
-                                                    </div>
-                                                    <div class="col-7 col-md-10 col-lg-10">
-                                                        <input type="text" name="options[]" class="form-control form-rounded w-100">
-                                                    </div>
-                                                    <div class="col-2 d-flex mt-2 mt-md-auto mb-auto ml-auto">
-                                                        <button type="button" id="btn-add-row" class="btn ml-auto btn-outline-dark btn-default btn-circle">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                     <div class="form-row px-3">
                                         <div class="col-md-8 order-1">
                                             <label class="fs-14 my-label">Special/other instructions (Leave blank if none)</label>
-                                            <textarea class="form-control form-control-sm mb-1" rows="4"></textarea>
+                                            <textarea class="form-control form-control-sm mb-1" name="instructions" rows="4"></textarea>
                                         </div>
 
                                         <div class="col-md-4 order-0 order-md-1 quote pt-3">
                                             <div class="custom-control custom-checkbox mb-1">
-                                                <input type="checkbox" checked class="custom-control-input checkbox" id="b_Ship" name="b_Ship">
+                                                <input type="checkbox" checked class="custom-control-input checkbox" id="buy_ship" name="buy_ship">
                                                 <label class="custom-control-label" for="b_Ship">Buy & Ship</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
@@ -111,7 +181,7 @@
                                                 <label for="file" class="sr-only">
                                                     Attach file <i class="fa fa-plus-circle"></i>
                                                 </label>
-                                                <input type="file" id="file">
+                                                <input type="file" id="file" multiple name="attachments[]" accept="image/gif,image,jpg,image/jpeg,image/png,application/pdf,application/docx,application/doc">
                                             </div>
                                         </div>
                                     </div>

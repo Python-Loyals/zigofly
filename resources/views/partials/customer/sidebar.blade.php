@@ -13,7 +13,7 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="{{ request()->is('customer') || request()->is('customer#') ? 'active' : '' }}">
-                    <a class="js-arrow" href="/">
+                    <a class="js-arrow" href="{{route('customer.home')}}">
                         <img alt="Dashboard" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/tachometer.png')}}" />Dashboard
                     </a>
                 </li>
