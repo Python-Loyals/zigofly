@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2 d-flex justify-content-center mt-3 mt-md-0">
-                                            <div data-href="{{route('cart.quantity.update')}}" data-price="{{$item->model->price}}">
+                                            <div class="no-reroute" data-href="{{route('cart.quantity.update')}}" data-price="{{$item->model->price}}">
                                                 <span class="input-number-decrement">–</span>
                                                 <input class="input-number" type="text" value="{{$item->qty}}" min="1" max="10" readonly>
                                                 <span class="input-number-increment">+</span>

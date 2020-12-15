@@ -278,7 +278,7 @@ require('./bootstrap');
     console.log(Scrollbar)
     window.Scrollbar.default.initAll();
 
-    $('.card, div, td').on('click', function () {
+    $('.card, div, td').not('.no-reroute').on('click', function () {
         if ($(this).data('href')){
             window.location.href = $(this).data('href')
         }
