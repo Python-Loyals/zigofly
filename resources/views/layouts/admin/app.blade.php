@@ -32,14 +32,16 @@
     <!-- Main CSS-->
     <link href="{{asset('admin/css/theme.css')}}" rel="stylesheet" media="all">
 
+    <link rel="stylesheet" href="{{asset('admin/css/zigo.css')}}">
+
     @yield('styles')
 
 </head>
 
 <body class="animsition">
 <div class="page-wrapper">
-    @include('partials.customer.sidebar')
-    @include('partials.customer.chat')
+    @include('partials.admin.sidebar')
+{{--    @include('partials.customer.chat')--}}
     <div class="page-container">
     @include('partials.admin.navbar')
 

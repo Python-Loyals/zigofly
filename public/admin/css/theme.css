@@ -329,18 +329,18 @@ section {
 
 .page-wrapper {
     overflow: hidden;
-    background: #e5e5e5;
+    background: #fafafa;
 }
 
 @media (max-width: 991px) {
     .page-wrapper {
         overflow: auto;
-        background: #e5e5e5;
+        background: #fafafa;
     }
 }
 
 .page-container {
-    background: #e5e5e5;
+    background: #fafafa;
     padding-left: 250px;
 }
 
@@ -1696,7 +1696,7 @@ section {
     display: block;
     color: #f6f6f6;
     font-size: 16px;
-    padding: 15px 0;
+    padding: 12px 0;
 }
 
 .navbar-sidebar .navbar__list li a i {
@@ -3241,27 +3241,19 @@ noti__item .notifi__item .img-cir i {
 }
 
 .overview-item--c1 {
-    background-image: -moz-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-    background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
-    background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+    background-color: #072448;
 }
 
 .overview-item--c2 {
-    background-image: -moz-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-    background-image: -webkit-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-    background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+    background-color: #f8aa4b;
 }
 
 .overview-item--c3 {
-    background-image: -moz-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-    background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-    background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+    background-color: #ff6150;
 }
 
 .overview-item--c4 {
-    background-image: -moz-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-    background-image: -webkit-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
-    background-image: -ms-linear-gradient(90deg, #45b649 0%, #dce35b 100%);
+    background-color: #54d2d2;
 }
 
 .overview-box .icon {
@@ -4326,7 +4318,7 @@ noti__item .notifi__item .img-cir i {
 }
 
 .table-earning thead th {
-    background: #333;
+    background: #072448;
     font-size: 16px;
     color: #fff;
     vertical-align: middle;
@@ -4335,6 +4327,11 @@ noti__item .notifi__item .img-cir i {
     line-height: 1;
     padding: 22px 40px;
     white-space: nowrap;
+}
+
+.bg-theme{
+    background: #072448;
+    color: #fff;
 }
 
 .table-earning thead th.text-right {

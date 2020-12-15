@@ -1,14 +1,12 @@
 @extends('layouts.admin.app')
-@section('styles')
-    <link rel="stylesheet" href="{{asset('admin/css/zigo.css')}}">
-@endsection
 @section('content')
+
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <nav class="breadcrumb bg-transparent p-0 py-md-3 mb-2 mb-md-0" style="font-size: 14px;">
+                        <nav class="breadcrumb bg-transparent">
                             <a class="breadcrumb-item" href="/" aria-label="Home">
                                 <i class="fa fa-home"></i>
                             </a>
@@ -18,139 +16,329 @@
                     </div>
                     <div class="col-md-12">
                         <div class="overview-wrap">
-                            <p>Welcome, {{ucfirst(explode(' ', request()->user()->name)[0])}} &nbsp;
-                                <i class="fas fa-map-marker-alt"></i> {{\App\County::find(request()->user()->county)->name}}, Kenya
-                            </p>
+                            <p>Welcome, {{ucfirst(explode(' ', Auth::user()->name)[0])}} &nbsp;<i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
                         </div>
                     </div>
                 </div>
 
-                @include('partials.customer.boxes')
+                <div class="row m-t-25">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c1">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="row">
+                                        <h2 class="tex-2 align-items-center mx-auto pl-2 text-light"
+                                            style="font-size: 22px;">
+                                            USD 2,000
+                                        </h2>
+                                        <div class="icon ml-auto">
+                                            <img src="{{asset('admin/images/icon/sales.svg')}}" alt="US" width="50" height="75">
+                                        </div>
+                                    </div>
+                                    <div class="text text-uppercase d-flex">
+                                        <span>Revenues</span>
+                                        <span class="ml-auto text-warning"
+                                              style="text-transform: unset; font-size: 12px;">
+                                                    Last 12 months
+                                                </span>
+                                    </div>
+                                </div>
 
-                <div class="row slides">
-                    <div class="col-lg-11 col-md-12 col-sm-12 center w-100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c2">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="row">
+                                        <h2 class="tex-2 align-items-center mx-auto pl-3 text-light">
+                                            200
+                                        </h2>
+                                        <div class="icon ml-auto">
+                                            <img src="{{asset('admin/images/icon/goods.png')}}" alt="US" width="50" height="75">
+                                        </div>
+                                    </div>
+                                    <div class="text text-uppercase d-flex">
+                                        <span>Estimates</span>
+                                        <span class="ml-auto text-dark"
+                                              style="text-transform: unset; font-size: 12px;">
+                                                    Last 12 months
+                                                </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c3">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="row">
+                                        <h2 class="tex-2 align-items-center mx-auto pl-3 text-light">
+                                            100
+                                        </h2>
+                                        <div class="icon ml-auto">
+                                            <img src="{{asset('admin/images/icon/cart.svg')}}" alt="US" width="50" height="75">
+                                        </div>
+                                    </div>
+                                    <div class="text d-flex">
+                                        <span>ORDERS</span>
+                                        <span class="ml-auto text-warning"
+                                              style="text-transform: unset; font-size: 12px;">
+                                                    Last 12 months
+                                                </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c4">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="row">
+                                        <h2 class="tex-2 align-items-center mx-auto pl-3 text-light">
+                                            20
+                                        </h2>
+                                        <div class="icon ml-auto">
+                                            <img src="{{asset('admin/images/icon/group.png')}}" alt="US" width="50" height="75">
+                                        </div>
+                                    </div>
+                                    <div class="text d-flex">
+                                        <span>USERS</span>
+                                        <span class="ml-auto text-light"
+                                              style="text-transform: unset; font-size: 12px;">
+                                                    Last 12 months
+                                                </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
                         <div class="row">
-                            <div class="col-12 text-center my-2">
-                                <p class="h4 font-weight-light text-dark">What's New</p>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-3 p-2">
+                                            <div class="text-center">
+                                                <span style="font-size: 14px;">Customers</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    250
+                                                </h2>
+                                                <p class="text-success">
+                                                    + 2.5%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-3 p-2">
+                                            <div class="text-center">
+                                                <span style="font-size: 14px;">Orders</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    50
+                                                </h2>
+                                                <p class="text-danger">
+                                                    - 1.0%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- line 2 -->
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-3 p-2">
+                                            <div class="text-center">
+                                                <span style="font-size: 14px;">Shipments</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    5
+                                                </h2>
+                                                <p class="text-success">
+                                                    + 15%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-3 p-2">
+                                            <div class="text-center">
+                                                <span style="font-size: 14px;">Earnings</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    $2500
+                                                </h2>
+                                                <p class="text-success">
+                                                    + 5%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- line 3 -->
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-3 p-2">
+                                            <div class="text-center">
+                                                <span style="font-size: 14px;">A/C Receivables</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    15
+                                                </h2>
+                                                <p class="text-danger">
+                                                    + 15%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="shadow border bg-transparent rounded-10 border-dark m-2 my-3 p-1">
+                                            <div class="text-center">
+                                                <span style="font-size: 13px;">Packages Delivered</span><br>
+                                                <h2 class="text-2 text-theme">
+                                                    3000
+                                                </h2>
+                                                <p class="text-success">
+                                                    + 2.5%
+                                                </p>
+                                                <p class="text-last">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!--Carousel Wrapper-->
-                        <div id="carousel-example-1z" class="carousel slide carousel-fade  box w-100 rounded-10" data-ride="carousel">
-                            <!--Indicators-->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-                            </ol>
-                            <!--/.Indicators-->
-                            <!--Slides-->
-                            <div class="carousel-inner" role="listbox">
-                                <!--First slide-->
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100 rounded-10" src="https://ke.jumia.is/cms/2020/W38/KE_Grocery_Carrefour_0920_SB-(1).jpg" alt="First slide">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-6">
+                                <div class="col-12">
+                                    <div class="border shadow w-100 border-dark">
+                                        <div class="row mx-0">
+                                            <div class="col-md-6 border-md-right border-dark px-4 py-2">
+                                                <span style="font-size: 15px; color: #5f7187; font-weight: 500;">Revenue</span><br>
+                                                <h2 class="text-1 text-theme text-center py-2">
+                                                    $8,000
+                                                </h2>
+                                                <p class="text-success text-center py-1">
+                                                    + 2.5%
+                                                </p>
+                                                <p class="text-last text-center py-1">
+                                                    Last 30 days
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-6 border-dark px-4 py-2">
+                                                <span style="font-size: 15px; color: #5f7187; font-weight: 500;">Expenses</span><br>
+                                                <h2 class="text-1 text-theme text-center py-2">
+                                                    $3,000
+                                                </h2>
+                                                <p class="text-danger text-center py-1">
+                                                    -5%
+                                                </p>
+                                                <p class="text-last text-center py-1">
+                                                    Last 3 months
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--/First slide-->
-                                <!--Second slide-->
-                                <div class="carousel-item">
-                                    <img class="d-block w-100 rounded-10" src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/BlackFriday/Fuji_LPHero_BFWeek_en_US.jpg" alt="Second slide">
-                                </div>
-                                <!--/Second slide-->
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <img class="d-block w-100 rounded-10" src="https://ke.jumia.is/cms/2020/BlackFriday/Live/HP/W4/Tue/KE_BFLive_FreeShipping_SB-(1).png" alt="Third slide">
-                                </div>
-                                <!--/Third slide-->
-                            </div>
-                            <!--/.Slides-->
-                            <!--Controls-->
-                            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                            <!--/.Controls-->
-                        </div>
-                        <!--/.Carousel Wrapper-->
-                    </div>
-                </div>
-                <!-- ------------------------------------------------------------------------------------------>
-
-                {{--                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">--}}
-                {{--                    <div class="card product-group" data-href="{{route('products.category.search', 'men')}}">--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="mx-auto d-block">--}}
-                {{--                                <img class="rounded-circle mx-auto d-block" src="{{asset('account/images/covers/men1.jpg')}}" alt="Card image cap">--}}
-                {{--                                <h5 class="text-sm-center mt-2 mb-1">Men Clothing</h5>--}}
-                {{--                                <div class="cartegory-text d-none">--}}
-                {{--                                    Shop men Clothing from US and UK Stores</div>--}}
-                {{--                            </div>--}}
-                {{--                            <hr>--}}
-                {{--                            <div class="text-sm-center">--}}
-                {{--                                <a href="{{route('products.category.search', 'men')}}">--}}
-                {{--                                    <button type="button" class="btn btn-outline-secondary">Shop now</button></a>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-
-                @include('partials.customer.popular_categories')
-
-            <!------ -->
-                @if(Auth::user()->lastViewed)
-                    <div class="row  m-b-30">
-                        <div class="col-lg-12">
-                            <div class="au-card recent-report">
-                                <div class="row description px-3">
-                                    <div class="col-12">
-                                        <h4 class="fs-15 mb-2">Recently viewed products</h4>
-                                        <div class="row last-viewed">
-                                        @foreach(Auth::user()->lastViewed as $viewed)
-                                            @php($prod = $viewed->product)
-                                            <!-- product -->
-                                                <div class="col-sm-4 col-lg-3">
-                                                    <div class="card bg-white p-md-l-5 p-md-r-5 p-1">
-                                                        <a href="{{route('product.show', $prod->asin)}}" class="d-flex">
-                                                            <img class="card-img-top products product-image mx-auto mt-2 img-fluid" src="{{$prod->images[0]->link}}" alt="iPhone X">
-                                                        </a>
-                                                        <div class="card-body px-1 pb-2">
-                                                            <a href="{{route('product.show', $prod->asin)}}" class="w-100 card-title product-title" style="font-size: 16px!important;color: #0066c0;">{{$prod->title}}</a>
-                                                            <div class="rating mb-1">
-                                                                <div class="stars">
-                                                                    @php($rating = (int) $prod->rating)
-                                                                    @for($i = 0; $i < 5; $i++)
-                                                                        <span class="fa fa-star {{$i < $rating ? 'checked': ''}}"></span>
-                                                                    @endfor
-
-                                                                    <span class="small reviews pl-2"> ({{$prod->total_reviews}})</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6 col-lg-12">
-                                                                    <div class="price text-success">
-                                                                        <h5 class="mt-2 ml-1">$ {{$prod->price}}</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-lg-12">
-                                                                    <a href="{{route('product.show', $prod->asin)}}" class="btn btn-block orange mt-3 text-light">View Details</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                <!-- line 2 -->
+                                <div class="col-12 mt-4">
+                                    <div class="border shadow w-100 border-dark border-right-radius">
+                                        <div class="row mx-0">
+                                            <div class="col-md-6 border-md-right border-dark px-2 py-2">
+                                                        <span style="font-size: 14px; color: #5f7187; font-weight: 500;">
+                                                            Top customers by revenue
+                                                        </span><br>
+                                                <div class="d-flex py-1">
+                                                    <p class="text-left">
+                                                        1. Wemo Kitawa
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $2000
+                                                            </span>
                                                 </div>
-                                                <!-- */product -->
-                                            @endforeach
+
+                                                <div class="d-flex py-1">
+                                                    <p class="text-left">
+                                                        2. Basil Malaki
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $1500
+                                                            </span>
+                                                </div>
+
+                                                <div class="d-flex py-1">
+                                                    <p class="text-left">
+                                                        3. Sharon Bosibori
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $1000
+                                                            </span>
+                                                </div>
+
+                                                <div class="d-flex py-1">
+                                                    <p class=" text-left">
+                                                        4. Milton Onyiro
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $500
+                                                            </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 border-dark px-2 py-2">
+                                                        <span style="font-size: 14px; color: #5f7187; font-weight: 500;">
+                                                            Top Employees by revenue
+                                                        </span><br>
+                                                <div class="d-flex py-1">
+                                                    <p class="text-left">
+                                                        1. Leah Wambui
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $2500
+                                                            </span>
+                                                </div>
+
+                                                <div class="d-flex py-1">
+                                                    <p class="text-left">
+                                                        2. James Omariba
+                                                    </p>
+                                                    <span class="text-success ml-auto">
+                                                                $1500
+                                                            </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
 
             </div>
         </div>
     </div>
+
 @endsection
