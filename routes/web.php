@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'],func
     //Login Routes
     Route::get('/login','LoginController@showAdminLoginForm');
     Route::post('/login','LoginController@adminLogin')->name('login');
-    Route::get('/logout','LoginController@adminLogout')->name('logout');
+    Route::post('/logout','LoginController@adminLogout')->name('logout');
 
     //Forgot Password Routes
     Route::get('/password/reset','Admin\ForgotPasswordController@showLinkRequestForm')->name('password.request');

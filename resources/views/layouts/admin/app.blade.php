@@ -28,6 +28,7 @@
     <link href="{{asset('css/animate/animate.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('account/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('account/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('account/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="{{asset('admin/css/theme.css')}}" rel="stylesheet" media="all">
@@ -53,7 +54,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    <p>Copyright © {{date('Y')}} Zigofly. All rights reserved. <a href="https://zigofly.com">Zigofly Kenya Ltd</a>.</p>
+                    <p>Copyright © {{date('Y')}} {{trans('panel.site_title')}}. All rights reserved. <a href="https://zigofly.com">Zigofly Kenya Ltd</a>.</p>
                 </div>
             </div>
         </div>
