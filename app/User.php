@@ -93,6 +93,6 @@ class User extends Authenticatable
 
     public function userQuotes()
     {
-        return $this->hasMany(Quote::class, 'customer_id');
+        return $this->hasMany(Quote::class, 'customer_id')->orderBy('id', 'DESC');
     }
 }

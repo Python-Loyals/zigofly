@@ -44,6 +44,6 @@ class QuotesController extends Controller
             });
         }
 
-        return redirect()->route('customer.users.quotes');
+        return redirect()->back();
     }
 }

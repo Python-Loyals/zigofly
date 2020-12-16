@@ -208,7 +208,7 @@
                                             @foreach($quotes as $quote)
                                                 <tr>
                                                     <td class="text-center">{{\Carbon\Carbon::parse($quote->created_at)->format('jS M, Y')}}</td>
-                                                    <td class="text-center"><strong>ZFQ-{{$quote->id}}</strong></td>
+                                                    <td class="text-center"><strong>ZFQ-{{sprintf("%04d",$quote->id)}}</strong></td>
                                                     <td class="text-center">
                                                         {{$quote->amount}}
                                                         @if($quote->amount)
