@@ -29,9 +29,11 @@ class QuotesController extends Controller
 
         $quote = Quote::create($request->except(['products', 'attachments']));
 
-        $quote->addMultipleMediaFromRequest(['attachments'])->each(function ($fileReader){
-            $fileReader->toMediaCollection('attachment');
-        });
+        if ($request->has('attachments')){
+            $quote->addMultipleMediaFromRequest(['attachments'])->each(function ($fileReader){
+                $fileReader->toMediaCollection('attachment');
+            });
+        }
 
         return redirect()->route('customer.users.quotes');
     }
