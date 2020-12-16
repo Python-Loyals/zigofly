@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreQuoteRequest;
 use App\Quote;
+use App\QuoteProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,8 @@ class QuotesController extends Controller
 
     public function index()
     {
-        return view('customer.quotes.index');
+        $quotes = Auth::user()->userQuotes;
+        return view('customer.quotes.index', compact('quotes'));
     }
 
     public function store(StoreQuoteRequest $request)
@@ -28,6 +30,13 @@ class QuotesController extends Controller
         }
 
         $quote = Quote::create($request->except(['products', 'attachments']));
+
+        $products = $request->get('products');
+
+        foreach ($products as $product) {
+            $product['quote_id'] = $quote->id;
+            QuoteProduct::create($product);
+        }
 
         if ($request->has('attachments')){
             $quote->addMultipleMediaFromRequest(['attachments'])->each(function ($fileReader){

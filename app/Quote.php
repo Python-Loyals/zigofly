@@ -46,5 +46,14 @@ class Quote extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function products()
+    {
+        return $this->hasMany(QuoteProduct::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

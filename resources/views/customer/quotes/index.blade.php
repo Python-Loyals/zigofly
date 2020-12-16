@@ -204,14 +204,28 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="text-center">1st June 2020</td>
-                                            <td class="text-center"><strong>ZFQ-001</strong></td>
-                                            <td class="text-center">
-                                                $312.00
-                                                <a href="" class="paybtn btn btn-warning btn-sm">pay</a>
-                                            </td>
-                                        </tr>
+                                        @if(isset($quotes))
+                                            @foreach($quotes as $quote)
+                                                <tr>
+                                                    <td class="text-center">{{\Carbon\Carbon::parse($quote->created_at)->format('jS M, Y')}}</td>
+                                                    <td class="text-center"><strong>ZFQ-{{$quote->id}}</strong></td>
+                                                    <td class="text-center">
+                                                        {{$quote->amount}}
+                                                        @if($quote->amount)
+                                                            <a href="#" class="paybtn btn btn-warning btn-sm">pay</a>
+                                                        @else
+                                                            <a href="" class="paybtn btn btn-warning btn-sm pt-1">Pending</a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="3" class="text-center">
+                                                    No Quotes
+                                                </td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

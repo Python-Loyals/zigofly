@@ -90,4 +90,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(LastViewedProduct::class, 'user_id')->orderBy('updated_at');
     }
+
+    public function userQuotes()
+    {
+        return $this->hasMany(Quote::class, 'customer_id');
+    }
 }
