@@ -170,7 +170,7 @@
                                         <div class="col-md-4 order-0 order-md-1 quote pt-3">
                                             <div class="custom-control custom-checkbox mb-1">
                                                 <input type="checkbox" checked class="custom-control-input checkbox" id="buy_ship" name="buy_ship">
-                                                <label class="custom-control-label" for="b_Ship">Buy & Ship</label>
+                                                <label class="custom-control-label" for="buy_ship">Buy & Ship</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mb-1">
                                                 <input type="checkbox" class="custom-control-input checkbox" id="ship" name="ship">
@@ -204,7 +204,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(isset($quotes))
+                                        @if(isset($quotes) && count($quotes) > 0)
                                             @foreach($quotes as $quote)
                                                 <tr>
                                                     <td class="text-center">{{\Carbon\Carbon::parse($quote->created_at)->format('jS M, Y')}}</td>

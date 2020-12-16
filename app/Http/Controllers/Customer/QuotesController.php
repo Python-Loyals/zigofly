@@ -25,7 +25,7 @@ class QuotesController extends Controller
         $request['customer_id'] = Auth::user()->id;
         if ($request->input('buy_ship')){
             $request['service'] = 2;
-        }else if ($request->input('buy')){
+        }else if ($request->input('ship')){
             $request['service'] = 2;
         }
 
