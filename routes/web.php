@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 
 Route::redirect('/', '/login');
 Route::get('/home', function () {
