@@ -69,9 +69,9 @@
 
                                 @foreach($quote->getMedia('attachment') as $attachment)
                                     <div class="file col-12">
-                                        <div class="field">
+                                        <a href="{{$attachment->getFullUrl()}}" download class="field">
                                             <i class="fa fa-download"></i>
-                                        </div>
+                                        </a>
                                         <div class="text">
                                             <i class="fa fa-file{{str_contains($attachment->mime_type, 'image/') ? '-image':''}} icon"></i>
                                             <span class="filename">{{$attachment->name}}</span>

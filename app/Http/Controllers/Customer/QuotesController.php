@@ -26,7 +26,7 @@ class QuotesController extends Controller
         if ($request->input('buy_ship')){
             $request['service'] = 2;
         }else if ($request->input('ship')){
-            $request['service'] = 2;
+            $request['service'] = 1;
         }
 
         $quote = Quote::create($request->except(['products', 'attachments']));
