@@ -39,11 +39,25 @@ class QuotesController extends Controller
         }
 
         if ($request->has('attachments')){
-            $quote->addMultipleMediaFromRequest(['attachments'])->each(function ($fileReader){
-                $fileReader->toMediaCollection('attachment');
+            $attachments = $request->allFiles()['attachments'];
+
+            $quote->addMultipleMediaFromRequest(['attachments'])->each(function ($fileReader, $i) use ($attachments){
+                $fileReader->preservingOriginal()
+                    ->usingFileName($attachments[$i]->hashName())
+                    ->toMediaCollection('attachment');
             });
         }
 
         return redirect()->back();
+    }
+
+    public function show($quote_id)
+    {
+        $quote = Auth::user()->userQuotes()->find($quote_id);
+        if (!$quote){
+            return redirect()->route('customer.users.quotes');
+        }
+        $quote->load(['products']);
+        return view('customer.quotes.details', compact('quote'));
     }
 }

@@ -46,6 +46,7 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
     //customer quotes
     Route::get('quotes', 'QuotesController@index')->name('users.quotes');
     Route::post('quote', 'QuotesController@store')->name('users.quotes.store');
+    Route::get('quote/{id}', 'QuotesController@show')->name('users.quotes.show');
 
     Route::get('calculator', function (){
         return view('customer.rate_calculator.index');

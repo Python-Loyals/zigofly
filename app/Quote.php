@@ -46,6 +46,18 @@ class Quote extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function getAttachmentsAttribute()
+    {
+        $files = $this->getMedia('attachment');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
+
+        return $files;
+    }
+
     public function products()
     {
         return $this->hasMany(QuoteProduct::class);

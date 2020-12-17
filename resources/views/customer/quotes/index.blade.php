@@ -42,7 +42,6 @@
                                             <td class="my-label">Quantity</td>
                                             <td class="my-label">Color/Size/Options</td>
                                         </tr>
-                                        @php(print_r($errors))
                                         @if(count(old()) > 0)
                                             @php($i = 0)
                                             @foreach(old('products') as $row)
@@ -164,7 +163,12 @@
                                     <div class="form-row px-3">
                                         <div class="col-md-8 order-1">
                                             <label class="fs-14 my-label">Special/other instructions (Leave blank if none)</label>
-                                            <textarea class="form-control form-control-sm mb-1" name="instructions" rows="4"></textarea>
+                                            <textarea class="form-control form-control-sm mb-1 {{ $errors->has('instructions') ? 'is-invalid' : '' }}" name="instructions" rows="4"></textarea>
+                                            @if($errors->has('instructions'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('instructions') }}
+                                                </div>
+                                            @endif
                                         </div>
 
                                         <div class="col-md-4 order-0 order-md-1 quote pt-3">
@@ -201,16 +205,21 @@
                                             <th class="text-center" style="font-size: 13px;">Date</th>
                                             <th class="text-center" style="font-size: 13px;">Quote ID</th>
                                             <th class="text-center" style="font-size: 13px;">Amount</th>
+                                            <th class="text-center" style="font-size: 13px;"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @if(isset($quotes) && count($quotes) > 0)
-                                            @foreach($quotes as $quote)
+                                            @foreach($quotes as $i => $quote)
                                                 <tr>
                                                     <td class="text-center">{{\Carbon\Carbon::parse($quote->created_at)->format('jS M, Y')}}</td>
-                                                    <td class="text-center"><strong>ZFQ-{{sprintf("%04d",$quote->id)}}</strong></td>
                                                     <td class="text-center">
-                                                        {{$quote->amount}}
+                                                        <a href="{{route('customer.users.quotes.show', $quote->id)}}">ZFQ-{{sprintf("%04d",$quote->id)}}</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{$quote->amount?? '__'}}
+                                                    </td>
+                                                    <td>
                                                         @if($quote->amount)
                                                             <a href="#" class="paybtn btn btn-warning btn-sm">pay</a>
                                                         @else
