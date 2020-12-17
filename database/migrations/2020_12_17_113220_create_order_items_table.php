@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuoteProductsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateQuoteProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quote_products', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('link');
+            $table->integer('order_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->integer('quantity');
-            $table->string('options');
-            $table->integer('quote_id')->unsigned();
-            $table->float('price', 10, 2)->nullable();
-            $table->string('comment', 500)->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
+            $table->string('other_options', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('quote_id')->on('quotes')->references('id');
         });
     }
 
@@ -36,6 +33,6 @@ class CreateQuoteProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quote_products');
+        Schema::dropIfExists('order_items');
     }
 }

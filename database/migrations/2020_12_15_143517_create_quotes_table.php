@@ -20,6 +20,7 @@ class CreateQuotesTable extends Migration
             $table->multiLineString('instructions')->nullable();
             $table->decimal('amount', 10, 2)->nullable();
             $table->integer('customer_id')->unsigned();
+            $table->integer('quoted_by')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
 

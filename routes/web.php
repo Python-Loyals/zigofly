@@ -39,9 +39,10 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
     })->name('users.shipments');
 
     //Customer Orders
-    Route::get('orders', function (){
-        return view('customer.orders.index');
-    })->name('users.orders');
+    Route::group(['as' => 'users.'], function (){
+        Route::get('orders', 'OrdersController@index')->name('orders');
+        Route::get('orders/store', 'OrdersController@store')->name('orders.store');
+    });
 
     //customer quotes
     Route::get('quotes', 'QuotesController@index')->name('users.quotes');

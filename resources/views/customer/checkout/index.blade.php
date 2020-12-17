@@ -107,7 +107,11 @@
                             </div>
                         </div>
 
-                        <button id="osh-opc-btn-save" class="osh-btn -p-l ft-save-and-continue-button  -full-width mt-4">  <span class="label ">Proceed to next step</span>    </button>
+                        <a href="{{route('customer.users.orders.store')}}" class="w-100">
+                            <button id="osh-opc-btn-save" class="osh-btn -p-l ft-save-and-continue-button  -full-width mt-4">
+                                <span class="label ">Proceed to next step</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
