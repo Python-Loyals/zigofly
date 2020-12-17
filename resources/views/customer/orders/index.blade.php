@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
 
-                                @if(isset($orders))
+                                @if(isset($orders) && count($orders) > 0)
                                     @foreach($orders as $i => $order)
                                         <tr>
                                             <td class="text-center">{{$i+1}}</td>
@@ -64,6 +64,10 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="7" class="text-center">No previos orders</td>
+                                    </tr>
                                 @endif
 
                                 </tbody>
