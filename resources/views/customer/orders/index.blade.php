@@ -45,42 +45,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="text-center">1.</td>
-                                    <td class="text-center">2020-08-29</td>
-                                    <td class="text-center card-title">ZF0000001US</td>
-                                    <td class="text-center">amazon.com</td>
-                                    <td class="text-center">1456876</td>
-                                    <td class="text-center card-title">ZF-US-5487</td>
-                                    <td class="text-center text-success">Delivered</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2.</td>
-                                    <td class="text-center">2020-09-05</td>
-                                    <td class="text-center">ZF0000002UK</td>
-                                    <td class="text-center">shopyfy.com</td>
-                                    <td class="text-center">890000</td>
-                                    <td class="text-center card-title">ZF-UK-5487</td>
-                                    <td class="text-center text-warning">Shipped</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3.</td>
-                                    <td class="text-center">2020-08-29</td>
-                                    <td class="text-center card-title">ZF0000001US</td>
-                                    <td class="text-center">shopyfy.com</td>
-                                    <td class="text-center">1456876</td>
-                                    <td class="text-center card-title">ZF-US-5487</td>
-                                    <td class="text-center text-success">Delivered</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4.</td>
-                                    <td class="text-center">2020-09-05</td>
-                                    <td class="text-center">ZF0000002UK</td>
-                                    <td class="text-center">shopyfy.com</td>
-                                    <td class="text-center">890000</td>
-                                    <td class="text-center card-title">ZF-UK-5487</td>
-                                    <td class="text-center text-warning">Shipped</td>
-                                </tr>
+
+                                @if(isset($orders))
+                                    @foreach($orders as $i => $order)
+                                        <tr>
+                                            <td class="text-center">{{$i+1}}</td>
+                                            <td class="text-center">{{\Carbon\Carbon::parse($order->created_at)->format('Y-m-d')}}</td>
+                                            <td class="text-center card-title">ZF{{sprintf('%07d',$order->id)}}US</td>
+                                            <td class="text-center">amazon.com</td>
+                                            <td class="text-center">${{$order->total}}</td>
+                                            <td class="text-center card-title">ZF-US-{{sprintf('%04d',$order->id)}}</td>
+                                            <td class="text-center text-success">
+                                                @switch($order->status)
+                                                    @case(1)
+                                                        Pending
+                                                        @break
+                                                @endswitch
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                                 </tbody>
                             </table>

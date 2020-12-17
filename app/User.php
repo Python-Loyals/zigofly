@@ -95,4 +95,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Quote::class, 'customer_id')->orderBy('id', 'DESC');
     }
+
+    public function userOrders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
 }

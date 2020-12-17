@@ -28,7 +28,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('customer.orders.index');
+        $orders = Auth::user()->userOrders;
+        return view('customer.orders.index', compact('orders'));
     }
 
     /**
