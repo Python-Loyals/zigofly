@@ -58,6 +58,6 @@ class QuotesController extends Controller
             return redirect()->route('customer.users.quotes');
         }
         $quote->load(['products']);
-        return view('customer.quotes.details', compact('quote'));
+        return view('customer.quotes.show', compact('quote'));
     }
 }

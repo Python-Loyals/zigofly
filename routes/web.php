@@ -42,6 +42,7 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
     Route::group(['as' => 'users.'], function (){
         Route::get('orders', 'OrdersController@index')->name('orders');
         Route::get('orders/store', 'OrdersController@store')->name('orders.store');
+        Route::get('order/{order_id}', 'OrdersController@show')->name('orders.show');
     });
 
     //customer quotes

@@ -91,9 +91,18 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($orderId)
     {
-        //
+        $order = Auth::user()->userOrders()->find($orderId);
+
+//        return $order;
+
+        if (!$order){
+            return redirect()->route('customer.users.orders');
+        }
+        $order->load(['orderItems']);
+
+        return view('customer.orders.show',compact('order'));
     }
 
     /**

@@ -51,7 +51,7 @@
                                         <tr>
                                             <td class="text-center">{{$i+1}}</td>
                                             <td class="text-center">{{\Carbon\Carbon::parse($order->created_at)->format('Y-m-d')}}</td>
-                                            <td class="text-center card-title">ZF{{sprintf('%07d',$order->id)}}US</td>
+                                            <td class="text-center card-title" data-href="{{route('customer.users.orders.show', $order->id)}}">ZF{{sprintf('%07d',$order->id)}}US</td>
                                             <td class="text-center">amazon.com</td>
                                             <td class="text-center">${{$order->total}}</td>
                                             <td class="text-center card-title">ZF-US-{{sprintf('%04d',$order->id)}}</td>
