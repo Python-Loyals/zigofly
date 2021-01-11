@@ -161,7 +161,7 @@
                                 @forelse($orders as $i => $order)
                                     <tr>
                                         <td class="text-center">{{$i + 1}} .</td>
-                                        <td class="text-center">{{$order->customer->name}}</td>
+                                        <td class="text-center">{{$order->customer->name ?? ''}}</td>
                                         <th class="text-center card-title">ZF-US-{{sprintf('%04d',$order->id)}}</th>
                                         <td class="text-center text-success">
                                             @switch($order->status)
@@ -200,7 +200,7 @@
                                 @forelse($quotes as $i => $quote)
                                     <tr>
                                         <td class="text-center">{{$i + 1}} .</td>
-                                        <td class="text-center">{{$quote->user->name}}</td>
+                                        <td class="text-center">{{$quote->user->name ?? ''}}</td>
                                         <th class="text-center card-title">ZFQ-{{sprintf('%04d',$quote->id)}}</th>
                                         <td class="text-center text-success">
                                             @switch($order->status)
