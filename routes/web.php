@@ -117,4 +117,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'],func
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:admin']], function () {
     Route::get('home', 'HomeController@index')->name('home');
+
+    // Users
+//    Route::delete('customers/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::resource('customers', 'CustomersController');
 });

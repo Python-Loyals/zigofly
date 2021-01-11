@@ -81,9 +81,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    public function age()
+    public function userAge()
     {
-        $this->belongsTo(Age::class, 'age');
+        return $this->belongsTo(Age::class, 'age');
+    }
+
+    public function userCounty()
+    {
+       return $this->belongsTo(County::class, 'county');
     }
 
     public function lastViewed()

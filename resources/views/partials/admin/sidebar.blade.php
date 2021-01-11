@@ -19,7 +19,7 @@
                         <i class="fas fa-tachometer-alt"></i>Dashboard
                     </a>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.customers.index')}}">
                         <img alt="Shipments" class="pr-1" width="27" height="27"
                              src="{{asset('admin/images/icon/group.png')}}">Customers
                     </a>
