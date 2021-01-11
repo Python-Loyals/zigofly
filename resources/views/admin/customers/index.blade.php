@@ -1,4 +1,10 @@
 @extends('layouts.admin.app')
+@section('styles')
+    @parent
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
+@endsection
 @section('content')
 
     <div class="main-content">
@@ -26,10 +32,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Customers TABLE --->
-                        <div class="table-responsive table--no-card m-b-30">
+                        <div class="table--no-card m-b-30">
                             <table class="table table-borderless table-striped table-earning">
                                 <thead>
                                 <tr>
+                                    <th width="10">
+
+                                    </th>
                                     <th>#</th>
                                     <th>Customer</th>
                                     <th>Email</th>
@@ -42,7 +51,10 @@
                                 </thead>
                                 <tbody>
                                 @forelse($customers as $i => $customer)
-                                    <tr>
+                                    <tr data-entry-id="{{ $customer->id }}">
+                                        <td>
+
+                                        </td>
                                         <td>{{$i + 1}}</td>
                                         <td>{{$customer->name ?? ''}}</td>
                                         <td>{{$customer->email ?? ''}}</td>
@@ -81,50 +93,66 @@
 @endsection
 @section('scripts')
 @parent
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+        let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+        let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+        let deleteButton = {
+            text: deleteButtonTrans,
+            url: "{{ route('customer.users.massDestroy') }}",
+            className: 'btn-danger',
+            action: function (e, dt, node, config) {
+                var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+                    return $(entry).data('entry-id')
+                });
 
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('customer.users.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
-      });
+                if (ids.length === 0) {
+                    alert('{{ trans('global.datatables.zero_selected') }}')
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+                    return
+                }
 
-        return
-      }
+                if (confirm('{{ trans('global.areYouSure') }}')) {
+                    $.ajax({
+                        headers: {'x-csrf-token': _token},
+                        method: 'POST',
+                        url: config.url,
+                        data: { ids: ids, _method: 'DELETE' }})
+                        .done(function () { location.reload() })
+                }
+            }
+        }
+        dtButtons.push(deleteButton)
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  dtButtons.push(deleteButton)
+        $.extend(true, $.fn.dataTable.defaults, {
+            orderCellsTop: true,
+            order: [[ 1, 'desc' ]],
+            pageLength: 10,
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0
+            }, {
+                orderable: false,
+                searchable: false,
+                targets: -1
+            }],
+            select: {
+                style: 'multi+shift',
+                selector: 'td:first-child'
+            },
+            scrollX: true,
+            dom: 'lBfrtip<"actions">',
+            buttons: dtButtons
+        });
 
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  });
-  let table = $('.table-earning:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
+        let table = $('.table-earning:not(.ajaxTable)').DataTable()
 
-})
+        console.log(table)
+    })
 
 </script>
 @endsection
