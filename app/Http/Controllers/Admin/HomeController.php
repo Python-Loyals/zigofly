@@ -15,8 +15,8 @@ class HomeController extends Controller
         if(Auth::user()->id == 1){
             return view('admin.home.index');
         }else{
-            $orders = Order::all();
-            $quotes = Quote::all();
+            $orders = Order::all()->take(5);
+            $quotes = Quote::all()->take(5);
             return view('admin.home.index2', compact('orders', 'quotes'));
         }
     }
