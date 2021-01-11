@@ -14,9 +14,9 @@ class AdminsTableSeeder extends Seeder
     {
         $admins = [
             [
-                'name' => 'Kimani Macharia',
-                'email'          => 'kim@gmail.com',
-                'phone'          => '254712345678',
+                'name' => 'Leah Wambui',
+                'email'          => 'admin@admin.com',
+                'phone'          => '254712345679',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
             ]

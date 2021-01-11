@@ -19,7 +19,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-9 col-12 -fs-14">
+            <div class="col-md-9 col-12 -fs-14 shadow">
                 <section class="bg-white color-default -pbxl -rad -shad -ofy-a">
                     <div class="st p-3 pb-1 text-uppercase">Order Summary</div>
                     <div class="hdr -plm -prm -ptl -pbl -flex -vh-center"><span class="text-uppercase -pan -mrxxs">

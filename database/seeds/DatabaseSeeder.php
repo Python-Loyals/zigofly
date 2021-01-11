@@ -7,14 +7,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            PermissionsTableSeeder::class,
-            RolesTableSeeder::class,
-            PermissionRoleTableSeeder::class,
-            AgesTableSeeder::class,
-            CountiesTableSeeder::class,
-            UsersTableSeeder::class,
-            RoleUserTableSeeder::class,
-            CountriesTableSeeder::class,
+//            PermissionsTableSeeder::class,
+//            RolesTableSeeder::class,
+//            PermissionRoleTableSeeder::class,
+//            AgesTableSeeder::class,
+//            CountiesTableSeeder::class,
+//            UsersTableSeeder::class,
+//            RoleUserTableSeeder::class,
+//            CountriesTableSeeder::class,
             AdminsTableSeeder::class,
         ]);
     }
