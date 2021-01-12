@@ -42,8 +42,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <img alt="Orders" class="pr-1" width="25" height="25" src="{{asset('admin/images/icon/cart.svg')}}">Orders
+                    <a href="{{route('admin.customers.index')}}">
+                        <img alt="Orders" class="pr-1" width="25" height="25"
+                             src="{{asset('admin/images/icon/cart.svg')}}">Orders
                     </a>
                 </li>
                 <li>

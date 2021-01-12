@@ -59,7 +59,7 @@
                                         <td>{{$i + 1}}</td>
                                         <td>ZF{{sprintf('%07d',$order->id)}}US</td>
                                         <td>{{$order->customer->name ?? ''}}</td>
-                                        <td>{{$order->customer->phone ?? ''}}</td>
+                                        <td>{{$order->customer->email ?? ''}}</td>
                                         <td>${{$order->total ?? ''}}</td>
                                         <td>ZF-US-{{sprintf('%04d',$order->id)}}</td>
                                         <td>
