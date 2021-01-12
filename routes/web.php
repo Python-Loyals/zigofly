@@ -102,7 +102,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Auth'],function(){
 
     //Login Routes
-    Route::get('/login','LoginController@showAdminLoginForm');
+    Route::get('/login','LoginController@showAdminLoginForm')->name('admin-login');
     Route::post('/login','LoginController@adminLogin')->name('login');
     Route::post('/logout','LoginController@adminLogout')->name('logout');
 
@@ -124,5 +124,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('customers', 'CustomersController');
 
     //Customer orders
+    Route::get('order/{order_id}/order-items', 'OrdersController@orderItems')->name('order-items');
     Route::resource('orders', 'OrdersController');
 });

@@ -84,4 +84,11 @@ class OrdersController extends Controller
     {
         //
     }
+
+    public function orderItems($order_id)
+    {
+        $order = Order::findOrFail($order_id);
+        $order->load('orderItems');
+        return view('admin.orders.order-items', compact('order'));
+    }
 }

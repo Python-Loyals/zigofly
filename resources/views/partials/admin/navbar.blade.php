@@ -18,7 +18,7 @@
                     </button>
                     <div class="noti-wrap ml-auto mr-4">
                         <div class="noti__item js-item-menu">
-                            <img src="images/icon/notification.png" height="20" width="20" />
+                            <img src="{{asset('admin/images/icon/notification.png')}}" height="20" width="20" />
                             <span class="quantity">3</span>
                             <div class="notifi-dropdown js-dropdown">
                                 <div class="notifi__title">
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="noti__item js-item-menu">
-                            <img src="images/icon/email.png" width="20" height="20" />
+                            <img src="{{asset('admin/images/icon/email.png')}}" width="20" height="20" />
                             <span class="quantity">1</span>
                             <div class="email-dropdown js-dropdown">
                                 <div class="email__title">

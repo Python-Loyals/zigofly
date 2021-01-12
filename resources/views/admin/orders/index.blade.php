@@ -57,7 +57,7 @@
 
                                         </td>
                                         <td>{{$i + 1}}</td>
-                                        <td>ZF{{sprintf('%07d',$order->id)}}US</td>
+                                        <td data-href="{{route('admin.order-items', $order->id)}}" >ZF{{sprintf('%07d',$order->id)}}US</td>
                                         <td>{{$order->customer->name ?? ''}}</td>
                                         <td>{{$order->customer->email ?? ''}}</td>
                                         <td>${{$order->total ?? ''}}</td>
