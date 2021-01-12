@@ -12,8 +12,8 @@
                             <a class="breadcrumb-item" href="/" aria-label="Home">
                                 <i class="fa fa-home"></i>
                             </a>
-                            <a class="breadcrumb-item" href="#">Customer Dashboard</a>
-                            <a class="breadcrumb-item" href="#">Orders</a>
+                            <a class="breadcrumb-item" href="#">Admin Pane</a>
+                            <a class="breadcrumb-item" href="#">Customer Orders</a>
                         </nav>
                     </div>
                     <div class="col-12">

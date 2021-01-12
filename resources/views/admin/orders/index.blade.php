@@ -17,7 +17,7 @@
                                 <i class="fa fa-home"></i>
                             </a>
                             <a class="breadcrumb-item" href="#">Admin Panel</a>
-                            <a class="breadcrumb-item" href="#">Dashboard</a>
+                            <a class="breadcrumb-item" href="#">Customers</a>
                         </nav>
                     </div>
                     <div class="col-md-12">
@@ -62,6 +62,7 @@
                                         <td>{{$order->customer->phone ?? ''}}</td>
                                         <td>${{$order->total ?? ''}}</td>
                                         <td>ZF-US-{{sprintf('%04d',$order->id)}}</td>
+                                        <td>
                                             @switch($order->status)
                                                 @case(1)
                                                 Pending
