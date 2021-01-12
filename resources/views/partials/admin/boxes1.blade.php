@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-lg-3">
-        <div class="overview-item overview-item--c3">
+        <div class="overview-item overview-item--c3" data-href="{{route('admin.orders.index')}}">
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="row">
