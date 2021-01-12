@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.customers.index')}}">
+                    <a href="{{route('admin.orders.index')}}">
                         <img alt="Orders" class="pr-1" width="25" height="25"
                              src="{{asset('admin/images/icon/cart.svg')}}">Orders
                     </a>
