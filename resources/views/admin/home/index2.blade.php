@@ -78,11 +78,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($orders as $i => $order)
+                                @php($i = 0)
+                                @forelse($orders as $order)
+                                    @php($i++)
                                     <tr>
-                                        <td class="text-center">{{$i + 1}} .</td>
+                                        <td class="text-center">{{$i}} .</td>
                                         <td class="text-center">{{$order->customer->name ?? ''}}</td>
-                                        <th class="text-center card-title">ZF-US-{{sprintf('%04d',$order->id)}}</th>
+                                        <td class="text-center font-weight-bold text-dark" data-href="{{route('admin.orders.show', $order->id)}}">ZF-US-{{sprintf('%04d',$order->id)}}</td>
                                         <td class="text-center text-success">
                                             @switch($order->status)
                                                 @case(1)
@@ -117,9 +119,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($quotes as $i => $quote)
+                                @php($i = 0)
+                                @forelse($quotes as $quote)
+                                    @php($i++)
                                     <tr>
-                                        <td class="text-center">{{$i + 1}} .</td>
+                                        <td class="text-center">{{$i}} .</td>
                                         <td class="text-center">{{$quote->user->name ?? ''}}</td>
                                         <th class="text-center card-title">ZFQ-{{sprintf('%04d',$quote->id)}}</th>
                                         <td class="text-center text-success">

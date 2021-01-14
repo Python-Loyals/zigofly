@@ -42,7 +42,6 @@
                                     <th class="text-center">#</th>
                                     <th class="text-center">Order ID</th>
                                     <th class="text-center">Customer</th>
-                                    <th class="text-center">Customer Email</th>
                                     <th class="text-center">Amount</th>
                                     <th class="text-center">Tracking #</th>
                                     <th class="text-center">Status</th>
@@ -57,9 +56,8 @@
 
                                         </td>
                                         <td>{{$i + 1}}</td>
-                                        <td data-href="{{route('admin.order-items', $order->id)}}" >ZF{{sprintf('%07d',$order->id)}}US</td>
-                                        <td>{{$order->customer->name ?? ''}}</td>
-                                        <td>{{$order->customer->email ?? ''}}</td>
+                                        <td data-href="{{route('admin.orders.show', $order->id)}}" class="font-weight-bold text-dark" >ZF{{sprintf('%07d',$order->id)}}US</td>
+                                        <td data-href="{{route('admin.customers.show', $order->customer->id)}}">{{$order->customer->name ?? ''}}</td>
                                         <td>${{$order->total ?? ''}}</td>
                                         <td>ZF-US-{{sprintf('%04d',$order->id)}}</td>
                                         <td>
@@ -137,7 +135,7 @@
 
             $.extend(true, $.fn.dataTable.defaults, {
                 orderCellsTop: true,
-                order: [[ 1, 'desc' ]],
+                order: [[ 1, 'asc' ]],
                 pageLength: 10,
                 columnDefs: [{
                     orderable: false,

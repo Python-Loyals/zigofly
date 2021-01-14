@@ -46,9 +46,11 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order_id)
     {
-        //
+        $order = Order::findOrFail($order_id);
+        $order->load('orderItems');
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -83,12 +85,5 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function orderItems($order_id)
-    {
-        $order = Order::findOrFail($order_id);
-        $order->load('orderItems');
-        return view('admin.orders.order-items', compact('order'));
     }
 }
