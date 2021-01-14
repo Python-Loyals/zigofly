@@ -85,12 +85,20 @@
                                         <td class="text-center">{{$i}} .</td>
                                         <td class="text-center">{{$order->customer->name ?? ''}}</td>
                                         <td class="text-center font-weight-bold text-dark" data-href="{{route('admin.orders.show', $order->id)}}">ZF-US-{{sprintf('%04d',$order->id)}}</td>
-                                        <td class="text-center text-success">
-                                            @switch($order->status)
-                                                @case(1)
-                                                Pending
-                                                @break
-                                            @endswitch
+                                        @php($status = 'Pending')
+                                        @php($class = 'text-warning')
+                                        @switch($order->status)
+                                            @case(0)
+                                            @php($status = 'Cancelled')
+                                            @php($class = 'text-danger')
+                                            @break
+                                            @case(2)
+                                            @php($status = 'Purchased')
+                                            @php($class = 'text-success')
+                                            @break
+                                        @endswitch
+                                        <td class="text-center {{$class}}">
+                                            {{$status}}
                                         </td>
                                         <td class="text-center">
                                             {{$order->created_at}}

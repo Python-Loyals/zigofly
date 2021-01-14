@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\OrderResource;
 use App\Order;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrdersController extends Controller
 {
@@ -74,6 +76,21 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|integer|exists:orders,id',
+            'status' => 'required|integer'
+        ]);
+
+        $order = Order::find($request->get('order_id'));
+        $order->update(['status' => $request->get('status')]);
+
+        return (new OrderResource($order))
+            ->response()
+            ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
     /**

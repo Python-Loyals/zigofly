@@ -349,3 +349,61 @@ require('./bootstrap');
 
 })(jQuery);
 
+//    order status
+$(document).ready(function () {
+    window._token = $('meta[name="csrf-token"]').attr('content')
+    toastr.options = {
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "positionClass": "toast-bottom-left",
+        "preventDuplicates": true,
+        "preventOpenDuplicates": true
+    }
+    $('.btn-order-complete').on('click', function (){
+        let url = $(this).data('link')
+        let order_id = $(this).data('id')
+        let status = 2
+            $.ajax({
+                headers: {'x-csrf-token': _token},
+                method: 'POST',
+                url,
+                data: {
+                    _method: 'PUT',
+                    order_id,
+                    status
+                }
+            }).done(function (data){
+                console.log(data)
+                toastr.success("The order was marked as complete");
+                $('#complete-modal').modal('hide');
+            }).fail(function (data){
+                console.log(data)
+                toastr.error('There was error updating the order status')
+            })
+    })
+    $('.btn-order-cancel').on('click', function (){
+        let url = $(this).data('link')
+        let order_id = $(this).data('id')
+        let status = 0
+        $.ajax({
+            headers: {'x-csrf-token': _token},
+            method: 'POST',
+            url,
+            data: {
+                _method: 'PUT',
+                order_id,
+                status
+            }
+        }).done(function (data){
+            console.log(data)
+            toastr.success("The order was cancelled");
+            $('#complete-modal').modal('hide');
+        }).fail(function (data){
+            console.log(data)
+            toastr.error('There was error updating the order status')
+        })
+    })
+});

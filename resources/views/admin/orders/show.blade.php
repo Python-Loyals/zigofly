@@ -126,14 +126,16 @@
                                             <div class="col-6 text-center total">${{$order->total}}</div>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary btn-block mt-3" href="#">
+                                    <button class="btn bg-theme btn-block mt-3 text-light" data-toggle="modal"
+                                            data-target="#complete-modal">
                                         <img src="{{asset('admin/images/icon/file.svg')}}" width="24" height="24" alt="">
                                         Complete Order
-                                    </a>
-                                    <a class="btn btn-danger btn-block mt-2" href="#">
+                                    </button>
+                                    <button class="btn btn-danger btn-block mt-2" data-toggle="modal"
+                                            data-target="#cancel-modal">
                                         <img src="{{asset('admin/images/icon/close.svg')}}" width="20" height="20" class="mr-1" alt="">
                                         Cancel Order
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -143,4 +145,60 @@
         </div>
     </div>
 
+    <style>
+        .modal .btn-outline-secondary:hover{
+            background-color: transparent;
+            color: #6c757d;
+        }
+    </style>
+{{--   approve modal--}}
+    <div id="complete-modal" class="modal fade" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme">
+                    <h4 class="modal-title text-light">Complete Order</h4>
+                    <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you mark the order as complete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button"
+                            data-link="{{route('admin.update_status')}}"
+                            data-id="{{$order->id}}"
+                            class="btn bg-theme text-light btn-order-complete">
+                        Confirm</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{{--    cancel modal--}}
+    <div id="cancel-modal" class="modal fade" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title text-light">Cancel Order</h4>
+                    <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel the order?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button"
+                            data-link="{{route('admin.update_status')}}"
+                            data-id="{{$order->id}}"
+                            class="btn btn-danger text-light btn-order-cancel">
+                        Confirm</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+@endsection
+@section('scripts')
+    <script>
+
+    </script>
 @endsection

@@ -60,12 +60,20 @@
                                         <td data-href="{{route('admin.customers.show', $order->customer->id)}}">{{$order->customer->name ?? ''}}</td>
                                         <td>${{$order->total ?? ''}}</td>
                                         <td>ZF-US-{{sprintf('%04d',$order->id)}}</td>
-                                        <td>
-                                            @switch($order->status)
-                                                @case(1)
-                                                Pending
-                                                @break
-                                            @endswitch
+                                        @php($status = 'Pending')
+                                        @php($class = 'text-warning')
+                                        @switch($order->status)
+                                            @case(0)
+                                                @php($status = 'Cancelled')
+                                                @php($class = 'text-danger')
+                                            @break
+                                            @case(2)
+                                                @php($status = 'Purchased')
+                                                @php($class = 'text-success')
+                                            @break
+                                        @endswitch
+                                        <td class="{{$class}}">
+                                            {{$status}}
                                         </td>
                                         <td>{{$order->created_at ?? ''}}</td>
                                         <td>
