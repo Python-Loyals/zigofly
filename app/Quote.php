@@ -63,7 +63,7 @@ class Quote extends Model implements HasMedia
         return $this->hasMany(QuoteProduct::class);
     }
 
-    public function user()
+    public function customer()
     {
         return $this->belongsTo(User::class, 'customer_id');
     }

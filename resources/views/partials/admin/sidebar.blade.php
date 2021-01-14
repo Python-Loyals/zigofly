@@ -30,7 +30,7 @@
                              src="{{asset('admin/images/icon/bill.png')}}">Invoices</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.estimates.index')}}">
                         <img alt="Shipments" class="pr-1" width="30" height="30"
                              src="{{asset('admin/images/icon/notebook.svg')}}">Estimates
                     </a>

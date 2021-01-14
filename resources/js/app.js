@@ -360,7 +360,10 @@ $(document).ready(function () {
         "hideMethod": "fadeOut",
         "positionClass": "toast-bottom-left",
         "preventDuplicates": true,
-        "preventOpenDuplicates": true
+        "preventOpenDuplicates": true,
+        onHidden: function (){
+            window.location.href = $('#cancel-modal').data('back')
+        },
     }
     $('.btn-order-complete').on('click', function (){
         let url = $(this).data('link')

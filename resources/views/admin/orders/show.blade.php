@@ -58,7 +58,7 @@
                 </div>
                 <div class="mt-5 d-none d-md-block">
                     <div class="row">
-                        <div class="col-md-5 d-flex justify-content-center">Item</div>
+                        <div class="col-md-6 d-flex justify-content-center">Item</div>
                         <div class="col-md-2 d-flex justify-content-center">Qty</div>
                         <div class="col-md-2 d-flex justify-content-center">Unit Price</div>
                         <div class="col-md-2 d-flex justify-content-center">Subtotal</div>
@@ -152,7 +152,7 @@
         }
     </style>
 {{--   approve modal--}}
-    <div id="complete-modal" class="modal fade" >
+    <div id="complete-modal" class="modal fade" data-back="{{route('admin.orders.show', $order->id)}}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-theme">
@@ -174,7 +174,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 {{--    cancel modal--}}
-    <div id="cancel-modal" class="modal fade" >
+    <div id="cancel-modal" class="modal fade" data-back="{{route('admin.orders.show', $order->id)}}" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-danger">

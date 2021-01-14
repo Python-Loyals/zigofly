@@ -124,7 +124,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('customers', 'CustomersController');
 
     //Customer orders
-    Route::get('order/{order_id}/order-items', 'OrdersController@orderItems')->name('order-items');
     Route::PUT('order/update_status', 'OrdersController@updateStatus')->name('update_status');
     Route::resource('orders', 'OrdersController');
+    Route::resource('estimates', 'QuotationsController');
 });
