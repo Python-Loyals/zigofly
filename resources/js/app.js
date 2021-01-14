@@ -400,7 +400,7 @@ $(document).ready(function () {
         }).done(function (data){
             console.log(data)
             toastr.success("The order was cancelled");
-            $('#complete-modal').modal('hide');
+            $('#cancel-modal').modal('hide');
         }).fail(function (data){
             console.log(data)
             toastr.error('There was error updating the order status')

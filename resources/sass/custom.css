@@ -1,3 +1,6 @@
 div[data-href]{
     cursor: pointer!important;
 }
+body #toast-container > div {
+    opacity: 1;
+}
