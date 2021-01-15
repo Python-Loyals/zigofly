@@ -43,12 +43,12 @@ class QuotationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Quote $quote)
     {
-        //
+        return view('admin.quotations.show', compact('quote'));
     }
 
     /**

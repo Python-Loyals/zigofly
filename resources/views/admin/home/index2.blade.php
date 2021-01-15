@@ -132,7 +132,7 @@
                                     @php($i++)
                                     <tr>
                                         <td class="text-center">{{$i}} .</td>
-                                        <td class="text-center">{{$quote->user->name ?? ''}}</td>
+                                        <td class="text-center">{{$quote->customer->name ?? ''}}</td>
                                         <th class="text-center card-title">ZFQ-{{sprintf('%04d',$quote->id)}}</th>
                                         <td class="text-center text-success">
                                             @switch($order->status)
