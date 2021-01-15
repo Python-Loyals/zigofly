@@ -71,8 +71,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="text-center">Customer</th>
                                     <th class="text-center">Order ID</th>
+                                    <th class="text-center">Customer</th>
                                     <th class="text-center"> Order Status</th>
                                     <th class="text-center">Date</th>
                                 </tr>
@@ -83,8 +83,8 @@
                                     @php($i++)
                                     <tr>
                                         <td class="text-center">{{$i}} .</td>
-                                        <td class="text-center">{{$order->customer->name ?? ''}}</td>
                                         <td class="text-center font-weight-bold text-dark" data-href="{{route('admin.orders.show', $order->id)}}">ZF-US-{{sprintf('%04d',$order->id)}}</td>
+                                        <td class="text-left">{{$order->customer->name ?? ''}}</td>
                                         @php($status = 'Pending')
                                         @php($class = 'text-warning')
                                         @switch($order->status)
@@ -120,8 +120,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="text-center">Customer</th>
                                     <th class="text-center">Quote ID</th>
+                                    <th class="text-center">Customer</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Date</th>
                                 </tr>
@@ -132,8 +132,8 @@
                                     @php($i++)
                                     <tr>
                                         <td class="text-center">{{$i}} .</td>
-                                        <td class="text-center">{{$quote->customer->name ?? ''}}</td>
                                         <th class="text-center card-title">ZFQ-{{sprintf('%04d',$quote->id)}}</th>
+                                        <td class="text-left">{{$quote->customer->name ?? ''}}</td>
                                         <td class="text-center text-success">
                                             @switch($order->status)
                                                 @case(1)
