@@ -42,7 +42,7 @@
 <body class="animsition">
 <div class="page-wrapper">
     @include('partials.admin.sidebar')
-{{--    @include('partials.customer.chat')--}}
+    @include('partials.admin.chat')
     <div class="page-container">
     @include('partials.admin.navbar')
 
@@ -73,6 +73,7 @@
 
 <!-- Main JS-->
 <script src="{{asset('admin/js/main.js')}}"></script>
+<script src="{{asset('admin/js/chat.js')}}"></script>
 @yield('scripts')
 
 </body>

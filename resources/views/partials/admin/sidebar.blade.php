@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="displayChatbox">
                         <img alt="Shipments" class="pr-1" width="27" height="27"
                              src="{{asset('admin/images/icon/email.png')}}">Messages
                     </a>
