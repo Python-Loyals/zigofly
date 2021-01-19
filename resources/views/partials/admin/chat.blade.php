@@ -28,7 +28,7 @@
                 </ul>
 
                 @php($customers = \App\User::all())
-                @php($admins = \App\Admin::all())
+                @php($admins = \App\Admin::all()->except(Auth::id()))
                 <div class="main-friend-list">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
@@ -43,9 +43,13 @@
 
                                     <div class="media-body">
                                         <div class="chat-header">
-                                    <span class="text-capitalize">
-                                        <?= $customer->name ?>
-                                    </span>
+                                            <span class="text-capitalize">
+                                                <?= $customer->name ?>
+                                            </span>
+                                            <small class="d-block text-muted"
+                                                   style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+                                                {{$customer->lastMessage->message ?? ''}}
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -56,18 +60,22 @@
                         <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab">
                             @forelse($admins as $key => $admin)
                                 <div class="media userlist-box waves-effect waves-light" data-recipient="{{$admin->id}}"
-                                     data-profile="/account/uploads/avatar.png" data-username='{{$admin->name}}'
-                                     data-uid="{{Auth::user()->id}}">
+                                     data-profile="{{asset('/account/uploads/avatar.png')}}" data-username='{{$admin->name}}'
+                                     data-uid="{{Auth::id()}}">
                                     <a class="media-left" href="#!">
                                         <img class="media-object img-radius img-radius"
-                                             src="/account/uploads/avatar.png" alt="Generic placeholder image ">
+                                             src="{{asset('/account/uploads/avatar.png')}}" alt="dp">
                                     </a>
 
                                     <div class="media-body">
                                         <div class="chat-header">
-                                    <span class="text-capitalize">
-                                        <?= $admin->name ?>
-                                    </span>
+                                            <span class="text-capitalize">
+                                                <?= $admin->name ?>
+                                            </span>
+                                            <small class="d-block text-muted"
+                                                   style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+                                                {{$admin->lastMessage->message ?? ''}}
+                                            </small>
                                         </div>
                                     </div>
                                 </div>

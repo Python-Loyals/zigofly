@@ -105,4 +105,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
+
+    public function sentMessages()
+    {
+        return $this->morphMany(Message::class, 'sender');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->morphMany(Message::class, 'receiver');
+    }
+
+    public function getLastMessageAttribute()
+    {
+        return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
+    }
 }

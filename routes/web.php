@@ -127,4 +127,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::PUT('order/update_status', 'OrdersController@updateStatus')->name('update_status');
     Route::resource('orders', 'OrdersController');
     Route::resource('estimates', 'QuotationsController');
+
+
+    Route::get('message', 'ChatController@index');
 });
+
+

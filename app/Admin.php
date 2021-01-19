@@ -44,5 +44,19 @@ class Admin extends Authenticatable
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
+    public function sentMessages()
+    {
+        return $this->morphMany(Message::class, 'sender');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->morphMany(Message::class, 'receiver');
+    }
+
+    public function getLastMessageAttribute()
+    {
+        return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
+    }
 
 }
