@@ -98,7 +98,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 <div class="showChat_inner">
