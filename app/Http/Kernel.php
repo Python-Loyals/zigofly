@@ -30,6 +30,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\AuthGates::class,
             \App\Http\Middleware\SetLocale::class,
+            \App\Http\Middleware\UserOnline::class,
         ],
         'admin' => [
             \App\Http\Middleware\EncryptCookies::class,
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\AuthGates::class,
             \App\Http\Middleware\SetLocale::class,
+            \App\Http\Middleware\UserOnline::class,
         ],
     ];
 

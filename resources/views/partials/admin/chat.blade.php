@@ -26,9 +26,18 @@
                            role="tab" aria-controls="pills-staff" aria-selected="false">Staff</a>
                     </li>
                 </ul>
+                <style>
+                    .dot {
+                        height: 10px;
+                        width: 10px;
+                        background-color: #bbb;
+                        border-radius: 50%;
+                        display: inline-block;
+                    }
+                </style>
 
                 @php($customers = \App\User::all())
-                @php($admins = \App\Admin::all()->except(Auth::id()))
+                @php($admins = \App\Admin::all())
                 <div class="main-friend-list">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
@@ -44,7 +53,10 @@
                                     <div class="media-body">
                                         <div class="chat-header">
                                             <span class="text-capitalize">
-                                                <?= $customer->name ?>
+                                                {{$customer->name}}
+                                                @if($customer->isOnline)
+                                                    <span class="dot bg-success"></span>
+                                                @endif
                                             </span>
                                             <small class="d-block text-muted"
                                                    style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
@@ -70,7 +82,10 @@
                                     <div class="media-body">
                                         <div class="chat-header">
                                             <span class="text-capitalize">
-                                                <?= $admin->name ?>
+                                                {{ $admin->name }}
+                                                @if($admin->isOnline)
+                                                    <span class="dot bg-success"></span>
+                                                @endif
                                             </span>
                                             <small class="d-block text-muted"
                                                    style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">

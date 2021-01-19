@@ -7,6 +7,7 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
 
 class Admin extends Authenticatable
@@ -38,6 +39,11 @@ class Admin extends Authenticatable
         'updated_at',
         'deleted_at',
     ];
+
+    public function getIsOnlineAttribute()
+    {
+        return Cache::has('admin-is-online-' . $this->id);
+    }
 
     public function sendPasswordResetNotification($token)
     {

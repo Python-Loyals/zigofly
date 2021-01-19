@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
 use \DateTimeInterface;
 
@@ -47,6 +48,11 @@ class User extends Authenticatable
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function getIsOnlineAttribute()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 
     public function getIsAdminAttribute()
