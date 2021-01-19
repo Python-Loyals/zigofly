@@ -20,7 +20,6 @@ $('.displayChatbox').on('click', function(e) {
     $('.showChat').addClass('animated slideInRight');
     $('.showChat').css('display', 'block');
     $('body:not(.main-friend-list)').css('overflow-y', 'hidden');
-    $('.showChat').css('overflow-y', 'auto');
 });
 
 //close
