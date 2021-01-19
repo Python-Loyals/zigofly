@@ -18,7 +18,9 @@ $('.displayChatbox').on('click', function(e) {
     e.preventDefault();
     $('.showChat').removeClass('slideOutRight');
     $('.showChat').addClass('animated slideInRight');
-    $('.showChat').css('display', 'block')
+    $('.showChat').css('display', 'block');
+    $('body:not(.main-friend-chat)').css('overflow-y', 'hidden');
+    $('.showChat').css('overflow-y', 'auto');
 });
 
 //close
@@ -26,6 +28,7 @@ $('.back_friendlist').on('click', function() {
 
     $('.showChat').toggleClass('slideInRight');
     $('.showChat').toggleClass('slideOutRight');
+    $('body:not(.main-friend-chat)').css('overflow-y', 'auto');
 });
 
 //text area autosize
