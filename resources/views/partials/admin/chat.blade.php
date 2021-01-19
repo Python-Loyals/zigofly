@@ -15,29 +15,67 @@
                         </div>
                     </div>
                 </div>
+{{--                tabs--}}
+                <ul class="nav nav-pills mb-3 mx-2" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-customers-tab" data-toggle="pill"
+                           href="#pills-customers" role="tab" aria-controls="pills-customers" aria-selected="true">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-staff-tab" data-toggle="pill" href="#pills-staff"
+                           role="tab" aria-controls="pills-staff" aria-selected="false">Staff</a>
+                    </li>
+                </ul>
 
                 @php($customers = \App\User::all())
+                @php($admins = \App\Admin::all())
                 <div class="main-friend-list">
-                    @forelse($customers as $key => $customer)
-                        <div class="media userlist-box waves-effect waves-light" data-recipient="{{$customer->id}}"
-                             data-profile="/account/uploads/avatar.png" data-username='{{$customer->name}}'
-                             data-uid="{{Auth::user()->id}}">
-                            <a class="media-left" href="#!">
-                                <img class="media-object img-radius img-radius"
-                                     src="/account/uploads/avatar.png" alt="Generic placeholder image ">
-                            </a>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
+                            @forelse($customers as $key => $customer)
+                                <div class="media userlist-box waves-effect waves-light" data-recipient="{{$customer->id}}"
+                                     data-profile="/account/uploads/avatar.png" data-username='{{$customer->name}}'
+                                     data-uid="{{Auth::user()->id}}">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                             src="/account/uploads/avatar.png" alt="Generic placeholder image ">
+                                    </a>
 
-                            <div class="media-body">
-                                <div class="chat-header">
+                                    <div class="media-body">
+                                        <div class="chat-header">
                                     <span class="text-capitalize">
                                         <?= $customer->name ?>
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    @empty
+                            @empty
 
-                    @endforelse
+                            @endforelse
+                        </div>
+                        <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab">
+                            @forelse($admins as $key => $admin)
+                                <div class="media userlist-box waves-effect waves-light" data-recipient="{{$admin->id}}"
+                                     data-profile="/account/uploads/avatar.png" data-username='{{$admin->name}}'
+                                     data-uid="{{Auth::user()->id}}">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                             src="/account/uploads/avatar.png" alt="Generic placeholder image ">
+                                    </a>
+
+                                    <div class="media-body">
+                                        <div class="chat-header">
+                                    <span class="text-capitalize">
+                                        <?= $admin->name ?>
+                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
