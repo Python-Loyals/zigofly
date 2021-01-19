@@ -29,75 +29,20 @@
 
                             <div class="media-body">
                                 <div class="chat-header">
-                                <span class="text-capitalize">
-                                    <?= $customer->name ?>
-                                    {{--                                    <?php--}}
-                                    {{--                                    if ((int) $friend['unread'] > 0){ ?>--}}
-                                    {{--                                        <span class="badge badge-success bo-cir p-r-5"><?= $friend['unread'] ?></span>--}}
-                                    {{--                                    <?php }--}}
-                                    {{--                                    ?>--}}
-                                </span>
-                                    <?php
-                                    //                                echo '<small class="d-block text-muted" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">'.$friend['last_message'].'</small>';
-                                    ?>
+                                    <span class="text-capitalize">
+                                        <?= $customer->name ?>
+                                    </span>
                                 </div>
                             </div>
-
                         </div>
-                </div>
                     @empty
 
                     @endforelse
-
-{{--                    $id = 1;--}}
-{{--                    foreach ($chatList as $friend){--}}
-{{--                    $bg = $friend['status'] == 'offline' ? 'bg-default' : 'bg-success';--}}
-{{--                    $userName = $friend['user']['full_name'];--}}
-{{--                    if (isset($friend['user']['coordinator']) && (int)$friend['user']['coordinator'] ===1){--}}
-{{--                        $userName .= '<i class="mdi mdi-checkbox-marked-circle-outline text-warning pl-1"></i>';--}}
-{{--                    }--}}
-{{--                    ?>--}}
-{{--                    <div class="media userlist-box waves-effect waves-light" data-recipient="<?= $_SESSION['username'] ?>"--}}
-{{--                         data-profile="<?= $friend['user']['profile'] ?>"--}}
-{{--                         data-username='<?= $userName ?>'--}}
-{{--                         data-regno="<?= isset($friend['user']['reg_no']) ? $friend['user']['reg_no'] : $friend['user']['emp_id']  ?>"--}}
-{{--                    <?= isset($friend['is_my_student']) ? 'data-toggle="tooltip" data-title="You are supervising this student" data-placement="auto"' : '' ?> >--}}
-{{--                        <a class="media-left" href="#!">--}}
-{{--                            <img class="media-object img-radius img-radius" src="<?= $friend['user']['profile'] ?>" alt="Generic placeholder image ">--}}
-{{--                            <div class="live-status">--}}
-{{--                                <?php--}}
-{{--                                if (isset($friend['user']['emp_id'])){--}}
-{{--                                    echo '<i class="fa fa-chalkboard-teacher"></i>';--}}
-{{--                                }else{--}}
-{{--                                    echo '<i class="fa fa-user-graduate"></i>';--}}
-{{--                                }--}}
-{{--                                ?>--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                        <div class="media-body">--}}
-{{--                            <div class="chat-header">--}}
-{{--                                                <span class="text-capitalize <?= isset($friend['is_my_student']) && $friend['is_my_student'] ? 'text-primary' : '' ?>">--}}
-{{--                                                    <?= $userName ?>--}}
-{{--                                                    <?php--}}
-{{--                                                    if ((int) $friend['unread'] > 0){ ?>--}}
-{{--                                                        <span class="badge badge-success bo-cir p-r-5"><?= $friend['unread'] ?></span>--}}
-{{--                                                    <?php }--}}
-{{--                                                    ?>--}}
-{{--                                                </span>--}}
-{{--                                <?php--}}
-{{--                                echo '<small class="d-block text-muted" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">'.$friend['last_message'].'</small>';--}}
-{{--                                ?>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <?php--}}
-{{--                    $id++;--}}
-{{--                    }--}}
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 <div class="showChat_inner">
