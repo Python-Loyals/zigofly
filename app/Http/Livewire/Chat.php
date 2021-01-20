@@ -28,10 +28,8 @@ class Chat extends Component
 
         $this->chat_user = User::findOrFail($this->chat_id);
 
-        $this->chat_user->sentMessages()->update(['read'=> 1]);
-
-        // number of messages I want to show
-        $this->paginate_var = 20;
+        $this->chat_user->sentMessages()
+            ->update(['read'=> 1]);
 
         $this->conversation = $this->chat_user->conversation;
     }
