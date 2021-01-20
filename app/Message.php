@@ -22,7 +22,7 @@ class Message extends Model implements HasMedia
         'read'
     ];
 
-//    protected $with = ['sender', 'receiver'];
+    protected $with = ['sender', 'receiver'];
 
     public function sender()
     {
