@@ -16,12 +16,12 @@ class UserOnline
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
         $expiresAt = Carbon::now()->addMinutes(1);
-        if(Auth::guard('admin')->check()) {
+        if(Auth::check() && Auth::guard('admin')->check() && $request->is('admin/*')) {
             Cache::put('admin-is-online-' . Auth::user()->id, true, $expiresAt);
-        }else if (Auth::guard('web')->check()){
+        }else if (Auth::check() && Auth::guard('web')->check()){
             Cache::put('user-is-online-' . Auth::user()->id, true, $expiresAt);
         }
         return $next($request);

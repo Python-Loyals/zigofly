@@ -126,4 +126,9 @@ class User extends Authenticatable
     {
         return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
     }
+
+    public function getConversationAttribute()
+    {
+        return $this->receivedMessages->merge($this->sentMessages)->sortBy('created_at');
+    }
 }
