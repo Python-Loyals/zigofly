@@ -13343,6 +13343,7 @@ noti__item .notifi__item .img-cir i {
 .user-box .media-object {
     height: 45px;
     width: 45px;
+    border-radius: 50%;
     display: inline-block
 }
 
@@ -13368,7 +13369,10 @@ noti__item .notifi__item .img-cir i {
 }
 
 .p-chat-user .userlist-box .media-left {
-    padding-right: 10px
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
 }
 
 .main-friend-list{
@@ -13558,6 +13562,17 @@ noti__item .notifi__item .img-cir i {
     right: 20px;
     border-radius: 100%;
     border: none;
+}
+
+.status-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: grey;
+    border: 2px solid white;
+    bottom: 2px;
+    right: 0;
+    position: absolute;
 }
 
 .showChat {

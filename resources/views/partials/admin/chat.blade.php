@@ -37,7 +37,7 @@
                 </style>
 
                 @php($customers = \App\User::all())
-                @php($admins = \App\Admin::all())
+                @php($admins = \App\Admin::all()->except(Auth::user()->id))
                 <div class="main-friend-list">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
@@ -48,15 +48,15 @@
                                     <a class="media-left" href="#!">
                                         <img class="media-object img-radius img-radius"
                                              src="/account/uploads/avatar.png" alt="Generic placeholder image ">
+                                        @if($customer->isOnline)
+                                            <div class='status-circle bg-success'></div>
+                                        @endif
                                     </a>
 
                                     <div class="media-body">
                                         <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{$customer->name}}
-                                                @if($customer->isOnline)
-                                                    <span class="dot bg-success"></span>
-                                                @endif
                                             </span>
                                             <small class="d-block text-muted"
                                                    style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
@@ -77,15 +77,17 @@
                                     <a class="media-left" href="#!">
                                         <img class="media-object img-radius img-radius"
                                              src="{{asset('/account/uploads/avatar.png')}}" alt="dp">
+
+                                        @if($admin->isOnline)
+                                            <div class='status-circle bg-success'></div>
+                                        @endif
                                     </a>
 
                                     <div class="media-body">
                                         <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{ $admin->name }}
-                                                @if($admin->isOnline)
-                                                    <span class="dot bg-success"></span>
-                                                @endif
+
                                             </span>
                                             <small class="d-block text-muted"
                                                    style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
