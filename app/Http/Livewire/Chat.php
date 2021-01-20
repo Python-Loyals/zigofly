@@ -17,6 +17,11 @@ class Chat extends Component
 
     public $update;
 
+    public function mount()
+    {
+        $this->unreadMessages = count(Auth::user()->unreadMessages) ?? 0;
+    }
+
     public function render()
     {
         return view('livewire.chat');
@@ -32,6 +37,8 @@ class Chat extends Component
             ->update(['read'=> 1]);
 
         $this->conversation = $this->chat_user->conversation;
+        $this->unreadMessages = count(Auth::user()->unreadMessages);
+        $this->emit('read_messages');
     }
 
     public function send()

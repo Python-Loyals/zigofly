@@ -65,4 +65,13 @@ class Admin extends Authenticatable
         return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
     }
 
+    public function getUnreadMessagesAttribute()
+    {
+        $staff = $this->receivedMessages()->where('read', '=', 0)->get();
+        $user = Message::whereHasMorph('sender', User::class)
+            ->where('read', '=', 0)
+            ->get();
+        return $user->merge($staff);
+    }
+
 }

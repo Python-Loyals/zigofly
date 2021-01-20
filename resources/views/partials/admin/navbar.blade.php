@@ -60,7 +60,9 @@
                         <div class="noti__item js-item-menu">
                             <span class="displayChatbox">
                                 <img src="{{asset('admin/images/icon/email.png')}}" width="20" height="20" />
-                                <span class="quantity">1</span>
+                                <span class="quantity unread-messages">
+                                    {{count(auth()->user()->unreadMessages)}}
+                                </span>
                             </span>
                         </div>
 

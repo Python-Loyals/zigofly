@@ -176,6 +176,9 @@
 @section('scripts')
     @parent
     <script>
-
+        livewire.on('read_messages', () => {
+            $('.unread-messages').text(@this.unreadMessages)
+        })
     </script>
 @endsection
+
