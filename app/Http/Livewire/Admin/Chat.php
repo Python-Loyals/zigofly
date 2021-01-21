@@ -61,7 +61,9 @@ class Chat extends Component
 
     public function newMessage()
     {
-        $this->conversation = $this->chat_user->conversation;
+        if ($this->chat_user){
+            $this->conversation = $this->chat_user->conversation ?? [];
+        }
         $this->unreadMessages = count(Auth::user()->unreadMessages);
         $this->emit('read_messages');
         if ($this->chat_user){

@@ -16,7 +16,7 @@ class Chat extends Component
 
     public function hydrate()
     {
-        $this->user = Auth::guard('web')->user();
+        $this->user = Auth::user();
     }
 
     public function render()
@@ -44,7 +44,7 @@ class Chat extends Component
     public function openChat()
     {
         $this->open = true;
-        $this->user = Auth::guard('web')->user();
+        $this->user = Auth::user();
         $this->conversation = $this->user->conversation;
         $this->emit('scroll');
     }
