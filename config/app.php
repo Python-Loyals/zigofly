@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Livewire\LivewireServiceProvider::class,
 
     ],
 
