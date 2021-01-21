@@ -16,7 +16,7 @@ class Chat extends Component
 
     public function hydrate()
     {
-        $this->user = Auth::user();
+        $this->user = Auth::guard('web')->user();
     }
 
     public function render()
@@ -29,7 +29,7 @@ class Chat extends Component
         if (!empty($this->message)){
             $message = new Message(['message' => trim($this->message)]);
 
-            $message->sender()->associate(Auth::guard('web')->user());
+            $message->sender()->associate($this->user);
             $message->save();
             $this->message = '';
             $coll = new Collection();
@@ -44,6 +44,7 @@ class Chat extends Component
     public function openChat()
     {
         $this->open = true;
+        $this->user = Auth::guard('web')->user();
         $this->conversation = $this->user->conversation;
         $this->emit('scroll');
     }
