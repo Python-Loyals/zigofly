@@ -58,7 +58,7 @@ class Chat extends Component
         if ($this->user){
             $this->conversation = $this->user->conversation;
 
-            $this->unreadMessages = count($this->user->unreadMesusersages);
+            $this->unreadMessages = count($this->user->unreadMessages);
         }
         $this->emit('read_messages');
         if ($this->open){
