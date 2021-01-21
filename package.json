@@ -24,7 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "laravel-echo": "^1.10.0",
         "lozad": "^1.16.0",
+        "pusher-js": "^7.0.2",
         "smooth-scrollbar": "^8.5.3",
         "toastr": "^2.1.4"
     }

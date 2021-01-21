@@ -13441,6 +13441,10 @@ noti__item .notifi__item .img-cir i {
     overflow-wrap: break-word;
     text-align: left;
 }
+.showChat_inner .chat-messages .chat-menu-content>div .chat-cont
+{
+padding: 0 10px 5px
+}
 
 .showChat_inner .chat-messages .chat-menu-content .chat-time,
 .showChat_inner .chat-messages .chat-menu-reply .chat-time {
@@ -13488,7 +13492,7 @@ noti__item .notifi__item .img-cir i {
 }
 
 .showChat_inner .chat-messages .chat-menu-content .chat-header {
-    font-size: 12px;
+    font-size: 10px;
     margin: 5px;
     max-width: 80px;
     overflow: hidden;

@@ -131,4 +131,8 @@ class User extends Authenticatable
     {
         return $this->receivedMessages->merge($this->sentMessages)->sortBy('created_at');
     }
+    public function getUnreadMessagesAttribute()
+    {
+        return $this->receivedMessages()->where('read', '=', 0)->get();
+    }
 }

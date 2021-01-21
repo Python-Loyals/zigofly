@@ -125,7 +125,7 @@
         <div class="main-friend-chat mt-2 pb-3" style="height: 72%!important;">
             @if($conversation)
                 @foreach($conversation as $message)
-                    @if($message->sender_id == Auth::user()->id)
+                    @if($message->sender_id == Auth::user()->id && !empty($message->receiver_id))
                         <div class="media chat-messages">
                             <div class="media-body chat-menu-reply">
                                 <div class="">
@@ -178,6 +178,16 @@
     <script>
         livewire.on('read_messages', () => {
             $('.unread-messages').text(@this.unreadMessages)
+        });
+
+        livewire.on('scroll', () => {
+            $(".main-friend-chat").animate({ scrollTop: $(".main-friend-chat")[0].scrollHeight }, 1000);
+        });
+
+        Echo.channel('chat')
+        .listen('.chat', (e)=>{
+            console.log(e)
+            @this.call('newMessage');
         })
     </script>
 @endsection

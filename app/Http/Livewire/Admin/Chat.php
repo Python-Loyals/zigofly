@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
+use App\Events\AdminText;
 use App\Message;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Chat extends Component
 {
-    protected $listeners = ['selected_user', 'refresh' => 'render'];
+    protected $listeners = ['selected_user', 'newMessage'];
 
     public $conversation,$message, $chat_id, $chat_user, $unreadMessages, $paginate_var=20;
 
@@ -24,7 +24,7 @@ class Chat extends Component
 
     public function render()
     {
-        return view('livewire.chat');
+        return view('livewire.admin.chat');
     }
 
     public function selected_user($id)
@@ -54,6 +54,18 @@ class Chat extends Component
             $coll->push((object)$message);
 
             $this->conversation = $this->chat_user->conversation->merge($coll);
+
+            event(new AdminText());
+        }
+    }
+
+    public function newMessage()
+    {
+        $this->conversation = $this->chat_user->conversation;
+        $this->unreadMessages = count(Auth::user()->unreadMessages);
+        $this->emit('read_messages');
+        if ($this->chat_user){
+            $this->emit('scroll');
         }
     }
 }

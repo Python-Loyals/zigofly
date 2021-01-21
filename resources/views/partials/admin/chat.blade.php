@@ -3,7 +3,7 @@
     @livewireStyles
 @endsection
 
-<livewire:chat />
+<livewire:admin.chat />
 @section('scripts')
     @parent
     @livewireScripts

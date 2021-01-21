@@ -1,66 +1,41 @@
-let sender, recipient, profile, username, myInterval = '';
-$('.live-chat').on('click', function(e) {
-    e.preventDefault();
-    $('.btn-chat').trigger('click');
-})
-
-//    user on click
-$('.btn-chat').on('click', function() {
-    // username = $(this).data('username');
-    // profile = $(this).data('profile');
-    // sender = $(this).data('empid');
-    // recipient = $(this).data('recipient');
-    // $('.main-friend-chat').html('');
-    // $('.showChat_inner .media-object').attr('src', profile);
-    // $('.showChat_inner .user-name').html(`\
-    //             <span class="user_name">${username}</span>
-    //             <i class="fa fa-info-circle text-white-50 ml-auto fs-20 user-info" data-user="sender"></i> `);
-
-    // $.ajax({
-    //     url: '../api/message/',
-    //     method: 'GET',
-    //     cache: false,
-    //     data: { conversation: true, sender, recipient },
-    //     success: function(data) {
-    //         try {
-    //             const messages = data.success.message.messages;
-
-    //             appendConvo(messages)
-    //             markRead(sender, recipient)
-
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-    //     },
-    //     error: function(error) {
-    //         console.log(error)
-    //     }
-    // })
-
-    $('.showChat_inner').removeClass('slideOutRight');
-    $('.showChat_inner').addClass('animated slideInRight');
-    $('.showChat_inner').css('display', 'block');
-    // scrollChat()
-    $('#chat-message').focus();
-    $('body:not(.main-friend-chat)').css('overflow-y', 'hidden');
-    // console.log(sender)
-    // myInterval = setInterval(function() {
-    //     fetchNewMessages(sender, recipient)
-    // }, 5000)
-});
-
+let min_height = '38';
 $('#chat-message').on('keydown', function (e) {
     if (e.which == 13 && !e.ctrlKey && !e.altKey && !e.shiftKey){
         e.preventDefault();
         $('#chat-form').submit()
+    }else if(e.which == 13 &&( e.ctrlKey || e.altKey || e.shiftKey)){
+        let v = $(this).val()
+        $(this).val(v+'\n');
     }
-})
+    $(this).css( {
+        'height': min_height+'px'
+    });
+    let height = Math.min(20 * 5, $(this)[0].scrollHeight);
+    $(this). css('height',  height + 'px');
+
+    if ($(this)[0].scrollHeight > height){
+        $(this).css( {
+            'overflow-y': 'auto',
+        });
+    }else{
+        $(this).css( {
+            'overflow-y': 'hidden',
+        });
+    }
+});
 
 $('.back_chatBox').on('click', function() {
     $('.showChat_inner').toggleClass('slideInRight');
     $('.showChat_inner').toggleClass('slideOutRight');
     $('body').css('overflow-y', 'auto');
-    // clearInterval(myInterval);
+});
+
+$('.btn-chat').on('click', function() {
+    $('.showChat_inner').removeClass('slideOutRight');
+    $('.showChat_inner').addClass('animated slideInRight');
+    $('.showChat_inner').css('display', 'block');
+    $('#chat-message').focus();
+    $('body:not(.main-friend-chat)').css('overflow-y', 'hidden');
 });
 
 $('#chat-form').on('submit', function(event) {
@@ -68,9 +43,7 @@ $('#chat-form').on('submit', function(event) {
     $('#chat-message').focus();
     let newMessage = $('#chat-message').val().trim();
     if (newMessage) {
-        // if (sendMessage(recipient, newMessage, sender)) {
-        appendMessage(newMessage);
-        // }
+        scrollChat();
         $('#chat-message').val('');
     }
 })
