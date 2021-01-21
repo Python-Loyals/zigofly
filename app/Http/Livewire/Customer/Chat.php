@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Customer;
 
 use App\Events\AdminText;
 use App\Message;
-use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -15,7 +14,7 @@ class Chat extends Component
 
     public $conversation, $message, $user, $unreadMessages, $open;
 
-    public function mount()
+    public function hydrate()
     {
         $this->user = Auth::guard('web')->user();
     }
@@ -57,7 +56,7 @@ class Chat extends Component
     {
         $this->conversation = $this->user->conversation;
 
-        $this->unreadMessages = count($this->user->unreadMessages);
+        $this->unreadMessages = count($this->user->unreadMesusersages);
 //        $this->emit('read_messages');
         if ($this->open){
             $this->emit('scroll');
