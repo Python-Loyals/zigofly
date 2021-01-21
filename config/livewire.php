@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'middleware_group'  => ['web','auth:admin'],
+    'middleware_group'  => ['web','admin'],
 
     /*
     |--------------------------------------------------------------------------
