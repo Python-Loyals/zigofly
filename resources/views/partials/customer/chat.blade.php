@@ -2,7 +2,6 @@
     @parent
     @livewireStyles
 @endsection
-
 <livewire:customer.chat />
 @section('scripts')
     @parent
