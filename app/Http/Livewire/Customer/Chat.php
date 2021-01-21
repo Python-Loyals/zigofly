@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class Chat extends Component
 {
-    protected $listeners = ['newMessage'];
+    protected $listeners = ['newMessage', 'openChat', 'closeChat'];
 
     public $conversation, $message, $user, $unreadMessages, $open;
 
