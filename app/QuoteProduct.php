@@ -22,10 +22,12 @@ class QuoteProduct extends Model
         'link',
         'quantity',
         'options',
-        'quote_id'
+        'quote_id',
+        'price',
+        'status'
     ];
 
-    public function order()
+    public function quote()
     {
         return $this->belongsTo(Quote::class, 'quote_id');
     }

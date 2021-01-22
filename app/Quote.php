@@ -60,12 +60,17 @@ class Quote extends Model implements HasMedia
 
     public function products()
     {
-        return $this->hasMany(QuoteProduct::class);
+        return $this->hasMany(QuoteProduct::class, 'quote_id');
     }
 
     public function customer()
     {
         return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    public function services()
+    {
+        return $this->hasMany(QuoteService::class, 'quote_id');
     }
 
 }

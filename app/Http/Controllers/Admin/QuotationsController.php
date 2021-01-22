@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUpdateQuotationRequest;
 use App\Quote;
 use Illuminate\Http\Request;
 
@@ -65,13 +66,53 @@ class QuotationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  AdminUpdateQuotationRequest  $request
+     * @param  Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminUpdateQuotationRequest $request, Quote $quote)
     {
-        //
+        $products = $request->input('products');
+        $total = 0;
+        foreach ($products as $id => $product) {
+            $db_product = $quote->products()->find($id);
+            $db_product->update($products[$id]);
+            $total += floatval($product['price']) * (int) $db_product['quantity'];
+        }
+
+        if ($request->has('old_services')){
+            $services = $request->input('old_services');
+
+            $service_ids = array_keys($services);
+            $quote->services()->whereNotIn('id', $service_ids)->delete();
+
+            foreach ($quote->services as $service) {
+                $total += floatval($service['price']);
+            }
+        }
+        else{
+            if (count($quote->services) > 0){
+                $quote->services()->delete();
+            }
+        }
+
+
+        if ($request->has('services')){
+            $services = $request->input('services');
+
+            $quote->services()->createMany($services);
+
+            foreach ($services as $service) {
+                $total += floatval($service['price']);
+            }
+        }
+
+        $quote->update(['amount'=>$total, 'status' => 1]);
+        $quote->load(['services', 'products']);
+
+        return redirect()
+            ->route('admin.estimates.index')
+            ->with('message', 'Quote was processed successfully');
     }
 
     /**

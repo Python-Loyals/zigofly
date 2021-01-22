@@ -126,6 +126,9 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
     <script>
+        @if(session()->has('message'))
+        toastr.success("{{session()->get('message')}}");
+        @endif
         $(function () {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
             let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'

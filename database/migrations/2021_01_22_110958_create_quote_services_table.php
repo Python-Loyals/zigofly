@@ -17,9 +17,12 @@ class CreateQuoteServicesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('price', 10, 2)->nullable();
-            $table->text('description');
+            $table->integer('quote_id')->unsigned();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('quote_id')->on('quotes')->references('id');
         });
     }
 
