@@ -19,7 +19,7 @@ class Chat extends Component
 
     public function mount()
     {
-        $this->unreadMessages = count(Auth::user()->unreadMessages) ?? 0;
+        $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages) ?? 0;
     }
 
     public function render()
@@ -37,7 +37,7 @@ class Chat extends Component
             ->update(['read'=> 1]);
 
         $this->conversation = $this->chat_user->conversation;
-        $this->unreadMessages = count(Auth::user()->unreadMessages);
+        $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages);
         $this->emit('read_messages');
     }
 
@@ -46,7 +46,7 @@ class Chat extends Component
         if (!empty($this->message)){
             $message = new Message(['message' => trim($this->message)]);
 
-            $message->sender()->associate(Auth::user());
+            $message->sender()->associate(Auth::guard('admin')->user());
             $message->receiver()->associate(User::find($this->chat_id));
             $message->save();
             $this->message = '';
@@ -64,7 +64,7 @@ class Chat extends Component
         if ($this->chat_user){
             $this->conversation = $this->chat_user->conversation ?? [];
         }
-        $this->unreadMessages = count(Auth::user()->unreadMessages);
+        $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages);
         $this->emit('read_messages');
         if ($this->chat_user){
             $this->emit('scroll');

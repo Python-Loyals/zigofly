@@ -16,20 +16,45 @@
                             </div>
                         </div>
                     </div>
+                    <style>
+                        .nav-link{
+                            color: #5f6368;
+                        }
+                        .nav-link.active{
+                            background: transparent!important;
+                            color: #00796b!important;
+                            border-radius: 0px!important;
+                        }
+                        .nav-link:after {
+                            display:block;
+                            content: '';
+                            border-bottom: solid 2px #019fb6;
+                            transform: scaleX(0);
+                            transition: transform 250ms ease-in-out;
+                        }
+
+                        .nav-link.active:after{
+                            transform: scaleX(1);
+                        }
+                    </style>
                     {{--                tabs--}}
-                    <ul class="nav nav-pills mb-3 mx-2" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-customers-tab" data-toggle="pill"
-                               href="#pills-customers" role="tab" aria-controls="pills-customers" aria-selected="true">Customers</a>
+                    <ul class="nav nav-pills mb-3 mx-2 row" id="pills-tab" role="tablist">
+                        <li class="nav-item col-6 pl-0 pr-1">
+                            <a class="nav-link active btn-block text-center pr-0 pl-2" id="pills-customers-tab" data-toggle="pill"
+                               href="#pills-customers" role="tab" aria-controls="pills-customers" aria-selected="true">
+                               <i class="fa fa-users p-r-4"></i> Customers
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-staff-tab" data-toggle="pill" href="#pills-staff"
-                               role="tab" aria-controls="pills-staff" aria-selected="false">Staff</a>
+                        <li class="nav-item btn-block col-6 px-0">
+                            <a class="nav-link text-center btn-block" id="pills-staff-tab" data-toggle="pill" href="#pills-staff"
+                               role="tab" aria-controls="pills-staff" aria-selected="false">
+                                <i class="fa fa-comments"></i> Staff
+                            </a>
                         </li>
                     </ul>
 
                     @php($customers = \App\User::all()->sortByDesc('lastMessage.created_at'))
-                    @php($admins = \App\Admin::all()->except(Auth::user()->id))
+                    @php($admins = \App\Admin::all()->except(Auth::guard('admin')->user()->id))
                     <div class="main-friend-list">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
@@ -125,7 +150,7 @@
         <div class="main-friend-chat mt-2 pb-3" style="height: 72%!important;">
             @if($conversation)
                 @foreach($conversation as $message)
-                    @if($message->sender_id == Auth::user()->id && !empty($message->receiver_id))
+                    @if($message->sender_id == Auth::guard('admin')->user()->id && !empty($message->receiver_id))
                         <div class="media chat-messages">
                             <div class="media-body chat-menu-reply">
                                 <div class="">
@@ -185,10 +210,10 @@
         });
 
         Echo.channel('chat')
-        .listen('.chat', (e)=>{
-            console.log(e)
+            .listen('.chat', (e)=>{
+                console.log(e)
             @this.call('newMessage');
-        })
+            })
     </script>
 @endsection
 

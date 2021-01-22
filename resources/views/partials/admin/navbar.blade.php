@@ -78,7 +78,8 @@
                             @endphp
 
                             <div class="image d-md-block d-none">
-                                <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{$fname}}" />
+{{--                                <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{$fname}}" />--}}
+                                <img src="https://indexfand.com/myaccount/assets/img/user/000.png" alt="{{$fname}}" />
                             </div>
                             <div class="content m-sm-l-0">
                                 <a class="js-acc-btn" href="#">{{$fname}}</a>
@@ -87,7 +88,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{auth()->user()->name}}" />
+                                            <img src="https://indexfand.com/myaccount/assets/img/user/000.png" alt="{{auth()->user()->name}}" />
                                         </a>
                                     </div>
                                     <div class="content">

@@ -55,12 +55,19 @@
                                             <td class="text-center">amazon.com</td>
                                             <td class="text-center">${{$order->total}}</td>
                                             <td class="text-center card-title">ZF-US-{{sprintf('%04d',$order->id)}}</td>
-                                            <td class="text-center text-success">
-                                                @switch($order->status)
-                                                    @case(1)
-                                                        Pending
-                                                        @break
-                                                @endswitch
+                                            @php($status = 'Pending')
+                                            @php($class = 'text-warning')
+                                            @switch($order->status)
+                                                @case(0)
+                                                @php($status = 'Cancelled')
+                                                @php($class = 'text-danger')
+                                                @break
+                                                @case(2)
+                                                @php($class = 'text-success')
+                                                @break
+                                            @endswitch
+                                            <td class="text-center {{$class}}">
+                                                {{$status}}
                                             </td>
                                         </tr>
                                     @endforeach
