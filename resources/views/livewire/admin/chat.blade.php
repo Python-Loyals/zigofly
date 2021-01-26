@@ -87,19 +87,19 @@
                             </div>
                             <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab">
                                 @forelse($admins as $key => $admin)
-                                    <div class="media userlist-box waves-effect waves-light" data-recipient="{{$admin->id}}"
+                                    <div class="media userlist-box waves-effect waves-light row" data-recipient="{{$admin->id}}"
                                          data-profile="{{asset('/account/uploads/avatar.png')}}" data-username='{{$admin->name}}'
                                          data-uid="{{Auth::id()}}">
-                                        <a class="media-left" href="#!">
+                                        <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
                                                  src="{{asset('/account/uploads/avatar.png')}}" alt="dp">
 
                                             @if($admin->isOnline)
                                                 <div class='status-circle bg-success'></div>
                                             @endif
-                                        </a>
+                                        </div>
 
-                                        <div class="media-body">
+                                        <div class="media-body col-10">
                                             <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{ $admin->name }}
