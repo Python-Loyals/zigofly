@@ -59,17 +59,17 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
                                 @forelse($customers as $key => $customer)
-                                    <div class="media userlist-box waves-effect waves-light"
+                                    <div class="media userlist-box waves-effect waves-light row"
                                          wire:click="$emit('selected_user',{{$customer->id}})">
-                                        <a class="media-left" href="#!">
+                                        <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
                                                  src="{{asset('/account/uploads/avatar.png')}}" alt="Generic placeholder image ">
                                             @if($customer->isOnline)
                                                 <div class='status-circle bg-success'></div>
                                             @endif
-                                        </a>
+                                        </div>
 
-                                        <div class="media-body">
+                                        <div class="media-body col-10">
                                             <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{$customer->name}}

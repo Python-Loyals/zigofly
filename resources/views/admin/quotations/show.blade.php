@@ -52,9 +52,9 @@
                                     @if($quote->status == 2)
                                         <aspan class="paybtn btn btn-success btn-sm">processed</aspan>
                                     @elseif($quote->status == 0)
-                                        <span class="paybtn btn btn-danger btn-sm pt-1">cancelled</span>
+                                        <span class="paybtn btn btn-danger btn-sm">cancelled</span>
                                     @else
-                                        <span class="paybtn btn btn-warning btn-sm pt-1">Pending</span>
+                                        <span class="paybtn btn btn-warning btn-sm">Pending</span>
                                     @endif
                                 </div>
                             </nav>

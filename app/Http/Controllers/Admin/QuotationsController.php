@@ -125,11 +125,9 @@ class QuotationsController extends Controller
         $quote->update(['amount'=>$total, 'status' => 2, 'quoted_by' => Auth::guard('admin')->id()]);
         $quote->load(['services', 'products']);
 
-        print_r($quote->toJson());
-
-//        return redirect()
-//            ->route('admin.estimates.index')
-//            ->with('message', 'Quote was processed successfully');
+        return redirect()
+            ->route('admin.estimates.index')
+            ->with('message', 'Quote was processed successfully');
     }
 
     /**
