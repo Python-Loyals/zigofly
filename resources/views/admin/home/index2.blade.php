@@ -78,11 +78,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php($i = 0)
                                 @forelse($orders as $order)
-                                    @php($i++)
                                     <tr>
-                                        <td class="text-center">{{$i}} .</td>
+                                        <td class="text-center">{{$loop->index}} .</td>
                                         <td class="text-center font-weight-bold text-dark" data-href="{{route('admin.orders.show', $order->id)}}">ZF-US-{{sprintf('%04d',$order->id)}}</td>
                                         <td class="text-left">{{$order->customer->name ?? ''}}</td>
                                         @php($status = 'Pending')
@@ -127,19 +125,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php($i = 0)
                                 @forelse($quotes as $quote)
-                                    @php($i++)
                                     <tr>
-                                        <td class="text-center">{{$i}} .</td>
-                                        <th class="text-center card-title">ZFQ-{{sprintf('%04d',$quote->id)}}</th>
+                                        <td class="text-center">{{$loop->index + 1}} .</td>
+                                        <td class="text-center card-title font-weight-bold text-dark"
+                                            data-href="{{route('admin.estimates.show', $quote->id)}}">
+                                            ZFQ-{{sprintf('%04d',$quote->id)}}
+                                        </td>
                                         <td class="text-left">{{$quote->customer->name ?? ''}}</td>
-                                        <td class="text-center text-success">
-                                            @switch($order->status)
-                                                @case(1)
-                                                Pending
-                                                @break
-                                            @endswitch
+                                        @php($status = 'Pending')
+                                        @php($class = 'text-warning')
+                                        @switch($quote->status)
+                                            @case(0)
+                                            @php($status = 'Cancelled')
+                                            @php($class = 'text-danger')
+                                            @break
+                                            @case(2)
+                                            @php($status = 'Processed')
+                                            @php($class = 'text-success')
+                                            @break
+                                        @endswitch
+                                        <td class="text-center {{$class}}">
+                                            {{$status}}
                                         </td>
                                         <td class="text-center">
                                             {{$order->created_at}}
