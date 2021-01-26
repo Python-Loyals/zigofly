@@ -72,11 +72,11 @@
                                         @php($status = 'Pending')
                                         @php($class = 'text-warning')
                                         @switch($quote->status)
-                                            @case(2)
+                                            @case(0)
                                             @php($status = 'Cancelled')
                                             @php($class = 'text-danger')
                                             @break
-                                            @case(1)
+                                            @case(2)
                                             @php($status = 'Processed')
                                             @php($class = 'text-success')
                                             @break
@@ -92,7 +92,7 @@
                                         </td>
                                         <td>{{$quote->created_at ?? ''}}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-primary" href="{{ route('admin.orders.show', $quote->id) }}">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('admin.estimates.show', $quote->id) }}">
                                                 {{ trans('global.view') }}
                                             </a>
                                             <form action="{{ route('admin.estimates.destroy', $quote->id) }}"

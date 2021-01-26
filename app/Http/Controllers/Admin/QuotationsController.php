@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminUpdateQuotationRequest;
 use App\Quote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuotationsController extends Controller
 {
@@ -50,6 +51,20 @@ class QuotationsController extends Controller
     public function show(Quote $quote)
     {
         return view('admin.quotations.show', compact('quote'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Quote  $quote
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel(Quote $quote)
+    {
+        $quote->update(['status' => 0, 'quoted_by' => Auth::guard('admin')->id()]);
+        return redirect()
+            ->route('admin.estimates.index')
+            ->with('message', 'Quote was cancelled successfully');
     }
 
     /**
@@ -107,12 +122,14 @@ class QuotationsController extends Controller
             }
         }
 
-        $quote->update(['amount'=>$total, 'status' => 1]);
+        $quote->update(['amount'=>$total, 'status' => 2, 'quoted_by' => Auth::guard('admin')->id()]);
         $quote->load(['services', 'products']);
 
-        return redirect()
-            ->route('admin.estimates.index')
-            ->with('message', 'Quote was processed successfully');
+        print_r($quote->toJson());
+
+//        return redirect()
+//            ->route('admin.estimates.index')
+//            ->with('message', 'Quote was processed successfully');
     }
 
     /**

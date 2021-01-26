@@ -220,8 +220,10 @@
                                                         {{$quote->amount?? '__'}}
                                                     </td>
                                                     <td>
-                                                        @if($quote->amount)
-                                                            <a href="#" class="paybtn btn btn-warning btn-sm">pay</a>
+                                                        @if($quote->status == 2)
+                                                            <a href="#" class="paybtn btn btn-success btn-sm">pay</a>
+                                                        @elseif($quote->status == 0)
+                                                            <a href="" class="paybtn btn btn-danger btn-sm pt-1">Cancelled</a>
                                                         @else
                                                             <a href="" class="paybtn btn btn-warning btn-sm pt-1">Pending</a>
                                                         @endif

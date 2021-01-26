@@ -45,7 +45,18 @@
                                 </a>
                                 <a class="breadcrumb-item" href="{{route('admin.home')}}">Admin Panel</a>
                                 <a class="breadcrumb-item" href="{{route('admin.orders.index')}}">Estimates</a>
-                                <a class="breadcrumb-item" href="{{route('admin.orders.show', $quote->id)}}">ZFQ-{{sprintf('%04d',$quote->id)}}</a>
+                                <a class="breadcrumb-item" href="{{route('admin.orders.show', $quote->id)}}">
+                                    ZFQ-{{sprintf('%04d',$quote->id)}}
+                                </a>
+                                <div class="ml-auto">
+                                    @if($quote->status == 2)
+                                        <aspan class="paybtn btn btn-success btn-sm">processed</aspan>
+                                    @elseif($quote->status == 0)
+                                        <span class="paybtn btn btn-danger btn-sm pt-1">cancelled</span>
+                                    @else
+                                        <span class="paybtn btn btn-warning btn-sm pt-1">Pending</span>
+                                    @endif
+                                </div>
                             </nav>
                         </div>
                     </div>
@@ -136,7 +147,7 @@
                             </div>
                             <div class="col-md-2 mt-3 mt-md-0 d-flex justify-content-center">
                                 <input type="text" class="form-control form-control-sm price"
-                                       data-quantity="{{$item->quantity}}"
+                                       data-quantity="{{$item->quantity}}" {{$item->status == 0 ? 'readonly':''}}
                                        name="products[{{$item->id}}][price]" value="{{$item->price}}">
                             </div>
                             <div class="col-md-2 mt-3 mt-md-0 d-flex justify-content-center h-100 align-content-center">
@@ -308,21 +319,23 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     {{--    cancel modal--}}
-    <div id="cancel-modal2" class="modal fade" data-back="{{route('admin.orders.show', $quote->id)}}" >
+    <div id="cancel-modal" class="modal fade" data-back="{{route('admin.orders.show', $quote->id)}}" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-danger">
-                    <h4 class="modal-title text-light">Cancel Order</h4>
+                    <h4 class="modal-title text-light">Cancel Quote</h4>
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to cancel the order?</p>
+                    <p>Are you sure you want to cancel the quotation?</p>
+                    <form id="quote_cancel_form" method="post" action="{{route('admin.orders.cancel', $quote->id)}}">
+                        @csrf
+                        @method('put')
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button"
-                            data-link="{{route('admin.update_status')}}"
-                            data-id="{{$quote->id}}"
+                    <button type="submit" form="quote_cancel_form"
                             class="btn btn-danger text-light btn-order-cancel">
                         Confirm</button>
                 </div>
@@ -335,22 +348,33 @@
     @parent
     <script>
         $(document).ready(function() {
+            $('select.status').on('change', function (){
+                if ($(this).val() == 0){
+                    $(this).parent().next().find('.price')
+                        .val('0').prop('readonly', true)
+                        .trigger('input')
+                }else{
+                    $(this).parent().next().find('.price')
+                        .prop('readonly', false)
+                }
+            })
             $('.price, #service-cost').inputFilter(function(value) {
-                return /^\d.*$/.test(value);    // Allow digits only, using a RegExp
+                return /^-?\d*[.,]?\d*$/.test(value)    // Allow digits only, using a RegExp
             });
 
             $('.price').on('input', function (){
                 let qty = parseFloat($(this).data('quantity'));
-                let price = parseFloat($(this).val())
+                let price = parseFloat($(this).val()) || 0
                 const lineSubTotal = qty * price
 
                 $(this).parent().next().find('.product-subtotal').text(`$${lineSubTotal}`)
                 if (price > 0){
-                    updateTotals();
                     $(this).parent().prev().find('select.status').val(2)
-                }else{
-                    $(this).parent().prev().find('select.status').val(0)
                 }
+                // else{
+                //     $(this).parent().prev().find('select.status').val(0)
+                // }
+                updateTotals();
             })
 
             let services = {{count($quote->services)}}
@@ -386,13 +410,13 @@
             let subtotal = 0;
             $('input.price').each(function (){
                 let qty = parseFloat($(this).data('quantity'));
-                let price = parseFloat($(this).val() ? $(this).val() : '0')
+                let price = parseFloat($(this).val()) || 0
                 console.log(price)
                 const lineSubTotal = qty * price
                 subtotal += lineSubTotal
             });
             $('.service-costs').each(function (){
-                let price = parseFloat($(this).val())
+                let price = parseFloat($(this).val()) || 0
                 subtotal += price
             })
             total += subtotal

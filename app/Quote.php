@@ -28,11 +28,10 @@ class Quote extends Model implements HasMedia
     protected $fillable = [
         'instructions',
         'service',
-        'products',
-        'attachment',
         'amount',
         'status',
-        'customer_id'
+        'customer_id',
+        'quoted_by',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

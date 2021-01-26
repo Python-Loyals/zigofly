@@ -120,12 +120,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('home', 'HomeController@index')->name('home');
 
     // Customers
-//    Route::delete('customers/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    // Route::delete('customers/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('customers', 'CustomersController');
 
     //Customer orders
     Route::PUT('order/update_status', 'OrdersController@updateStatus')->name('update_status');
     Route::resource('orders', 'OrdersController');
+    //quotes
+    Route::put('estimates/cancel/{estimate}', 'QuotationsController@cancel')->name('orders.cancel');
     Route::resource('estimates', 'QuotationsController');
 
 

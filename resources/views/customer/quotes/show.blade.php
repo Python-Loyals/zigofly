@@ -31,9 +31,9 @@
                 @include('partials.customer.boxes')
 
                 <div class="row">
-                    <div class="packsummary col-lg-4 col-md-4 col-xs-12 col-sm-12 package-card">
+                    <div class="packsummary col-md-4 col-12 package-card">
                         <div class="row">
-                            <div class="packname col-12 text-center">
+                            <div class="packname col-12 text-center pt-2">
                                 <strong class="">Quote Details</strong>
                                 <p>ZFQ-{{sprintf('%04d', $quote->id)}}</p>
                             </div>
@@ -43,16 +43,29 @@
                             <div class="details col-lg-10 col-md-10 col-xs-10 col-sm-10">
                                 <p>Quote Service: &ensp;
                                     <span class="info"> {{$quote->service == 2 ? 'Buy & Ship': 'Ship Only'}} </span></p>
-                                @if(!$quote->amount)
+                                @if($quote->status == 0)
+                                    @if($quote->amount)
+                                        <p>Quote Amount: &ensp;
+                                            <span class="info">
+                                            ${{$quote->amount}}
+                                        </span>
+                                        </p>
+                                    @endif
                                     <p>Quote Status: &ensp;
                                         <span class="info">
-                                            <button class="paybtn btn btn-warning btn-sm pt-1">Pending</button>
+                                            <button class="paybtn btn btn-danger btn-sm pt-1">Cancelled</button>
                                         </span>
                                     </p>
-                                @else
+                                @elseif($quote->status == 2)
                                     <p>Quote Amount: &ensp;
                                         <span class="info">
                                             ${{$quote->amount}}
+                                        </span>
+                                    </p>
+                                @else
+                                    <p>Quote Status: &ensp;
+                                        <span class="info">
+                                            <button class="paybtn btn btn-warning btn-sm pt-1">Pending</button>
                                         </span>
                                     </p>
                                 @endif
@@ -61,6 +74,23 @@
                                 @endif
                             </div>
                         </div>
+                        <hr>
+                        @if(count($quote->services) > 0)
+                            <h5 class="text-center mb-1">Services(s)</h5>
+                            <hr>
+                            <div class="">
+
+                                @foreach($quote->services as $service)
+                                    <div class="packplancard  standard mb-1">
+                                        <p>Name: <spn class="info">{{$service->name}}</spn></p>
+                                        <p>Price: <spn class="info">${{$service->price}}</spn></p>
+                                        @if($service->description)
+                                            <p>Description: <spn class="info">{{$service->description}}</spn></p>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                         <hr>
                         @if(count($quote->getMedia('attachment')) > 0)
                             <h5 class="text-center mb-1">Attachment(s)</h5>
@@ -83,40 +113,49 @@
                         @endif
                     </div><br>
 
-                    <div class="clearfix"></div>
-                    <div class="packplan col-lg-4 col-md-4 col-xs-12 col-sm-12 package-card pt-3">
+                    <div class="packplan col-md-4 col-12 package-card pt-3">
                         <h5 class="text-center mb-2">Quote products</h5>
-                        @foreach($quote->products as $i => $product)
-                            <div class="{{$i % 2 == 0 ? 'standard':'express'}} packplancard">
-                                <a href="{{$product->link}}" class="h6 text-uppercase"><strong>{{$product->name}}</strong></a>
+                        @foreach($quote->products as $product)
+                            <div class="{{$loop->odd ? 'standard':'express'}} packplancard">
+                                <a href="{{$product->link}}" target="_blank" rel="noopener noreferrer"
+                                   class="h6 text-uppercase"><strong>{{$product->name}}</strong> <i class="fa fa-external-link-alt ml-1" aria-hidden="false"></i></a>
                                 <p>Quantity: <spn class="info">{{$product->quantity}}</spn></p>
                                 <p>Options: <span class="info">{{$product->options}}</span></p>
+                                @if($product->status == 0)
+                                    <p>Product Status: <span class="info text-danger">Not Found</span></p>
+                                @elseif($product->status == 1)
+                                    <p>Product Status: <span class="info text-warning">Pending</span></p>
+                                @elseif($product->status == 2)
+                                    <p>Unit Price:
+                                        <span class="info">${{$product->price}}</span></p>
+                                @endif
                             </div><br>
                         @endforeach
                     </div><br>
-                    <hr>
-                    <div class="packdetails col-lg-3 col-md-3 col-xs-12 col-sm-12  package-card">
-{{--                        <div class="packdetailsshipment-info packdetailscard">--}}
-{{--                            <center><p><strong>Shipment Info</strong></p></center>--}}
-{{--                            <p>Number of Packages:&ensp;<strong>2</strong></p>--}}
-{{--                            <p>Shipping Fee:&ensp;<strong>$ 55.00</strong></p>--}}
-{{--                            <form>--}}
-{{--                                <label for="promocode">Promo Code:</label>--}}
-{{--                                <input type="text" id="promocode" name="promocode"><br>--}}
-{{--                            </form>--}}
-{{--                        </div><br>--}}
-                        <div class="packaddress">
-                            <button class="btnlink">Zigofly Wallet
-                                <img src="{{asset('account/images/banners/financial.png')}}">
-                            </button>
+
+                    @if($quote->status == 2)
+                        <div class="packdetails col-md-3 col-12  package-card">
+                            {{--                        <div class="packdetailsshipment-info packdetailscard">--}}
+                            {{--                            <center><p><strong>Shipment Info</strong></p></center>--}}
+                            {{--                            <p>Number of Packages:&ensp;<strong>2</strong></p>--}}
+                            {{--                            <p>Shipping Fee:&ensp;<strong>$ 55.00</strong></p>--}}
+                            {{--                            <form>--}}
+                            {{--                                <label for="promocode">Promo Code:</label>--}}
+                            {{--                                <input type="text" id="promocode" name="promocode"><br>--}}
+                            {{--                            </form>--}}
+                            {{--                        </div><br>--}}
+                            <div class="packaddress">
+                                <button class="btnlink">Zigofly Wallet
+                                    <img src="{{asset('account/images/banners/financial.png')}}">
+                                </button>
+                            </div><br>
+                            <div class="packaddress">
+                                <button class="">
+                                    <img src="{{asset('account/images/banners/mpesa.png')}}">
+                                </button>
+                            </div> <br>
                         </div><br>
-                        <div class="packaddress">
-                            <button class="">
-                                <img src="{{asset('account/images/banners/mpesa.png')}}">
-                            </button>
-                        </div> <br>
-                    </div><br>
-                    <hr>
+                    @endif
                 </div>
 
 
