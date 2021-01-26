@@ -286,16 +286,18 @@ require('./bootstrap');
 
     var input_no = 0;
 
-    $('#btn-add-row').on('click', function (){
+    $('body').on('click', '#btn-add-row',function (){
         let tr = $('#quote-form tbody>tr:last').clone(true);
         input_no += 1;
         tr.find('input').each(function() {
             this.name= this.name.replace(/\[[\d]\]/, '['+(input_no)+']');
+            this.value = ''
+            console.log(this)
             $(this).removeClass('is-invalid')
         });
 
         $('#quote-form tbody>tr>td:last').after('<div class="dropdown-divider"></div>');
-        tr.insertAfter('#quote-form tbody>tr:last');
+        $('#quote-form tbody').append(tr);
         $(this).removeAttr('id').addClass('btn-minus-row').html('<i class="fa fa-minus"></i>').off('click');
     })
 

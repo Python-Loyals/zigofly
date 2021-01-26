@@ -63,6 +63,7 @@
                                                 @php($class = 'text-danger')
                                                 @break
                                                 @case(2)
+                                                @php($status = 'Processed')
                                                 @php($class = 'text-success')
                                                 @break
                                             @endswitch
@@ -73,7 +74,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="7" class="text-center">No previos orders</td>
+                                        <td colspan="7" class="text-center">No previous orders</td>
                                     </tr>
                                 @endif
 
