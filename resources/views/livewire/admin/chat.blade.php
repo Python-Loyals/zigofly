@@ -41,13 +41,13 @@
                     <ul class="nav nav-pills mb-3 mx-2 row" id="pills-tab" role="tablist">
                         <li class="nav-item col-6 pl-0 pr-1">
                             <a class="nav-link active btn-block text-center pr-0 pl-2" id="pills-customers-tab" data-toggle="pill"
-                               href="#pills-customers" role="tab" aria-controls="pills-customers" aria-selected="true">
+                               href="#pills-customers" role="tab" aria-controls="pills-customers" aria-selected="true" wire:ignore.self>
                                <i class="fa fa-users p-r-4"></i> Customers
                             </a>
                         </li>
                         <li class="nav-item btn-block col-6 px-0">
                             <a class="nav-link text-center btn-block" id="pills-staff-tab" data-toggle="pill" href="#pills-staff"
-                               role="tab" aria-controls="pills-staff" aria-selected="false">
+                               role="tab" aria-controls="pills-staff" aria-selected="false" wire:ignore.self>
                                 <i class="fa fa-comments"></i> Staff
                             </a>
                         </li>
@@ -57,9 +57,10 @@
                     @php($admins = \App\Admin::all()->except(Auth::guard('admin')->user()->id))
                     <div class="main-friend-list">
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-customers" role="tabpanel" aria-labelledby="pills-customers-tab">
+                            <div class="tab-pane fade show active" id="pills-customers" role="tabpanel"
+                                 aria-labelledby="pills-customers-tab" wire:ignore.self>
                                 @forelse($customers as $key => $customer)
-                                    <div class="media userlist-box waves-effect waves-light row"
+                                    <div class="media userlist-box waves-effect waves-light row user"
                                          wire:click="$emit('selected_user',{{$customer->id}})">
                                         <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
@@ -85,16 +86,16 @@
 
                                 @endforelse
                             </div>
-                            <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab">
-                                @forelse($admins as $key => $admin)
-                                    <div class="media userlist-box waves-effect waves-light row" data-recipient="{{$admin->id}}"
-                                         data-profile="{{asset('/account/uploads/avatar.png')}}" data-username='{{$admin->name}}'
-                                         data-uid="{{Auth::id()}}">
+                            <div class="tab-pane fade" id="pills-staff" role="tabpanel"
+                                 aria-labelledby="pills-staff-tab" wire:ignore.self>
+                                @forelse($admins as $key => $administrator)
+                                    <div class="media userlist-box waves-effect waves-light row admin" id="{{$key}}"
+                                         wire:click="$emit('selected_admin',{{$administrator->id}})">
                                         <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
                                                  src="{{asset('/account/uploads/avatar.png')}}" alt="dp">
 
-                                            @if($admin->isOnline)
+                                            @if($administrator->isOnline)
                                                 <div class='status-circle bg-success'></div>
                                             @endif
                                         </div>
@@ -102,12 +103,12 @@
                                         <div class="media-body col-10">
                                             <div class="chat-header">
                                             <span class="text-capitalize">
-                                                {{ $admin->name }}
+                                                {{ $administrator->name }}
 
                                             </span>
                                                 <small class="d-block text-muted"
                                                        style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
-                                                    {{$admin->lastMessage->message ?? ''}}
+                                                    {{$administrator->lastMessage->message ?? ''}}
                                                 </small>
                                             </div>
                                         </div>
@@ -133,7 +134,12 @@
                     <img class="media-object img-cir m-t-5 bg-light" src="{{asset('account/uploads/avatar.png')}}" alt="Generic placeholder image">
                 </a>
                 <span class="col-8 user-name row align-items-center text-bold text-white" style="text-transform: capitalize">
-                {{$chat_user->name ?? ''}}
+                    @if($customer_chat)
+                        {{$user->name ?? ''}}
+                    @elseif($staff_chat)
+                        {{$admin->name ?? ''}}
+                    @endif
+                    {{$customer_chat}}
             </span>
             </div>
         </div>

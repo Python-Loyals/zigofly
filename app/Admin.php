@@ -7,6 +7,7 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
 
@@ -60,18 +61,39 @@ class Admin extends Authenticatable
         return $this->morphMany(Message::class, 'receiver');
     }
 
+    public function adminSentMessages()
+    {
+        return $this->sentMessages()
+            ->whereHasMorph('receiver', Admin::class)
+            ->where('receiver_id', '=', Auth::guard('admin')->id());
+    }
+
+    public function adminReceivedMessages()
+    {
+        return $this->receivedMessages()
+            ->where('sender_id', '=', Auth::guard('admin')->id());
+    }
+
     public function getLastMessageAttribute()
     {
-        return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
+        return $this->adminReceivedMessages
+            ->merge($this->adminSentMessages)
+            ->sortByDesc('created_at')->first();
     }
 
     public function getUnreadMessagesAttribute()
     {
-        $staff = $this->receivedMessages()->where('read', '=', 0)->get();
+        $staff = $this->adminReceivedMessages()
+            ->where('read', '=', 0);
         $user = Message::whereHasMorph('sender', User::class)
             ->where('read', '=', 0)
             ->get();
         return $user->merge($staff);
+    }
+
+    public function getConversationAttribute()
+    {
+        return $this->adminReceivedMessages->merge($this->adminSentMessages)->sortBy('created_at');
     }
 
 }

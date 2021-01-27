@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Http\Controllers\Controller;
 use App\Message;
 use App\User;
@@ -20,14 +21,14 @@ class ChatController extends Controller
 //        $message = new Message(['message' => 'hello']);
 //
 //        $message->sender()->associate(Auth::user());
-//        $message->receiver()->associate(User::find(1));
+//        $message->receiver()->associate(Admin::find(1));
 //        $message->save();
 //
 //        return $message;
-        $u = User::find(1);
+        $u = Admin::find(1);
 //        $u->load('lastMessage');
 
-        return $u->lastMessage;
+        return $u->conversation;
     }
 
     /**
