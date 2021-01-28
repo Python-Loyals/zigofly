@@ -3,17 +3,20 @@
 namespace App;
 
 use App\Notifications\AdminResetPasswordNotification;
-use Illuminate\Auth\Notifications\ResetPassword;
+use App\Traits\HasHashedMediaTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements HasMedia
 {
-    use SoftDeletes, Notifiable, HasApiTokens;
+    use SoftDeletes, Notifiable, HasApiTokens, HasMediaTrait;
 
     public $table = 'admins';
 
@@ -44,6 +47,26 @@ class Admin extends Authenticatable
     public function getIsOnlineAttribute()
     {
         return Cache::has('admin-is-online-' . $this->id);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 150, 150);
+    }
+
+    public function getProfileAttribute()
+    {
+        $profile = $this->getMedia('admin_profile');
+
+        $profile->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
+
+
+        return $profile;
     }
 
     public function sendPasswordResetNotification($token)

@@ -78,8 +78,7 @@
                             @endphp
 
                             <div class="image d-md-block d-none">
-{{--                                <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" alt="{{$fname}}" />--}}
-                                <img src="https://indexfand.com/myaccount/assets/img/user/000.png" alt="{{$fname}}" />
+                                <img src="{{count(auth()->user()->profile) > 0 ? auth()->user()->profile[0]->thumbnail : asset('images/user.png')}}" alt="{{$fname}}" />
                             </div>
                             <div class="content m-sm-l-0">
                                 <a class="js-acc-btn" href="#">{{$fname}}</a>
@@ -88,7 +87,8 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="https://indexfand.com/myaccount/assets/img/user/000.png" alt="{{auth()->user()->name}}" />
+                                            <img src="{{count(auth()->user()->profile) > 0 ? auth()->user()->profile[0]->preview : asset('images/user.png')}}"
+                                                 alt="{{auth()->user()->name}}" />
                                         </a>
                                     </div>
                                     <div class="content">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="{{route('customer.profile.index')}}">
+                                        <a href="{{route('admin.profile.index')}}">
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">

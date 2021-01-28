@@ -132,6 +132,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 
     Route::get('message', 'ChatController@index');
+
+    //admin profile
+    Route::get('profile','ProfileController@index')->name('profile.index');
+    Route::put('profile','ProfileController@update')->name('profile.update_info');
+    Route::put('profile/avatar','ProfileController@updateAvatar')->name('profile.update_avatar');
 });
 
 
