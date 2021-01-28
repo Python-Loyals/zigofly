@@ -1,6 +1,8 @@
 @extends('layouts.customer.customer')
 @section('styles')
+    @parent
     <link rel="stylesheet" href="{{asset('account/css/zigo.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
 @endsection
 @section('content')
     <div class="main-content">
@@ -112,15 +114,10 @@
     </div>
 @endsection
 @section('scripts')
-<script src="https://clipboardjs.com/dist/clipboard.min.js" crossorigin="anonymous"></script>
-
-<script>
-    $('button').tooltip({
-        placement: 'bottom',
-        trigger: 'click'
-    });
-
-    function setTooltip(btn, message) {
+    @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha512-hDWGyh+Iy4Mr9AHOzUP2+Y0iVPn/BwxxaoSleEjH/i1o4EVTF/sh0/A1Syii8PWOae+uPr+T/KHwynoebSuAhw==" crossorigin="anonymous"></script>
+    <script>
+        function setTooltip(btn, message) {
         $(btn).tooltip('hide')
             .attr('data-original-title', message)
             .tooltip('show');
@@ -132,16 +129,22 @@
         }, 1000);
     }
 
-    var clipboard = new ClipboardJS('.btn');
+        $(document).ready(function (){
+            $('button').tooltip({
+                placement: 'bottom',
+                trigger: 'click'
+            });
+            var clipboard = new ClipboardJS('.btn');
 
-    clipboard.on('success', function(e) {
-        setTooltip(e.trigger, 'Copied!');
-        hideTooltip(e.trigger);
-    });
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
 
-    clipboard.on('error', function(e) {
-        setTooltip(e.trigger, 'Failed!');
-        hideTooltip(e.trigger);
-    });
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+        });
 </script>
 @endsection

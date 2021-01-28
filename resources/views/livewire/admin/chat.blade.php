@@ -163,7 +163,6 @@
                     @elseif($staff_chat)
                         {{$admin->name ?? ''}}
                     @endif
-                    {{$customer_chat}}
             </span>
             </div>
         </div>

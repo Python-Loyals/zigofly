@@ -1776,7 +1776,7 @@ section {
 .hamburger-inner,
 .hamburger-inner:after,
 .hamburger-inner:before {
-    background: #f6f6f6;
+    background: #f6f6f6!important;
     width: 30px;
 }
 
