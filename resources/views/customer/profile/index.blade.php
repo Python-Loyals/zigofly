@@ -38,7 +38,7 @@
                                                 <div class="col-12 col-sm-auto mb-3">
                                                     <div class="mx-auto" style="width: 140px;">
                                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                            <img src="{{asset('account/uploads/'.auth()->user()->avatar)}}" height="140" width="140" alt="{{auth()->user()->name}}">
+                                                            <img src="{{count(auth()->user()->profile) > 0 ? auth()->user()->profile[0]->preview : asset('images/user.png')}}" height="140" width="140" alt="{{auth()->user()->name}}">
                                                         </div>
                                                     </div>
                                                 </div>

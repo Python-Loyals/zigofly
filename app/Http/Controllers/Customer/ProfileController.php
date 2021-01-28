@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Age;
 use App\County;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUpdateAvatarRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -31,28 +32,29 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param AdminUpdateAvatarRequest $request
      * @return Response
      * */
-    public function updateAvatar(Request $request)
+    public function updateAvatar(AdminUpdateAvatarRequest $request)
     {
-        if($request->hasFile('avatar'))
-        {
-            $avatar = $request->file('avatar');
-            $path = 'account/uploads/';
-            $filename = time(). '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->save(public_path($path . $filename));
-            if ($request->user()->avatar !=='avatar.png'){
-                $old_avatar = $path . $request->user()->avatar;
-                if (File::exists(public_path($old_avatar))){
-                    File::delete(public_path($old_avatar));
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $admin = \Auth::user();
+
+            if (count($admin->profile) > 0) {
+                foreach ($admin->profile as $media) {
+                    $media->delete();
                 }
             }
-            $request->user()->avatar = $filename;
-            $request->user()->save();
+
+            $admin->addMediaFromRequest('avatar')
+                ->usingFileName($file->hashName())
+                ->preservingOriginal()
+                ->toMediaCollection('customer_profile');
         }
 
-        return redirect()->back()->with(['success' => 'Your image was updated successfully']);
+        return redirect()->back()
+            ->with(['success' => 'Your image was updated successfully']);
     }
 
 }

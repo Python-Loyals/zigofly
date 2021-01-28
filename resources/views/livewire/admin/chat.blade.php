@@ -79,7 +79,7 @@
                                          wire:click="$emit('selected_user',{{$customer->id}})">
                                         <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
-                                                 src="{{asset('/account/uploads/avatar.png')}}" alt="Generic placeholder image ">
+                                                 src="{{count($customer->profile) > 0 ? $customer->profile[0]->thumbnail : asset('images/user.png')}}" alt="Generic placeholder image ">
                                             @if($customer->isOnline)
                                                 <div class='status-circle bg-success'></div>
                                             @endif
@@ -113,7 +113,7 @@
                                          wire:click="$emit('selected_admin',{{$administrator->id}})">
                                         <div class="media-left col-2 px-0 pl-1 mr-0">
                                             <img class="media-object img-radius img-radius"
-                                                 src="{{asset('/account/uploads/avatar.png')}}" alt="dp">
+                                                 src="{{count($administrator->profile) > 0 ? $administrator->profile[0]->thumbnail : asset('images/user.png')}}" alt="dp">
 
                                             @if($administrator->isOnline)
                                                 <div class='status-circle bg-success'></div>
@@ -155,7 +155,12 @@
             </a>
             <div class="w-100 row">
                 <a class="media-left photo-table col-4 pr-0" href="#!">
-                    <img class="media-object img-cir m-t-5 bg-light" src="{{asset('account/uploads/avatar.png')}}" alt="Generic placeholder image">
+                    @if($customer_chat)
+                        <img class="media-object img-cir m-t-5 bg-light" src="{{count($user->profile) > 0 ? $user->profile[0]->thumbnail : asset('images/user.png')}}">
+                    @elseif($staff_chat)
+                        <img class="media-object img-cir m-t-5 bg-light" src="{{count($admin->profile) > 0 ? $admin->profile[0]->thumbnail : asset('images/user.png')}}">
+                    @endif
+
                 </a>
                 <span class="col-8 user-name row align-items-center text-bold text-white" style="text-transform: capitalize">
                     @if($customer_chat)
