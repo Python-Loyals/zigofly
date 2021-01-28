@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Passport\HasApiTokens;
 use \DateTimeInterface;
@@ -125,6 +126,13 @@ class User extends Authenticatable
     public function getLastMessageAttribute()
     {
         return $this->receivedMessages->merge($this->sentMessages)->sortByDesc('created_at')->first();
+    }
+
+    public function getUserUnreadMessagesAttribute()
+    {
+        return $this->sentMessages()
+            ->where('read', '=', 0)
+            ->get();
     }
 
     public function getConversationAttribute()

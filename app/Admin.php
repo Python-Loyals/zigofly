@@ -81,14 +81,23 @@ class Admin extends Authenticatable
             ->sortByDesc('created_at')->first();
     }
 
+    public function getAdminUnreadMessagesAttribute()
+    {
+        return $this->sentMessages()
+            ->where('receiver_id', '=', Auth::guard('admin')->id())
+            ->where('read', '=', 0)
+            ->get();
+    }
+
     public function getUnreadMessagesAttribute()
     {
-        $staff = $this->adminReceivedMessages()
-            ->where('read', '=', 0);
+        $staff = $this->receivedMessages()
+            ->where('receiver_id', '=', Auth::guard('admin')->id())
+            ->where('read', '=', 0)->get();
         $user = Message::whereHasMorph('sender', User::class)
             ->where('read', '=', 0)
             ->get();
-        return $user->merge($staff);
+        return $staff->merge($user);
     }
 
     public function getConversationAttribute()

@@ -36,6 +36,21 @@
                         .nav-link.active:after{
                             transform: scaleX(1);
                         }
+                        .user-unread{
+                            position: relative;
+                            display: inline-block;
+                            top: -5px;
+                            right: -5px;
+                            height: 15px;
+                            width: 15px;
+                            line-height: 15px;
+                            text-align: center;
+                            color: #fff;
+                            -webkit-border-radius: 100%;
+                            -moz-border-radius: 100%;
+                            border-radius: 100%;
+                            font-size: 12px;
+                        }
                     </style>
                     {{--                tabs--}}
                     <ul class="nav nav-pills mb-3 mx-2 row" id="pills-tab" role="tablist">
@@ -74,6 +89,11 @@
                                             <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{$customer->name}}
+                                                @if(count($customer->userUnreadMessages) > 0)
+                                                    <div class="user-unread bg-success">
+                                                        {{count($customer->userUnreadMessages)}}
+                                                    </div>
+                                                @endif
                                             </span>
                                                 <small class="d-block text-muted"
                                                        style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
@@ -104,7 +124,11 @@
                                             <div class="chat-header">
                                             <span class="text-capitalize">
                                                 {{ $administrator->name }}
-
+                                                @if(count($administrator->adminUnreadMessages) > 0)
+                                                    <div class="user-unread bg-success">
+                                                        {{count($administrator->adminUnreadMessages)}}
+                                                    </div>
+                                                @endif
                                             </span>
                                                 <small class="d-block text-muted"
                                                        style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">

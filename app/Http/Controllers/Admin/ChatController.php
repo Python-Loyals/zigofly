@@ -28,7 +28,7 @@ class ChatController extends Controller
         $u = Admin::find(1);
 //        $u->load('lastMessage');
 
-        return $u->conversation;
+        return $u->adminUnreadMessages;
     }
 
     /**
