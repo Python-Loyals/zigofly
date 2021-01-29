@@ -248,6 +248,15 @@
                 console.log(e)
             @this.call('newMessage');
             })
+        document.addEventListener("DOMContentLoaded", () => {
+            // Livewire.hook('element.updating', (fromEl, toEl, component) => {})
+            Livewire.hook('message.sent', (message, component) => {
+                console.log(message)
+                console.log(component)
+            })
+            // Livewire.hook('message.received', (message, component) => {})
+            // Livewire.hook('message.processed', (message, component) => {})
+        });
     </script>
 @endsection
 

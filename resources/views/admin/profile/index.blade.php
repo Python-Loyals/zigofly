@@ -67,15 +67,19 @@
                                             </div>
                                             <ul class="nav nav-tabs" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" id="info-tab" data-toggle="tab" href="#personalInfo" role="tab" aria-controls="personalInfo" aria-selected="true">Personal Details</a>
+                                                    <a class="nav-link {{($errors->has('password') || $errors->has('old_password')) ? '':'active'}}"
+                                                       id="info-tab" data-toggle="tab" href="#personalInfo" role="tab"
+                                                       aria-controls="personalInfo" aria-selected="{{($errors->has('password') || $errors->has('old_password')) ? 'false':'true'}}">Personal Details</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="password-tab" data-toggle="tab" href="#changePassword" role="tab" aria-controls="changePassword" aria-selected="false">Change Password</a>
+                                                    <a class="nav-link {{($errors->has('password') || $errors->has('old_password')) ? 'show active':''}}"
+                                                       id="password-tab" data-toggle="tab" href="#changePassword" role="tab"
+                                                       aria-controls="changePassword" aria-selected="{{($errors->has('password') || $errors->has('old_password')) ? 'true':'false'}}">Change Password</a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content pt-3">
-                                                <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="info-tab" id="personalInfo">
-                                                    <form class="form" action="{{route('customer.profile.update_info')}}" method="POST">
+                                                <div class="tab-pane fade {{($errors->has('password') || $errors->has('old_password')) ? '':'show active'}}" role="tabpanel" aria-labelledby="info-tab" id="personalInfo">
+                                                    <form class="form" action="{{route('admin.profile.update_info')}}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="row">
@@ -133,8 +137,8 @@
                                                 </div>
 
 
-                                                <div class="tab-pane fade" id="changePassword" role="tabpanel" aria-labelledby="password-tab">
-                                                    <form class="form" action="{{route('profile.password.update')}}" method="POST">
+                                                <div class="tab-pane fade {{($errors->has('password') || $errors->has('old_password')) ? 'show active':''}}" id="changePassword" role="tabpanel" aria-labelledby="password-tab">
+                                                    <form class="form" action="{{route('admin.password.update')}}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="row">
