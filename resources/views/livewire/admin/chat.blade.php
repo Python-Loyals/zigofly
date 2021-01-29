@@ -235,25 +235,64 @@
 @section('scripts')
     @parent
     <script>
-        livewire.on('read_messages', () => {
-            $('.unread-messages').text(@this.unreadMessages)
-        });
-
         livewire.on('scroll', () => {
             $(".main-friend-chat").animate({ scrollTop: $(".main-friend-chat")[0].scrollHeight }, 1000);
         });
 
+        livewire.on('notification', () => {
+            playNotificationSound()
+        });
+
+        livewire.on('new_message_notif', () => {
+            playNewMessageSound()
+        });
+
+        livewire.on('read_messages', () => {
+            $('.unread-messages').text(@this.unreadMessages)
+        });
+
         Echo.channel('chat')
             .listen('.chat', (e)=>{
-                console.log(e)
             @this.call('newMessage');
             })
+
+        let min_height = '38';
+        $('#chat-message').on('keydown', function (e) {
+            if (e.which == 13 && !e.ctrlKey && !e.altKey && !e.shiftKey){
+                e.preventDefault();
+                @this.send()
+            }else if(e.which == 13 &&( e.ctrlKey || e.altKey || e.shiftKey)){
+                let v = $(this).val()
+                $(this).val(v+'\n');
+            }
+
+            let height = Math.min(20 * 5, $(this)[0].scrollHeight);
+            $(this). css('height',  height + 'px');
+
+            if ($(this)[0].scrollHeight > height){
+                $(this).css( {
+                    'overflow-y': 'auto',
+                });
+            }else{
+                $(this).css( {
+                    'overflow-y': 'hidden',
+                });
+            }
+        });
+
+        $('.back_chatBox').on('click', function() {
+            $('.showChat_inner').toggleClass('slideInRight');
+            $('.showChat_inner').toggleClass('slideOutRight');
+            $('body').css('overflow-y', 'auto');
+            @this.backChat();
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             // Livewire.hook('element.updating', (fromEl, toEl, component) => {})
-            Livewire.hook('message.sent', (message, component) => {
-                console.log(message)
-                console.log(component)
-            })
+            // Livewire.hook('message.sent', (message, component) => {
+            //     console.log(message)
+            //     console.log(component)
+            // })
             // Livewire.hook('message.received', (message, component) => {})
             // Livewire.hook('message.processed', (message, component) => {})
         });

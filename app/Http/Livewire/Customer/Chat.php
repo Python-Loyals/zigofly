@@ -41,8 +41,13 @@ class Chat extends Component
     {
         $this->open = true;
         $this->user = Auth::guard('web')->user();
+        $this->user->receivedMessages()
+            ->update(['read'=> 1]);
         $this->conversation = $this->user->conversation;
         $this->emit('scroll');
+
+        $this->unreadMessages = count($this->user->unreadMessages);
+        $this->emit('read_messages');
     }
 
     public function closeChat()
@@ -52,14 +57,22 @@ class Chat extends Component
     public function newMessage()
     {
         $this->user = Auth::guard('web')->user();
-        if ($this->user){
+        if ($this->open){
             $this->conversation = $this->user->conversation;
-
-            $this->unreadMessages = count($this->user->unreadMessages);
+            $this->user->receivedMessages()
+                ->update(['read'=> 1]);
         }
+
+        $this->unreadMessages = count($this->user->unreadMessages);
         $this->emit('read_messages');
+        $lastMessage = $this->user->conversation->last();
         if ($this->open){
             $this->emit('scroll');
+            if ($lastMessage->sender_id != Auth::id()){
+                $this->emit('new_message_notif');
+            }
+        }else{
+            $this->emit('notification');
         }
     }
 }

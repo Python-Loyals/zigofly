@@ -52,6 +52,7 @@ class Chat extends Component
         $this->conversation = $this->user->conversation;
         $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages);
         $this->emit('read_messages');
+        $this->emit('scroll');
     }
 
     public function selected_admin($id)
@@ -69,6 +70,7 @@ class Chat extends Component
         $this->conversation = $this->admin->conversation;
         $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages);
         $this->emit('read_messages');
+        $this->emit('scroll');
     }
 
     public function send()
@@ -101,13 +103,31 @@ class Chat extends Component
     {
         if ($this->customer_chat){
             $this->conversation = $this->user->conversation ?? [];
+            $this->user->sentMessages()
+                ->update(['read'=> 1]);
+            $lastMessage = $this->user->conversation->last();
         }elseif ($this->staff_chat){
             $this->conversation = $this->admin->conversation ?? [];
+            $this->admin->sentMessages()
+                ->update(['read'=> 1]);
+            $lastMessage = $this->admin->conversation->last();
         }
         $this->unreadMessages = count(Auth::guard('admin')->user()->unreadMessages);
         $this->emit('read_messages');
-        if ($this->user || $this->admin){
+
+
+        if ($this->customer_chat || $this->staff_chat){
             $this->emit('scroll');
+            if (isset($lastMessage) && $lastMessage->sender_id != Auth::guard('admin')->id()){
+                $this->emit('new_message_notif');
+            }
+        }else{
+            $this->emit('notification');
         }
+    }
+
+    public function backChat()
+    {
+        $this->reset(['customer_chat', 'staff_chat']);
     }
 }

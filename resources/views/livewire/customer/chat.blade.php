@@ -88,6 +88,22 @@
         livewire.on('scroll', () => {
             $(".main-friend-chat").animate({ scrollTop: $(".main-friend-chat")[0].scrollHeight }, 1000);
         });
+        livewire.on('notification', () => {
+            playNotificationSound()
+        });
+
+        livewire.on('new_message_notif', () => {
+            playNewMessageSound()
+        });
+
+        livewire.on('read_messages', () => {
+            if (parseInt(@this.unreadMessages) > 0){
+                $('.user-unread').text(@this.unreadMessages).removeClass('d-none')
+            }else {
+                $('.user-unread').addClass('d-none')
+            }
+        });
+
         $('.live-chat').on('click', function(e) {
             e.preventDefault();
             $('.btn-chat').trigger('click');
@@ -96,10 +112,36 @@
         Echo.channel('chat')
             .listen('.chat', (e)=>{
                 console.log(e)
-            @this.call('newMessage');
+            @this.call('newMessage')
             })
         $('.btn-chat').on('click', function() {
             @this.call('openChat')
+        });
+
+        let min_height = '38';
+        $('#chat-message').on('keydown', function (e) {
+            if (e.which == 13 && !e.ctrlKey && !e.altKey && !e.shiftKey){
+                e.preventDefault();
+                @this.send()
+            }else if(e.which == 13 &&( e.ctrlKey || e.altKey || e.shiftKey)){
+                let v = $(this).val()
+                $(this).val(v+'\n');
+            }
+            $(this).css( {
+                'height': min_height+'px'
+            });
+            let height = Math.min(20 * 5, $(this)[0].scrollHeight);
+            $(this). css('height',  height + 'px');
+
+            if ($(this)[0].scrollHeight > height){
+                $(this).css( {
+                    'overflow-y': 'auto',
+                });
+            }else{
+                $(this).css( {
+                    'overflow-y': 'hidden',
+                });
+            }
         });
     </script>
 @endsection

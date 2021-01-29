@@ -412,6 +412,17 @@ $(document).ready(function () {
         })
     })
 });
+
+window.playNotificationSound = () =>{
+    const audio = new Audio('/sounds/whatsapp_web.mp3');
+    audio.play();
+}
+
+window.playNewMessageSound = () =>{
+    const audio = new Audio('/sounds/whatsapp_new_message.mp3');
+    audio.play();
+}
+
 (function($) {
     $.fn.inputFilter = function(inputFilter) {
         return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {

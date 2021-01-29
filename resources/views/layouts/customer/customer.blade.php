@@ -53,7 +53,29 @@
             @yield('content')
 
             <!-- fab chat -->
-            <button class="btn pmd-btn-fab pmd-ripple-effect text-light pmd-btn-raised btn-chat" type="button" aria-label="chat with us"><i class="zmdi zmdi-comment-outline fs-23"></i></button>
+                <style>
+                    .user-unread {
+                        border-radius: 50%;
+                        position: fixed!important;
+                        right: 0.5rem;
+                        bottom: 3rem;
+                        z-index: 1000;
+                        font-size: 13px;
+                        width: 25px;
+                        height: 25px;
+                        text-align: center;
+                        background: #d43b7f;
+                        color: #fff;
+
+                    }
+                </style>
+            <button class="btn pmd-btn-fab pmd-ripple-effect text-light pmd-btn-raised btn-chat" type="button"
+                    aria-label="chat with us">
+                <i class="zmdi zmdi-comment-outline fs-23"></i>
+            </button>
+                @if(count(Auth::user()->unreadMessages)>0)
+                    <span class="user-unread bg-theme">{{count(Auth::user()->unreadMessages)}}</span>
+                @endif
 
             <div class="row">
                 <div class="col-md-12">
