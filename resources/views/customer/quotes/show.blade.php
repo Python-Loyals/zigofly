@@ -150,7 +150,7 @@
                                 </button>
                             </div><br>
                             <div class="packaddress">
-                                <button class="">
+                                <button class="" data-toggle="modal" data-target="#confirm-modal-{{$quote->id}}">
                                     <img src="{{asset('account/images/banners/mpesa.png')}}">
                                 </button>
                             </div> <br>
@@ -166,4 +166,5 @@
         <!-- END MAIN CONTENT-->
         <!-- END PAGE CONTAINER-->
     </div>
+    <livewire:customer.quote-pay-modal :quote="$quote" />
 @endsection

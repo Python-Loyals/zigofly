@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer;
 
+use App\Events\StkResponse;
 use Livewire\Component;
 use Safaricom\Mpesa\Mpesa;
 
@@ -52,6 +53,7 @@ class QuotePayModal extends Component
         }elseif(isset($temp['ResponseCode']) ){
             $this->emit('stk_success', ['message' => 'Your withdrawal request was received and is being processed']);
         }
+        event(new StkResponse(\Auth::id()));
     }
 
     private function generatePassword()

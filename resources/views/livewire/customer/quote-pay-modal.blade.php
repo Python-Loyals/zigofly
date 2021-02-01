@@ -1,4 +1,4 @@
-<div class="modal fade" id="confirm-modal-{{$quote->id}}" tabindex="-1" role="dialog"
+<div class="modal fade confirm-modal" id="confirm-modal-{{$quote->id}}" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -60,8 +60,13 @@
 
         $('#service-form').on('submit', function (e){
             e.preventDefault();
-            $('.modal-body').append(`<div id="loader"></div>`);
+            $('.confirm-modal .modal-body').append(`<div id="loader"></div>`);
             $('.btn-modal-pay').prop('disabled', true)
         });
+
+        Echo.private(`stk.{{Auth::id()}}`)
+            .listen('StkResponse', (e) => {
+                console.log(e);
+            });
     </script>
 @endsection

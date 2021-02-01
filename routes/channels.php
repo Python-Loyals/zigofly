@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -19,4 +20,8 @@ Broadcast::channel('App.User.*', function () {
 
 Broadcast::channel('chat', function () {
     return true;
+});
+
+Broadcast::channel('stk.{userId}', function ($user, $userId) {
+    return $user->id === User::findOrNew($userId)->id;
 });
