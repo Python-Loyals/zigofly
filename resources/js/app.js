@@ -364,7 +364,9 @@ $(document).ready(function () {
         "preventDuplicates": true,
         "preventOpenDuplicates": true,
         onHidden: function (){
-            window.location.href = $('#cancel-modal').data('back')
+            if ($('#cancel-modal').data('back')){
+                window.location.href = $('#cancel-modal').data('back')
+            }
         },
     }
     $('.btn-order-complete').on('click', function (){

@@ -8,6 +8,7 @@ use App\Message;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Safaricom\Mpesa\Mpesa;
 
 class ChatController extends Controller
 {
@@ -25,10 +26,10 @@ class ChatController extends Controller
 //        $message->save();
 //
 //        return $message;
-        $u = Admin::find(1);
+//        $u = Admin::find(1);
 //        $u->load('lastMessage');
 
-        return $u->adminUnreadMessages;
+        return Mpesa::generateSandBoxToken();
     }
 
     /**

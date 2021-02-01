@@ -4,6 +4,33 @@
     <link rel="stylesheet" href="{{asset('account/css/zigo.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css">
+    <style>
+        /*spin loader*/
+        #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            margin: -95px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #072448;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 @endsection
 @section('content')
     <div class="main-content">
@@ -232,49 +259,7 @@
                                                             <button href="#" class="paybtn btn btn-success btn-sm" data-toggle="modal" data-target="#confirm-modal-{{$quote->id}}">
                                                                 pay
                                                             </button>
-                                                            {{--  confirm modal  --}}
-                                                            <div class="modal fade" id="confirm-modal-{{$quote->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header border-bottom-0 bg-theme">
-                                                                            <h5 class="modal-title text-light" id="exampleModalLabel">Pay Quote</h5>
-                                                                            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <form id="service-form">
-                                                                            @csrf
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label for="phone">Phone Number</label>
-                                                                                    <select class="form-control phone" id="phone" name="phone">
-                                                                                        <option selected value="{{Auth::user()->phone}}">{{Auth::user()->phone}}</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="password1">Amount (Ksh)</label>
-                                                                                    <input type="text" readonly name="service_cost"
-                                                                                           id="service-cost" class="form-control" value="{{number_format($quote->amount * 110)}}">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="method">Payment Method</label>
-                                                                                    <select class="form-control" id="method" name="method">
-                                                                                        <option selected value="1">Mpesa</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                                                            <button type="submit"
-                                                                                    form="service-form"
-                                                                                    class="btn bg-theme text-light">
-                                                                                Pay</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
+                                                            <livewire:customer.quote-pay-modal :quote="$quote" :key="$loop->index" />
                                                         @elseif($quote->status == 0)
                                                             <a href="" class="paybtn btn btn-danger btn-sm pt-1">Cancelled</a>
                                                         @else
