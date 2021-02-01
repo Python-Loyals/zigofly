@@ -252,39 +252,46 @@
         </div>
         <!-- END MAIN CONTENT-->
         <!-- END PAGE CONTAINER-->
+        {{--  confirm modal  --}}
+        <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="service-form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="email1">Service Name</label>
+                                <input type="text" required class="form-control" name="name" placeholder="Provide service name e.g. Shopping Fee">
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Price</label>
+                                <input type="number" required name="service_cost" id="service-cost" class="form-control" placeholder="Service cost">
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Description</label>
+                                <textarea name="description" class="form-control description"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit"
+                                form="service-form"
+                                class="btn bg-theme text-light">
+                            Add Service</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('scripts')
-    <script src="https://clipboardjs.com/dist/clipboard.min.js" crossorigin="anonymous"></script>
-
     <script>
-        $('button').tooltip({
-            placement: 'bottom',
-            trigger: 'click'
-        });
 
-        function setTooltip(btn, message) {
-            $(btn).tooltip('hide')
-                .attr('data-original-title', message)
-                .tooltip('show');
-        }
-
-        function hideTooltip(btn) {
-            setTimeout(function() {
-                $(btn).tooltip('hide');
-            }, 1000);
-        }
-
-        var clipboard = new ClipboardJS('.btn');
-
-        clipboard.on('success', function(e) {
-            setTooltip(e.trigger, 'Copied!');
-            hideTooltip(e.trigger);
-        });
-
-        clipboard.on('error', function(e) {
-            setTooltip(e.trigger, 'Failed!');
-            hideTooltip(e.trigger);
-        });
     </script>
 @endsection

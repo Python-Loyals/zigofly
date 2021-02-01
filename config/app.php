@@ -177,6 +177,7 @@ return [
         Ixudra\Curl\CurlServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Livewire\LivewireServiceProvider::class,
+        Safaricom\Mpesa\MpesaServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'Curl'          => Ixudra\Curl\Facades\Curl::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Mpesa'=> Safaricom\Mpesa\MpesaServiceProvider::class,
 
     ],
 

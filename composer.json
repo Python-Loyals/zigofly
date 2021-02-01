@@ -1,5 +1,5 @@
 {
-    "name": "Zigofly",
+    "name": "laravel/laravel",
     "type": "project",
     "description": "Zigofly.",
     "keywords": [
@@ -26,6 +26,7 @@
         "laravel/ui": "^2.0",
         "livewire/livewire": "^2.3",
         "pusher/pusher-php-server": "^4.1",
+        "safaricom/mpesa": "^1.0",
         "spatie/laravel-medialibrary": "^7.0.0",
         "yajra/laravel-datatables-oracle": "^9.9"
     },

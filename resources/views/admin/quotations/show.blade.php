@@ -209,7 +209,7 @@
 
                     <div class="row my-3">
                         <div class="col-md-12">
-                            <button type="button" id="btn-add-service" class="btn ml-auto btn-default"data-toggle="modal"
+                            <button type="button" id="btn-add-service" class="btn ml-auto btn-default" data-toggle="modal"
                                     data-target="#service-modal">
                                 <i class="fa fa-plus-circle"></i> Add new service
                             </button>
