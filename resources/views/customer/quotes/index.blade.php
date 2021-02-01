@@ -1,6 +1,9 @@
 @extends('layouts.customer.customer')
 @section('styles')
+    @parent
     <link rel="stylesheet" href="{{asset('account/css/zigo.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css">
 @endsection
 @section('content')
     <div class="main-content">
@@ -199,6 +202,11 @@
                             </div>
                             <div class="col-md-5 mt-3 mt-md-0 px-0 px-md-3">
                                 <div class="table-responsive rounded-10 shadow">
+                                    <style>
+                                        .modal-backdrop{
+                                            z-index: -1;
+                                        }
+                                    </style>
                                     <table class="table  table-striped table-earning">
                                         <thead>
                                         <tr>
@@ -221,7 +229,52 @@
                                                     </td>
                                                     <td>
                                                         @if($quote->status == 2)
-                                                            <a href="#" class="paybtn btn btn-success btn-sm">pay</a>
+                                                            <button href="#" class="paybtn btn btn-success btn-sm" data-toggle="modal" data-target="#confirm-modal-{{$quote->id}}">
+                                                                pay
+                                                            </button>
+                                                            {{--  confirm modal  --}}
+                                                            <div class="modal fade" id="confirm-modal-{{$quote->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header border-bottom-0 bg-theme">
+                                                                            <h5 class="modal-title text-light" id="exampleModalLabel">Pay Quote</h5>
+                                                                            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <form id="service-form">
+                                                                            @csrf
+                                                                            <div class="modal-body">
+                                                                                <div class="form-group">
+                                                                                    <label for="phone">Phone Number</label>
+                                                                                    <select class="form-control phone" id="phone" name="phone">
+                                                                                        <option selected value="{{Auth::user()->phone}}">{{Auth::user()->phone}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="password1">Amount (Ksh)</label>
+                                                                                    <input type="text" readonly name="service_cost"
+                                                                                           id="service-cost" class="form-control" value="{{number_format($quote->amount * 110)}}">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="method">Payment Method</label>
+                                                                                    <select class="form-control" id="method" name="method">
+                                                                                        <option selected value="1">Mpesa</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                                                            <button type="submit"
+                                                                                    form="service-form"
+                                                                                    class="btn bg-theme text-light">
+                                                                                Pay</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         @elseif($quote->status == 0)
                                                             <a href="" class="paybtn btn btn-danger btn-sm pt-1">Cancelled</a>
                                                         @else
@@ -252,46 +305,15 @@
         </div>
         <!-- END MAIN CONTENT-->
         <!-- END PAGE CONTAINER-->
-        {{--  confirm modal  --}}
-        <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Service</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form id="service-form">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="email1">Service Name</label>
-                                <input type="text" required class="form-control" name="name" placeholder="Provide service name e.g. Shopping Fee">
-                            </div>
-                            <div class="form-group">
-                                <label for="password1">Price</label>
-                                <input type="number" required name="service_cost" id="service-cost" class="form-control" placeholder="Service cost">
-                            </div>
-                            <div class="form-group">
-                                <label for="password1">Description</label>
-                                <textarea name="description" class="form-control description"></textarea>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit"
-                                form="service-form"
-                                class="btn bg-theme text-light">
-                            Add Service</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 @section('scripts')
+    @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
     <script>
-
+        $("select.phone").select2({
+            tags: true,
+            theme: 'bootstrap4',
+        });
     </script>
 @endsection
