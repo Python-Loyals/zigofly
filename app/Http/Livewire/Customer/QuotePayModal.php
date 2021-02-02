@@ -36,7 +36,8 @@ class QuotePayModal extends Component
         $BusinessShortCode = '174379';
         $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
-        $Amount = $this->quote->amount * self::CONVERSION_AMOUNT;
+//        $Amount = $this->quote->amount * self::CONVERSION_AMOUNT;
+        $Amount = 1;
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;

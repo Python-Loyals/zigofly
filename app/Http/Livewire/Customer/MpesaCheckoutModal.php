@@ -42,11 +42,12 @@ class MpesaCheckoutModal extends Component
         $BusinessShortCode = '174379';
         $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
-        $Amount = Cart::total() * self::CONVERSION_AMOUNT;
+//        $Amount = Cart::total() * self::CONVERSION_AMOUNT;
+        $Amount = 1;
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
-        $CallBackURL= 'https://peternjeru.co.ke/safdaraja/api/callback.php';
+        $CallBackURL= route('api.mpesa.quoute.stk_callback');
         $AccountReference = 'ZFO-'.$checkout->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';

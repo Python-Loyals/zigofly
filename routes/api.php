@@ -11,6 +11,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('users', 'UsersApiController');
 });
 
-Route::group(['prefix' => 'axelrod', 'middleware' => ['guest'], 'as' => 'api.mpesa.', 'namespace' => 'Customer'], function (){
-    Route::get('callback', 'StkCallbackResponseController@index')->name('quoute.stk_callback');
+Route::group(['prefix' => 'axelrod/callback', 'middleware' => ['guest'], 'as' => 'api.mpesa.', 'namespace' => 'Customer'], function (){
+    Route::post('quote', 'StkCallbackResponseController@index')->name('quoute.stk_callback');
+    Route::post('quote', 'StkCallbackResponseController@order')->name('order.stk_callback');
 });

@@ -141,7 +141,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 });
 
 //callbacks
-Route::group(['prefix' => 'axelrod', 'middleware' => ['guest'], 'as' => 'mpesa.', 'namespace' => 'Customer'], function (){
-    Route::get('callback', 'StkCallbackResponseController@index')->name('quoute.stk_callback');
-});
+//Route::group(['prefix' => 'axelrod', 'middleware' => ['guest'], 'as' => 'mpesa.', 'namespace' => 'Customer'], function (){
+//    Route::get('callback', 'StkCallbackResponseController@index')->name('quoute.stk_callback');
+//});
 
