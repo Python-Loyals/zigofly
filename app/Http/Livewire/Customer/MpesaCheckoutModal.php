@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Customer;
 
 use App\Checkout;
+use App\StkRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Safaricom\Mpesa\Mpesa;
@@ -58,6 +59,12 @@ class MpesaCheckoutModal extends Component
         if (isset($temp['errorMessage']) || $temp['ResponseCode'] != 0){
             $this->emit('stk_error', ['message' => $temp['errorMessage']]);
         }elseif(isset($temp['ResponseCode']) ){
+            $stk_request = StkRequest::create([
+                'request_id' => $temp['CheckoutRequestID'],
+                'msisdn' => $this->phone,
+                'bill_ref_number' => $AccountReference,
+                'amount'    => $Amount
+            ]);
             $this->emit('stk_success', ['message' => 'A payment request has been sent to your phone.']);
         }
     }

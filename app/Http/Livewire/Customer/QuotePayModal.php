@@ -41,7 +41,7 @@ class QuotePayModal extends Component
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
-        $CallBackURL= route('api.mpesa.quoute.stk_callback');
+        $CallBackURL= route('api.mpesa.quote.stk_callback');
         $AccountReference = 'ZFQ-'.$this->quote->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';
@@ -55,7 +55,7 @@ class QuotePayModal extends Component
             $stk_request = StkRequest::create([
                'request_id' => $temp['CheckoutRequestID'],
                'msisdn' => $this->phone,
-               'bill_ref_number' => 'ZFQ-'.$this->quote->id,
+               'bill_ref_number' => $AccountReference,
                'amount'    => $Amount
             ]);
             $this->emit('stk_success', ['message' => 'A payment request has been sent to your phone.']);
