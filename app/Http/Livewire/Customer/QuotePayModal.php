@@ -36,11 +36,11 @@ class QuotePayModal extends Component
         $BusinessShortCode = '174379';
         $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
-        $Amount = 1;
+        $Amount = $this->quote->amount * self::CONVERSION_AMOUNT;
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
-        $CallBackURL= route('mpesa.quoute.stk_callback');
+        $CallBackURL= route('api.mpesa.quoute.stk_callback');
         $AccountReference = 'ZFQ-'.$this->quote->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';
