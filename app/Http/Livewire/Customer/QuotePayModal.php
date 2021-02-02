@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Customer;
 
-use App\Events\StkResponse;
+use App\StkRequest;
 use Livewire\Component;
 use Safaricom\Mpesa\Mpesa;
 
@@ -36,11 +36,11 @@ class QuotePayModal extends Component
         $BusinessShortCode = '174379';
         $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
-        $Amount = self::CONVERSION_AMOUNT;
+        $Amount = 1;
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
-        $CallBackURL= 'https://peternjeru.co.ke/safdaraja/api/callback.php';
+        $CallBackURL= route('mpesa.quoute.stk_callback');
         $AccountReference = 'ZFQ-'.$this->quote->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';
@@ -51,6 +51,12 @@ class QuotePayModal extends Component
         if (isset($temp['errorMessage']) || $temp['ResponseCode'] != 0){
             $this->emit('stk_error', ['message' => $temp['errorMessage']]);
         }elseif(isset($temp['ResponseCode']) ){
+            $stk_request = StkRequest::create([
+               'request_id' => $temp['CheckoutRequestID'],
+               'msisdn' => $this->phone,
+               'bill_ref_number' => 'ZFQ-'.$this->quote->id,
+               'amount'    => $Amount
+            ]);
             $this->emit('stk_success', ['message' => 'A payment request has been sent to your phone.']);
         }
     }

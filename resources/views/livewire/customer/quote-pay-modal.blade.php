@@ -65,8 +65,12 @@
         });
 
         Echo.private(`stk.{{Auth::id()}}`)
-            .listen('StkResponse', (e) => {
-                console.log(e);
+            .listen('StkResponse', (data) => {
+                if (data && data.error){
+                    toastr.error(data.message, "Ooops");
+                }else if(data && !data.error){
+                    toastr.success(data.message, 'Hurray!');
+                }
             });
     </script>
 @endsection

@@ -140,4 +140,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('password','ProfileController@updatePassword')->name('password.update');
 });
 
+//callbacks
+Route::group(['prefix' => 'axelrod', 'middleware' => ['guest'], 'as' => 'mpesa.', 'namespace' => 'Customer'], function (){
+    Route::get('callback', 'StkCallbackResponseController@index')->name('quoute.stk_callback');
+});
 

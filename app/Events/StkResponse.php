@@ -14,14 +14,18 @@ class StkResponse implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $userId;
+    public $message;
+    public $error = false;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($userId)
+    public function __construct($userId, $message = null, $error = false)
     {
         $this->userId = $userId;
+        $this->message = $message;
+        $this->error = $error;
     }
 
     /**
