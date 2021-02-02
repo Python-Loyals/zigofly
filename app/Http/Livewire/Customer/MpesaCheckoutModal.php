@@ -47,7 +47,7 @@ class MpesaCheckoutModal extends Component
         $PartyA = $this->phone;
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
-        $CallBackURL= route('api.mpesa.quoute.stk_callback');
+        $CallBackURL= route('api.mpesa.order.stk_callback');
         $AccountReference = 'ZFO-'.$checkout->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';
