@@ -316,3 +316,33 @@
 .-align-center {
     text-align: center!important;
 }
+
+#paymentinfo{
+    position   : relative;
+    top        : 0;
+    left       : 0;
+    width      : auto;
+    height     : 200px;
+    border-radius: 9px;
+    background : #cdcdcd;
+    z-index    : 2;
+    display    : none;
+    border: 1px solid;
+    padding: 50px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.payinfo img{
+    max-height: 25px;
+    border-radius: 9px;
+
+}
+.payinfozigo{
+    font-size: 12px;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+.payinfobtn{
+    min-width: 130px;
+}

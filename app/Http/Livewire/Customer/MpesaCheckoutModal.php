@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Customer;
 
-use App\Events\StkResponse;
+use Gloudemans\Shoppingcart\Cart;
 use Livewire\Component;
 use Safaricom\Mpesa\Mpesa;
 
-class QuotePayModal extends Component
+class MpesaCheckoutModal extends Component
 {
-    public $quote, $phone;
+    public $phone;
 
     const CONVERSION_AMOUNT = 110;
 
@@ -16,14 +16,14 @@ class QuotePayModal extends Component
         'phone' => ['required', 'regex:/^(0|\+?254)(\d){9}$/'],
     ];
 
-    public function mount($quote)
+    public function mount()
     {
-        $this->quote = $quote;
         $this->phone = \Auth::user()->phone;
     }
+
     public function render()
     {
-        return view('livewire.customer.quote-pay-modal');
+        return view('livewire.customer.mpesa-checkout-modal');
     }
 
     public function pay()
@@ -41,7 +41,7 @@ class QuotePayModal extends Component
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
         $CallBackURL= 'https://peternjeru.co.ke/safdaraja/api/callback.php';
-        $AccountReference = 'ZFQ-'.$this->quote->id;
+        $AccountReference = 'ZF0-';
         $TransactionDesc = 'test';
         $Remarks = 'test';
         $stkPushSimulation=$mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType,
@@ -53,14 +53,5 @@ class QuotePayModal extends Component
         }elseif(isset($temp['ResponseCode']) ){
             $this->emit('stk_success', ['message' => 'A payment request has been sent to your phone.']);
         }
-    }
-
-    private function generatePassword()
-    {
-        $BusinessShortCode = '174379';
-        $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-        $Timestamp = date('YmdHis');
-
-        return base64_encode($BusinessShortCode.$Passkey.$Timestamp);
     }
 }

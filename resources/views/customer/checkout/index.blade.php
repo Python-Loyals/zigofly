@@ -107,11 +107,34 @@
                             </div>
                         </div>
 
-                        <a href="{{route('customer.users.orders.store')}}" class="w-100">
-                            <button id="osh-opc-btn-save" class="osh-btn -p-l ft-save-and-continue-button  -full-width mt-4">
-                                <span class="label ">Proceed to next step</span>
-                            </button>
-                        </a>
+                        <div id="paymentinfo" class="">
+                            <center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><small>Pay</small> KES {{ceil(Cart::total() * 110)}}</h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 payinfo">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 payinfozigo mb-md-0 mb-2">
+                                        <button class="btn btn-xs btn-dark ">
+                                            Zigofly Wallet
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 payinfopesa" style="">
+                                        <button class="btn btn-xs btn-dark payinfobtn"
+                                                data-target="#checkout-modal" data-toggle="modal">
+                                            <img class="payimg" style="" src="https://zigofly.brancetech.com/account/images/banners/mpesa.png" >
+                                        </button>
+                                    </div>
+                                </div>
+                            </center>
+
+                        </div>
+
+                        <button id="osh-opc-btn-save" class="osh-btn -p-l ft-save-and-continue-button  -full-width mt-4">
+                            <span class="label ">Proceed to next step</span>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -184,9 +207,17 @@
                 </section>
             </div>
         </div>
-
     </div>
+    <livewire:customer.mpesa-checkout-modal />
 @endsection
 @section('scripts')
     @parent
+    <script>
+        $('#osh-opc-btn-save').on('click', function () {
+            $('#paymentinfo, #back').slideToggle();
+        });
+        $('#back').on('click', function () {
+            $('#paymentinfo, #back').slideToggle();
+        });
+    </script>
 @endsection
