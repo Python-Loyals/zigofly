@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire\Customer;
 
-use Gloudemans\Shoppingcart\Cart;
+use App\Checkout;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Safaricom\Mpesa\Mpesa;
 
@@ -30,6 +31,11 @@ class MpesaCheckoutModal extends Component
     {
         $this->validate();
 
+        $checkout = Checkout::create([
+            'user_id' => \Auth::id(),
+            'amount' => Cart::total() * self::CONVERSION_AMOUNT
+        ]);
+
         $this->phone = preg_replace('/^(0|\+?254)/', '254', $this->phone);
 
         $mpesa = new Mpesa();
@@ -41,7 +47,7 @@ class MpesaCheckoutModal extends Component
         $PartyB = $BusinessShortCode;
         $PhoneNumber = $this->phone;
         $CallBackURL= 'https://peternjeru.co.ke/safdaraja/api/callback.php';
-        $AccountReference = 'ZF0-';
+        $AccountReference = 'ZFO-'.$checkout->id;
         $TransactionDesc = 'test';
         $Remarks = 'test';
         $stkPushSimulation=$mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType,
