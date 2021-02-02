@@ -157,7 +157,7 @@ class StkCallbackResponseController extends Controller
                 'result_description' => $response_desc
             ]);
 
-            event(new StkResponse($quote->customer->id, $response_desc, true));
+            event(new StkResponse($checkout->id, $response_desc, true));
         }
 
         return $stkRequest->load('response');
