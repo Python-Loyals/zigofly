@@ -55,15 +55,21 @@
 
         $('#service-form').on('submit', function (e){
             e.preventDefault();
-            $('.confirm-modal .modal-body').append(`<div id="loader"></div>`);
+            $('.checkout-modal .modal-body').prepend(`<div id="loader"></div>`);
             $('.btn-modal-pay').prop('disabled', true)
         });
 
         Echo.private(`stk.{{Auth::id()}}`)
             .listen('StkResponse', (data) => {
                 if (data && data.error){
+                    toastr.options.onHidden = function (){
+                        location.reload();
+                    }
                     toastr.error(data.message, "Ooops");
                 }else if(data && !data.error){
+                    toastr.options.onHidden = function (){
+                        location.reload();
+                    }
                     toastr.success(data.message, 'Hurray!');
                 }
             });
