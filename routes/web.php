@@ -4,13 +4,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::redirect('/', '/login');
 Route::redirect('/admin', '/admin/login');
-Route::get('/home', function () {
-    if (session('status')) {
-        return redirect()->route('customer.home')->with('status', session('status'));
-    }
 
-    return redirect()->route('customer.home');
-});
+Route::redirect('/home', 'user/login');
 
 Auth::routes(['register' => true]);
 // Customer
@@ -35,9 +30,7 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
     Route::get('address', 'AddressController@index')->name('users.address');
 
     //Customer Shipments
-    Route::get('shipments', function (){
-        return view('customer.shipments.index');
-    })->name('users.shipments');
+    Route::view('shipments', 'customer.shipments.index')->name('users.shipments');
 
     //Customer Orders
     Route::group(['as' => 'users.'], function (){
@@ -51,17 +44,14 @@ Route::group(['prefix' => 'user', 'as' => 'customer.', 'namespace' => 'Customer'
     Route::post('quote', 'QuotesController@store')->name('users.quotes.store');
     Route::get('quote/{id}', 'QuotesController@show')->name('users.quotes.show');
 
-    Route::get('calculator', function (){
-        return view('customer.rate_calculator.index');
-    })->name('users.calculator');
+    //customer payments
+    Route::get('payments', 'PaymentsController@index')->name('users.payments');
 
-    Route::get('packages', function (){
-        return view('customer.packages.index');
-    })->name('users.packages');
+    Route::view('calculator', 'customer.rate_calculator.index')->name('users.calculator');
 
-    Route::get('package', function (){
-        return view('customer.packages.package');
-    })->name('users.single_package');
+    Route::view('packages', 'customer.packages.index')->name('users.packages');
+
+    Route::view('package', 'customer.packages.package')->name('users.single_package');
 
     //user profile
     Route::get('profile','ProfileController@index')->name('profile.index');
@@ -137,7 +127,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('profile','ProfileController@index')->name('profile.index');
     Route::put('profile','ProfileController@update')->name('profile.update_info');
     Route::put('profile/avatar','ProfileController@updateAvatar')->name('profile.update_avatar');
-    Route::put('password','ProfileController@updatePassword')->name('password.update');
+    Route::put('password','ProfileController@updatePassword')->name('password.change');
 });
 
 //callbacks

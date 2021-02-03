@@ -69,6 +69,9 @@
                 if (data && data.error){
                     toastr.error(data.message, "Ooops");
                 }else if(data && !data.error){
+                    toastr.options.onHidden = function (){
+                        location.reload();
+                    }
                     toastr.success(data.message, 'Hurray!');
                 }
             });

@@ -138,7 +138,7 @@
 
 
                                                 <div class="tab-pane fade {{($errors->has('password') || $errors->has('old_password')) ? 'show active':''}}" id="changePassword" role="tabpanel" aria-labelledby="password-tab">
-                                                    <form class="form" action="{{route('admin.password.update')}}" method="POST">
+                                                    <form class="form" action="{{route('admin.password.change')}}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="row">
