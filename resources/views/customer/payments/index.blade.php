@@ -61,7 +61,7 @@
                                                 </td>
                                             @endif
 
-                                            <td class="text-center">amazon.com</td>
+                                            <td class="text-center">{{$payment->receipt_number}}</td>
                                             <td class="text-center">{{$payment->amount}}</td>
                                             <td class="text-center">
                                                 {{\Carbon\Carbon::parse($payment->created_at)->format('Y-m-d H:i:s')}}
