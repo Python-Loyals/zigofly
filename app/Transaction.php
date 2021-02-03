@@ -17,7 +17,7 @@ class Transaction extends Model
         'status',
     ];
 
-    public function paymentable()
+    public function payment()
     {
         return $this->morphTo();
     }

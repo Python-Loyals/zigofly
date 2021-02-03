@@ -74,7 +74,7 @@ class Quote extends Model implements HasMedia
 
     public function payment()
     {
-        return $this->morphOne(Transaction::class, 'paymentable');
+        return $this->morphOne(Transaction::class, 'payment');
     }
 
 }
