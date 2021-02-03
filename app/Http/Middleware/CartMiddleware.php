@@ -18,6 +18,7 @@ class CartMiddleware
     public function handle($request, Closure $next)
     {
         if (auth()->check()){
+            session()->forget('cart');
             Cart::restore(Auth::user()->id);
             if(Cart::count() > 0)
             {

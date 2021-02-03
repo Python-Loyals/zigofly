@@ -145,6 +145,7 @@ class StkCallbackResponseController extends Controller
 
                 Cart::destroy($checkout->user_id);
                 Cart::store($checkout->user_id);
+//                Cart::truncate();
             }
 
             $message = 'Your payment for order '.$stkRequest->bill_ref_number.' was successful.';
@@ -157,7 +158,7 @@ class StkCallbackResponseController extends Controller
                 'result_description' => $response_desc
             ]);
 
-            event(new StkResponse($checkout->id, $response_desc, true));
+            event(new StkResponse($checkout->user_id, $response_desc, true));
         }
 
         return $stkRequest->load('response');

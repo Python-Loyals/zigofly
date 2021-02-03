@@ -1,6 +1,34 @@
 @extends('layouts.customer.customer')
 @section('styles')
+    @parent
     <link rel="stylesheet" href="{{asset('account/css/checkout.css')}}">
+    <style>
+        /*spin loader*/
+        #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            margin: -95px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #072448;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 @endsection
 @section('content')
     @if(Cart::count() < 1)
@@ -10,7 +38,7 @@
     @endif
     <div class="main-content">
         <div class="section__content section__content--p30">
-            <div class="container-fluid  p-sm-l-10 p-sm-r-10">
+            <div class="container-fluid  p-sm-ls-10 p-sm-r-10">
                 <div class="row d-md-flex d-none pl-1>
                     <div class="col-12">
                 <nav class="breadcrumb bg-transparent">
