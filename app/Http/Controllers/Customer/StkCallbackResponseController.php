@@ -9,6 +9,7 @@ use App\Order;
 use App\OrderItem;
 use App\Quote;
 use App\StkRequest;
+use App\Transaction;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -57,6 +58,13 @@ class StkCallbackResponseController extends Controller
                 'result_description' => $response_desc
             ]);
             $stkRequest->update(['paid' => 1]);
+            $transaction = new Transaction([
+                'receipt_number' => $receipt,
+                'amount' => $amount,
+            ]);
+
+            $transaction->paymentable()->associate($quote);
+            $transaction->save();
 
             $message = 'Your payment for '.$stkRequest->bill_ref_number.' was successful.';
 

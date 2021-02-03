@@ -72,4 +72,9 @@ class Quote extends Model implements HasMedia
         return $this->hasMany(QuoteService::class, 'quote_id');
     }
 
+    public function payment()
+    {
+        return $this->morphOne(Transaction::class, 'paymentable');
+    }
+
 }
