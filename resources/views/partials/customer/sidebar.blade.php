@@ -30,8 +30,8 @@
                         <img alt="My Shipments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/aeroplane.png')}}" />My Shipments
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li class="{{ request()->is('user/payments') || request()->is('user/payments*') ? 'active' : '' }}">
+                    <a href="{{route('customer.users.payments')}}">
                         <img alt="My Payments" class="pr-1" width="30" height="30" src="{{asset('account/images/icon/financial.png')}}" />My Payments
                     </a>
                 </li>
