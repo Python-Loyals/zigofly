@@ -158,7 +158,18 @@ class StkCallbackResponseController extends Controller
 
                 Cart::destroy($checkout->user_id);
                 Cart::store($checkout->user_id);
-//                Cart::truncate();
+
+                $order->load('payment');
+
+                if (!$order->payment){
+                    $transaction = new Transaction([
+                        'receipt_number' => $receipt,
+                        'amount' => $amount,
+                    ]);
+
+                    $transaction->payment()->associate($order);
+                    $transaction->save();
+                }
             }
 
             $message = 'Your payment for order '.$stkRequest->bill_ref_number.' was successful.';

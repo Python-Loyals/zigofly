@@ -48,13 +48,13 @@
     <script>
         livewire.on('stk_error', data => {
             toastr.error(data.message, "Ooops")
-            $('.modal-body').remove('#loader');
+            $('.confirm-modal .modal-body').remove('#loader');
             $('.btn-modal-pay').prop('disabled', false)
         });
 
         livewire.on('stk_success', data => {
             toastr.info(data.message, "Hurray!")
-            $('.modal-body').remove('#loader');
+            $('.confirm-modal .modal-body').remove('#loader');
             $('.btn-modal-pay').prop('disabled', false)
         });
 
