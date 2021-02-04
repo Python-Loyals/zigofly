@@ -60,9 +60,6 @@ class StkCallbackResponseController extends Controller
             ]);
             $stkRequest->update(['paid' => 1]);
 
-            //update quote to paid
-            $quote->update(['status' => 3]);
-
 
             $quote->load('payment');
 
@@ -74,6 +71,9 @@ class StkCallbackResponseController extends Controller
 
                 $transaction->payment()->associate($quote);
                 $transaction->save();
+
+                //update quote to paid
+                $quote->update(['status' => 3]);
 
                 //create order
                 $order = Order::create([
