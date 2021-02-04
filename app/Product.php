@@ -32,4 +32,9 @@ class Product extends Model
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 
+    public function orderProduct()
+    {
+        return $this->morphOne(OrderItem::class, 'product');
+    }
+
 }

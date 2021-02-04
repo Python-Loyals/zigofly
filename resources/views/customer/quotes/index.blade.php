@@ -261,9 +261,11 @@
                                                             </button>
                                                             <livewire:customer.quote-pay-modal :quote="$quote" :key="$loop->index" />
                                                         @elseif($quote->status == 0)
-                                                            <a href="" class="paybtn btn btn-danger btn-sm pt-1">Cancelled</a>
-                                                        @else
-                                                            <a href="" class="paybtn btn btn-warning btn-sm pt-1">Pending</a>
+                                                            <a href="#" class="paybtn btn btn-danger btn-sm pt-1">Cancelled</a>
+                                                        @elseif($quote->status == 1)
+                                                            <a href="#" class="paybtn btn btn-warning btn-sm pt-1">Pending</a>
+                                                        @elseif($quote->status == 3)
+                                                            <a href="#" class="paybtn btn btn-success btn-sm pt-1">Paid</a>
                                                         @endif
                                                     </td>
                                                 </tr>

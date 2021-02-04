@@ -89,12 +89,22 @@
                                             ${{$quote->amount}}
                                         </span>
                                     </p>
-                                @else
+                                @elseif($quote->status == 1)
                                     <p>Quote Status: &ensp;
                                         <span class="info">
                                             <button class="paybtn btn btn-warning btn-sm pt-1">Pending</button>
                                         </span>
                                     </p>
+                                @elseif($quote->status == 3)
+                                    <p>Quote Amount: &ensp;
+                                        <span class="info">
+                                            ${{$quote->amount}}
+                                        </span>
+                                        <span class="info">
+                                            <button class="paybtn btn btn-success btn-sm pt-1">Paid</button>
+                                        </span>
+                                    </p>
+
                                 @endif
                                 @if($quote->instructions)
                                     <p>Quote Instructions: &ensp;<span class="info"> {{$quote->instructions}} </span></p>

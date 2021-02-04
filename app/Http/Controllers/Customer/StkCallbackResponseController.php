@@ -7,6 +7,7 @@ use App\Events\StkResponse;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderItem;
+use App\Product;
 use App\Quote;
 use App\StkRequest;
 use App\Transaction;
@@ -59,6 +60,10 @@ class StkCallbackResponseController extends Controller
             ]);
             $stkRequest->update(['paid' => 1]);
 
+            //update quote to paid
+            $quote->update(['status' => 3]);
+
+
             $quote->load('payment');
 
             if (!$quote->payment){
@@ -69,9 +74,32 @@ class StkCallbackResponseController extends Controller
 
                 $transaction->payment()->associate($quote);
                 $transaction->save();
+
+                //create order
+                $order = Order::create([
+                    'sub_total' => $quote->amount,
+                    'total'     => $quote->amount,
+                    'user_id'   => $quote->customer->id
+                ]);
+
+                foreach ($quote->products as $product) {
+                    $orderItem = new OrderItem([
+                        'quantity'  => (int) $product->quantity
+                    ]);
+
+                    $orderItem->product()->associate($product);
+                    $orderItem->order()->associate($order);
+
+                    $orderItem->save();
+                }
+            }else{
+                return response()->json([
+                        "message" => 'Quote already paid'
+                    ]
+                );
             }
 
-            $message = 'Your payment for '.$stkRequest->bill_ref_number.' was successful.';
+            $message = 'Your payment for quote '.$stkRequest->bill_ref_number.' was successful.';
 
             event(new StkResponse($quote->customer->id, $message));
         }else{
@@ -132,36 +160,36 @@ class StkCallbackResponseController extends Controller
 
             if (Cart::count() > 0){
                 $cartItems = Cart::content();
-                $orderDetails = [
+
+                $order = Order::create([
                     'sub_total' => Cart::subtotal(),
                     'total'     => Cart::total(),
                     'user_id'   => $checkout->user_id
-                ];
+                ]);
 
-                $order = Order::create($orderDetails);
-
-                $items = [];
                 foreach ($cartItems as $cartItem) {
-                    $items[]= [
-                        'product_id' => $cartItem->id,
-                        'order_id'  => $order->id,
+                    $orderItem = new OrderItem([
                         'quantity'  => (int) $cartItem->qty,
                         'color'     => $cartItem->options->color ?? '',
                         'size'     => $cartItem->options->size ?? '',
                         'other_options'     => $cartItem->options->other_options ?? '',
-                        'created_at'        => Carbon::now(),
-                        'updated_at'        => Carbon::now(),
-                    ];
-                }
+                    ]);
 
-                OrderItem::insert($items);
+                    $product = Product::find($cartItem->id);
+
+                    $orderItem->product()->associate($product);
+                    $orderItem->order()->associate($order);
+
+                    $orderItem->save();
+                }
 
                 Cart::destroy($checkout->user_id);
                 Cart::store($checkout->user_id);
 
                 $order->load('payment');
+                $t = Transaction::where('receipt_number', $receipt)->first();
 
-                if (!$order->payment){
+                if (!$order->payment && !$t){
                     $transaction = new Transaction([
                         'receipt_number' => $receipt,
                         'amount' => $amount,
@@ -170,6 +198,17 @@ class StkCallbackResponseController extends Controller
                     $transaction->payment()->associate($order);
                     $transaction->save();
                 }
+                elseif($t){
+                    return response()->json([
+                            "message" => 'Transaction already exists'
+                        ]
+                    );
+                }
+            }
+            else{
+                return response()->json([
+                   'message' => 'you have no items in cart'
+                ], Response::HTTP_NOT_FOUND);
             }
 
             $message = 'Your payment for order '.$stkRequest->bill_ref_number.' was successful.';
