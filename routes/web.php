@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 Route::redirect('/', '/login');
 Route::redirect('/admin', '/admin/login');
 
-Route::redirect('/home', 'user/login');
+Route::redirect('/home', 'user/');
 
 Auth::routes(['register' => true]);
 // Customer
