@@ -49,7 +49,7 @@ class QuotePayModal extends Component
             $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remarks);
 
         $temp = json_decode($stkPushSimulation, true);
-        if (!array_key_exists('errorMessage', $temp) || $temp['ResponseCode'] != 0){
+        if (array_key_exists('errorMessage', $temp) || $temp['ResponseCode'] != 0){
             $message = array_key_exists('errorMessage', $temp) ? $temp['errorMessage']:
                 'There was an unexpected error';
             $this->emit('stk_error', ['message' => $message]);
