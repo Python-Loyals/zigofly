@@ -61,7 +61,7 @@ class StkCallbackResponseController extends Controller
             $stkRequest->update(['paid' => 1]);
 
 
-            $quote->load('payment');
+            $quote->load(['payment','products']);
 
             if (!$quote->payment){
                 $transaction = new Transaction([
