@@ -71,19 +71,40 @@
                 @forelse($orderItems as $item)
                     <div class="row p-3 effects" data-rowid="{{$item->id}}">
                         <div class="col-md-1 px-1">
-                            <img src="{{$item->product->images[0]->link}}" class="img-responsive">
+                            @if(\App\Product::class == $item->product->getMorphClass())
+                                <img src="{{$item->product->images[0]->link}}" class="img-responsive">
+                            @endif
                         </div>
                         <div class="col-md-5">
-                            <a href="{{$item->product->url ?? '#'}}" target="_blank" rel="noreferrer noopener" class="cart-item-title">{{$item->product->title}}</a>
+                            @if(\App\Product::class == $item->product->getMorphClass())
+                                <a href="{{$item->product->url ?? '#'}}" target="_blank" rel="noreferrer noopener" class="cart-item-title">
+                                    {{$item->product->title}} <i class="fa fa-external-link-alt ml-1" aria-hidden="false"></i>
+                                </a>
+                            @else
+                                <a href="{{$item->product->link ?? '#'}}" target="_blank" rel="noreferrer noopener"
+                                   class="cart-item-title" style="font-size: 14px; text-decoration:underline;">
+                                    {{$item->product->name}} <i class="fa fa-external-link-alt ml-1" aria-hidden="false"></i>
+                                </a>
+                            @endif
+
                             <div class="text-muted">
-                                <span class="price my-1 d-block d-md-none">${{$item->product->price}}</span>
                                 @if($item->options)
                                     @foreach($item->options as $key => $value)
                                         @if($key == 'quantity')
                                             @continue
                                         @endif
-                                        <span>{{ucfirst($key)}}: <span class="ml-2 font-weight-semibold">{{$value}}</span></span>
+                                        <span>{{ucfirst($key)}}:
+                                            <span class="ml-2 font-weight-semibold">
+                                                {{$value}}
+                                            </span>
+                                        </span>
                                     @endforeach
+                                @elseif($item->product->options)
+                                    <span>Options:
+                                            <span class="ml-2 font-weight-semibold">
+                                                {{$item->product->options}}
+                                            </span>
+                                        </span>
                                 @endif
                             </div>
                         </div>
@@ -104,6 +125,46 @@
                 @empty
 
                 @endforelse
+
+                @if(count($order->orderItems) > 0)
+                    @php($item = $order->orderItems[0])
+                    @php($product = $item->product)
+                    @if(\App\QuoteProduct::class == $product->getMorphClass() && count($product->quote->services) > 0)
+                        <div class="services-header">
+                            <div class="row pt-5">
+                                <div class="col-12 text-left">
+                                    <h4>Services</h4>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="mt-1 d-none d-md-block">
+                                <div class="row">
+                                    <div class="col-md-3 d-flex justify-content-center">Name</div>
+                                    <div class="col-md-3 d-flex justify-content-center">Price</div>
+                                    <div class="col-md-3 d-flex justify-content-center">Description</div>
+                                    <div class="col-md-3 d-flex justify-content-center"></div>
+                                </div>
+                                <div class="dropdown-divider my-0"></div>
+                            </div>
+                        </div>
+
+                        <div class="services">
+                            @foreach($product->quote->services as $service)
+                                <div class="row p-3 effects mb-3 mb-md-0">
+                                    <div class="col-md-3 d-flex justify-content-center">
+                                        {{$service->name}}
+                                    </div>
+                                    <div class="col-md-3 d-flex justify-content-center">
+                                        ${{$service->price}}
+                                    </div>
+                                    <div class="col-md-3 d-flex justify-content-center">
+                                        {{$service->description}}
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                @endif
 
                 @if(isset($orderItems))
                     <div class="container mb-5">
