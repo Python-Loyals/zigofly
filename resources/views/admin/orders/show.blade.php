@@ -258,8 +258,3 @@
     </div><!-- /.modal -->
 
 @endsection
-@section('scripts')
-    <script>
-
-    </script>
-@endsection
